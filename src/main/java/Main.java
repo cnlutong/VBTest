@@ -73,7 +73,6 @@ public class Main {
         int questionCount = 0;
 
         System.out.println("\n词汇量测试开始！");
-        System.out.println("测试将包含10到30个问题，具体数量取决于您的表现。");
         System.out.println("请仔细阅读每个问题，并选择最合适的答案。\n");
 
         while (!testService.isTestFinished()) {

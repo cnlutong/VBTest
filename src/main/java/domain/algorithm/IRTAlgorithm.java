@@ -188,7 +188,7 @@ public class IRTAlgorithm implements TestAlgorithm {
     // 定义算法相关的常量
     private static final int MIN_QUESTIONS = 5;  // 最少问题数
     private static final int MAX_QUESTIONS = 50;  // 最多问题数
-    private static final int STABILITY_CHECK_INTERVAL = 5;  // 稳定性检查间隔
+    private static final int STABILITY_CHECK_INTERVAL = 3;  // 稳定性检查间隔
     private static final double MIN_DIFFICULTY = 3.0;  // 最小难度
     private static final double MAX_DIFFICULTY = 13.0;  // 最大难度
     private static final double MIN_ABILITY = 3.0;  // 最小能力值
@@ -196,7 +196,7 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double INITIAL_ABILITY = 3.0;  // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.5;  // 难度斜率
     private static final double LEARNING_RATE = 0.5;  // 学习率
-    private static final double ABILITY_STABILITY_THRESHOLD = 0.08;  // 能力稳定性阈值
+    private static final double ABILITY_STABILITY_THRESHOLD = 0.1;  // 能力稳定性阈值
 
     /**
      * 构造函数
