@@ -15,19 +15,21 @@ public class WordBank {
     private final List<Word> words;
     private final Map<Integer, Integer> wordCountByDifficulty;
     private final Random random;
-    private static final String CSV_FILE_PATH = "C:\\Users\\cnlut\\Desktop\\test_v2.csv";
+    private final String CSV_FILE_PATH;
 
     /**
      * 构造一个新的 WordBank 对象并加载词库。
      *
      * @throws IOException 如果无法读取 CSV 文件
      */
-    public WordBank() throws IOException {
+    public WordBank(String pathWorBank) throws IOException {
         this.words = new ArrayList<>();
         this.wordCountByDifficulty = new HashMap<>();
         this.random = new Random();
+        this.CSV_FILE_PATH = pathWorBank;
         loadWordsFromCSV();
         calculateWordCounts();
+
     }
     /**
      * 从 CSV 文件加载单词。

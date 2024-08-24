@@ -14,7 +14,7 @@ public class Main {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        WordBank wordBank = initializeWordBank();
+        WordBank wordBank = initializeWordBank("C:\\Users\\cnlut\\Desktop\\test_v2.csv");
         if (wordBank == null) {
             System.exit(1);
         }
@@ -31,9 +31,9 @@ public class Main {
      * 初始化词库
      * @return 初始化成功返回 WordBank 对象，失败返回 null
      */
-    private static WordBank initializeWordBank() {
+    private static WordBank initializeWordBank(String pathWordBank) {
         try {
-            WordBank wordBank = new WordBank();
+            WordBank wordBank = new WordBank(pathWordBank);
             System.out.println("词库加载成功，共 " + wordBank.getTotalWordCount() + " 个单词。");
             return wordBank;
         } catch (IOException e) {
