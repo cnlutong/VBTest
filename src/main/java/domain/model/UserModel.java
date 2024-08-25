@@ -18,7 +18,7 @@ public class UserModel {
     public UserModel(String id, String name) {
         this.id = id;
         this.name = name;
-        this.abilityEstimate = 8.0; // 初始能力值设为中等水平
+        this.abilityEstimate = 3.0; // 初始能力值
     }
 
     // Getter 和 Setter 方法
