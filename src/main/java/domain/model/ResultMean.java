@@ -13,9 +13,15 @@ public class ResultMean {
     }
 
 
+//    返回海报中的成绩解读
     public String getResultMean(int estimatedVocab){
 
         return getResultandVersion0(estimatedVocab);
+    }
+
+//    返回海报中的词汇量水平
+    public String getGradeLevel(int estimatedVocab){
+        return getGradeLevelVersion0(estimatedVocab);
     }
 
     private String getResultandVersion0(int estimatedVocab) {
@@ -36,6 +42,26 @@ public class ResultMean {
         vocabLevels.put(120, "达到了小学三年级水平。好的开始！您正在开始您的英语学习之旅。您已经认识了一些基本的英语单词，如数字、颜色等。建议您通过游戏和歌曲来学习更多单词，让英语学习变得有趣。记住，每个人都是从这里开始的，您已经迈出了重要的第一步，继续加油！");
 
         return vocabLevels.floorEntry(estimatedVocab).getValue();
+    }
+
+    private String getGradeLevelVersion0(int estimatedVocab) {
+        NavigableMap<Integer, String> gradeLevels = new TreeMap<>();
+
+        gradeLevels.put(6500, "达到了大学英语四级水平");
+        gradeLevels.put(6000, "达到或超过了高中毕业水平");
+        gradeLevels.put(5500, "达到了高三水平");
+        gradeLevels.put(4500, "达到了高二水平");
+        gradeLevels.put(4000, "达到了高一水平");
+        gradeLevels.put(3300, "达到了初中毕业水平");
+        gradeLevels.put(3000, "达到了初三水平");
+        gradeLevels.put(2500, "达到了初二水平");
+        gradeLevels.put(1500, "达到了初一水平");
+        gradeLevels.put(850, "达到了小学毕业水平");
+        gradeLevels.put(600, "达到了小学五年级水平");
+        gradeLevels.put(300, "达到了小学四年级水平");
+        gradeLevels.put(120, "达到了小学三年级水平");
+
+        return gradeLevels.floorEntry(estimatedVocab).getValue();
     }
 
 }
