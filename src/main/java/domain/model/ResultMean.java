@@ -21,7 +21,7 @@ public class ResultMean {
 
     // 返回成绩中的成绩解读
     public String getResultMean(int estimatedVocab) {
-        return getResultInterpretation(estimatedVocab) + "\n\n" + getLearningBucket(estimatedVocab);
+        return getResultInterpretation(estimatedVocab);
     }
 
     // 返回成绩中的学习建议
@@ -30,7 +30,7 @@ public class ResultMean {
     }
 
     // 返回成绩解读
-    public String getResultInterpretation(int estimatedVocab) {
+    private String getResultInterpretation(int estimatedVocab) {
         NavigableMap<Integer, String> vocabLevels = new TreeMap<>();
 
         vocabLevels.put(6500, "达到了大学英语四级水平。优异水平！这是一个值得赞赏的成就。您现在应该能够较为流畅地阅读英语原版书籍，并能在大多数日常和学术场景中自如交流。");
@@ -51,7 +51,7 @@ public class ResultMean {
     }
 
     // 返回学习建议
-    public String getLearningBucket(int estimatedVocab) {
+    private String getLearningBucket(int estimatedVocab) {
         NavigableMap<Integer, String> learningBuckets = new TreeMap<>();
 
         learningBuckets.put(6500, "建议您开始尝试更具挑战性的英语材料，如原版小说或学术论文，以进一步扩大词汇量。您的进步令人印象深刻，继续保持这样的学习热情！");
