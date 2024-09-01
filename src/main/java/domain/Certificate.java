@@ -25,6 +25,7 @@ public class Certificate {
 
     public Certificate(String certificateName, int estimatedVocab, String userName, String userSchoolName, String userClass, int totalWordSize) {
         this.certificateName = certificateName;
+//        对应信息6
         this.estimatedVocab = estimatedVocab;
         this.userName = userName;
         this.userSchoolName = userSchoolName;
@@ -35,7 +36,7 @@ public class Certificate {
 
 
 
-    // 返回海报中的词汇量水平，对应信息6
+    // 返回海报中的词汇量水平，对应信息7
     public String getGradeLevel() {
         return resultMean.getGradeLevel(estimatedVocab);
     }
