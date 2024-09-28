@@ -24,14 +24,15 @@ public class Certificate {
     private final int totalWordSize;
 
     public Certificate(String certificateName, int estimatedVocab, String userName, String userSchoolName, String userClass, int totalWordSize) {
+        this.resultMean = new ResultMean(0);
         this.certificateName = certificateName;
 //        对应信息6
-        this.estimatedVocab = estimatedVocab;
+        this.estimatedVocab = this.resultMean.correctVocabEstimate(estimatedVocab);
         this.userName = userName;
         this.userSchoolName = userSchoolName;
         this.userClass = userClass;
         this.totalWordSize = totalWordSize;
-        this.resultMean = new ResultMean(0);
+
     }
 
 

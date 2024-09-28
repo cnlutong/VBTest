@@ -19,15 +19,15 @@ public class IRTAlgorithm implements TestAlgorithm {
     // 定义算法相关的常量
     private static final int MIN_QUESTIONS = 10;  // 最少问题数
     private static final int MAX_QUESTIONS = 80;  // 最多问题数
-    private static final int STABILITY_CHECK_INTERVAL = 3;  // 稳定性检查间隔
+    private static final int STABILITY_CHECK_INTERVAL = 5;  // 稳定性检查间隔
     private static final double MIN_DIFFICULTY = 3.0;  // 最小难度
     private static final double MAX_DIFFICULTY = 13.0;  // 最大难度
-    private static final double MIN_ABILITY = 3.0;  // 最小能力值
+    private static final double MIN_ABILITY = 0.0;  // 最小能力值
     private static final double MAX_ABILITY = 13.0;  // 最大能力值
     private static final double INITIAL_ABILITY = 3.0;  // 初始能力值
-    private static final double DIFFICULTY_SLOPE = 1.0;  // 难度斜率
-    private static final double LEARNING_RATE = 0.2;  // 学习率
-    private static final double ABILITY_STABILITY_THRESHOLD = 0.05;  // 能力稳定性阈值
+    private static final double DIFFICULTY_SLOPE = 1.2;  // 难度斜率
+    private static final double LEARNING_RATE = 0.3;  // 学习率
+    private static final double ABILITY_STABILITY_THRESHOLD = 0.1;  // 能力稳定性阈值
 
     /**
      * 构造函数
@@ -192,11 +192,20 @@ public class IRTAlgorithm implements TestAlgorithm {
      * @return 估算的词汇量大小
      */
     private int estimateVocabularySize(double ability) {
+        // 获取最低难度（MIN_DIFFICULTY）对应的词汇量
+        int baseVocabulary = wordBank.getWordCountUpToDifficulty((int)MIN_DIFFICULTY);
+
+        if (ability <= MIN_DIFFICULTY) {
+            // 在0到最低难度之间使用线性插值
+            double fraction = ability / MIN_DIFFICULTY;
+            return (int) Math.round(fraction * baseVocabulary);
+        }
+
         int lowerDifficulty = (int) Math.floor(ability);
         int upperDifficulty = (int) Math.ceil(ability);
 
-        int lowerCount = wordBank.getWordCountUpToDifficulty((int) Math.max(MIN_DIFFICULTY, Math.min(MAX_DIFFICULTY, lowerDifficulty)));
-        int upperCount = wordBank.getWordCountUpToDifficulty((int) Math.max(MIN_DIFFICULTY, Math.min(MAX_DIFFICULTY, upperDifficulty)));
+        int lowerCount = wordBank.getWordCountUpToDifficulty(Math.min((int)MAX_DIFFICULTY, lowerDifficulty));
+        int upperCount = wordBank.getWordCountUpToDifficulty(Math.min((int)MAX_DIFFICULTY, upperDifficulty));
 
         double fraction = ability - lowerDifficulty;
         return (int) Math.round(lowerCount + fraction * (upperCount - lowerCount));

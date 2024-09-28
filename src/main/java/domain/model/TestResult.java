@@ -24,13 +24,13 @@ public class TestResult {
      */
     public TestResult(UserModel user, double finalAbilityEstimate, int totalQuestions, int correctAnswers,
                       int estimatedVocabularySize, int totalVocabularySize) {
+        this.resultMean = new ResultMean(0);
         this.user = user;
         this.finalAbilityEstimate = finalAbilityEstimate;
         this.totalQuestions = totalQuestions;
         this.correctAnswers = correctAnswers;
         this.estimatedVocabularySize = estimatedVocabularySize;
         this.totalVocabularySize = totalVocabularySize;
-        this.resultMean = new ResultMean(0);
     }
 
 
@@ -53,7 +53,7 @@ public class TestResult {
                 totalQuestions,
                 correctAnswers,
                 (double) correctAnswers / totalQuestions * 100,
-                estimatedVocabularySize,
+                resultMean.correctVocabEstimate(estimatedVocabularySize),
                 totalVocabularySize,
                 (double) estimatedVocabularySize / totalVocabularySize * 100
         );
