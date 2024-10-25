@@ -26,7 +26,7 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double MAX_ABILITY = 13.0;  // 最大能力值
     private static final double INITIAL_ABILITY = 3.0;  // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.2;  // 难度斜率
-    private static final double LEARNING_RATE = 0.3;  // 学习率
+    private static final double LEARNING_RATE = 0.25;  // 学习率
     private static final double ABILITY_STABILITY_THRESHOLD = 0.1;  // 能力稳定性阈值
 
     /**
