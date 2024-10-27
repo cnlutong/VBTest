@@ -167,19 +167,23 @@ public class IRTAlgorithm implements TestAlgorithm {
      * 估算词汇量大小
      */
     private int estimateVocabularySize(double ability) {
+        // 获取最低难度级别的基础词汇量
         int baseVocabulary = wordBank.getWordCountUpToDifficulty((int)MIN_DIFFICULTY);
 
+        // 如果能力值低于最低难度,按比例计算
         if (ability <= MIN_DIFFICULTY) {
             double fraction = ability / MIN_DIFFICULTY;
             return (int) Math.round(fraction * baseVocabulary);
         }
 
+        // 对于正常范围的能力值,在相邻难度等级之间进行插值
         int lowerDifficulty = (int) Math.floor(ability);
         int upperDifficulty = (int) Math.ceil(ability);
 
         int lowerCount = wordBank.getWordCountUpToDifficulty(Math.min((int)MAX_DIFFICULTY, lowerDifficulty));
         int upperCount = wordBank.getWordCountUpToDifficulty(Math.min((int)MAX_DIFFICULTY, upperDifficulty));
 
+        // 线性插值
         double fraction = ability - lowerDifficulty;
         return (int) Math.round(lowerCount + fraction * (upperCount - lowerCount));
     }

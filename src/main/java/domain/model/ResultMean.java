@@ -118,8 +118,8 @@ public class ResultMean {
         gradeLevels.put(3500, "高三水平");
         gradeLevels.put(2800, "高二水平");
         gradeLevels.put(2400, "高一水平");
-        gradeLevels.put(1500, "初三水平");
-        gradeLevels.put(1200, "初二水平");
+        gradeLevels.put(2000, "初三水平");
+        gradeLevels.put(1500, "初二水平");
         gradeLevels.put(1000, "初一水平");
         gradeLevels.put(800, "小学六年级水平");
         gradeLevels.put(650, "小学五年级水平");
