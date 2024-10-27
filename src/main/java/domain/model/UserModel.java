@@ -2,13 +2,15 @@ package domain.model;
 
 /**
  * UserModel 类表示参与测试的用户。
- * 包含用户的基本信息、能力估计值和连续答错次数的跟踪。
+ * 包含用户的基本信息、能力估计值和最近答题记录。
  */
 public class UserModel {
     private final String id;                // 用户的唯一标识符
     private final String name;              // 用户名
     private double abilityEstimate;         // 用户能力估计值
-    private int consecutiveWrongAnswers;    // 连续答错次数
+    private int[] recentAnswers;           // 最近答题记录
+    private int totalAnswers;              // 总答题数
+    private int windowSize;                // 观察窗口大小
 
     /**
      * 构造一个新的 UserModel 对象。
@@ -20,10 +22,11 @@ public class UserModel {
         this.id = id;
         this.name = name;
         this.abilityEstimate = 3.0;        // 初始能力值
-        this.consecutiveWrongAnswers = 0;   // 初始连续答错次数
+        this.windowSize = 5;               // 默认窗口大小
+        this.recentAnswers = new int[windowSize];
+        this.totalAnswers = 0;
     }
 
-    // 基本信息的 Getter 方法
     public String getId() {
         return id;
     }
@@ -32,7 +35,6 @@ public class UserModel {
         return name;
     }
 
-    // 能力估计值的 Getter 和 Setter 方法
     public double getAbilityEstimate() {
         return abilityEstimate;
     }
@@ -41,39 +43,68 @@ public class UserModel {
         this.abilityEstimate = abilityEstimate;
     }
 
-    // 连续答错相关的方法
     /**
-     * 获取当前连续答错次数
-     * @return 连续答错次数
+     * 初始化答题记录
+     * @param windowSize 窗口大小
      */
-    public int getConsecutiveWrongAnswers() {
-        return consecutiveWrongAnswers;
+    public void initAnswerRecord(int windowSize) {
+        if (this.windowSize != windowSize) {
+            this.windowSize = windowSize;
+            this.recentAnswers = new int[windowSize];
+        }
+        this.totalAnswers = 0;
     }
 
     /**
-     * 增加连续答错次数
+     * 记录一次答题结果
+     * @param isCorrect 是否答对
      */
-    public void incrementWrongAnswers() {
-        consecutiveWrongAnswers++;
+    public void recordAnswer(boolean isCorrect) {
+        // 如果数组已满，向前移动所有元素
+        if (totalAnswers >= windowSize) {
+            System.arraycopy(recentAnswers, 1, recentAnswers, 0, windowSize - 1);
+            recentAnswers[windowSize - 1] = isCorrect ? 1 : 0;
+        } else {
+            // 如果数组未满，直接添加到当前位置
+            recentAnswers[totalAnswers] = isCorrect ? 1 : 0;
+            totalAnswers++;
+        }
     }
 
     /**
-     * 重置连续答错次数为0
-     * 在答对题目时调用
+     * 获取最近N题中的错误数量
+     * @return 错误数量
      */
-    public void resetWrongAnswers() {
-        consecutiveWrongAnswers = 0;
+    public int getRecentWrongCount() {
+        int wrongCount = 0;
+        int count = Math.min(totalAnswers, windowSize);
+        for (int i = 0; i < count; i++) {
+            if (recentAnswers[i] == 0) {
+                wrongCount++;
+            }
+        }
+        return wrongCount;
     }
 
     /**
-     * 返回用户模型的字符串表示。
-     * 包含用户ID、姓名、能力估计值和连续答错次数。
-     *
-     * @return 包含用户信息的字符串
+     * 获取当前已答题数量（用于判断窗口是否已满）
+     * @return 已答题数量
      */
+    public int getAnsweredCount() {
+        return totalAnswers;
+    }
+
+    /**
+     * 获取窗口大小
+     * @return 窗口大小
+     */
+    public int getWindowSize() {
+        return windowSize;
+    }
+
     @Override
     public String toString() {
-        return String.format("UserModel{id='%s', name='%s', abilityEstimate=%.2f, consecutiveWrongAnswers=%d}",
-                id, name, abilityEstimate, consecutiveWrongAnswers);
+        return String.format("UserModel{id='%s', name='%s', abilityEstimate=%.2f, recentWrongCount=%d, answeredCount=%d}",
+                id, name, abilityEstimate, getRecentWrongCount(), getAnsweredCount());
     }
 }

@@ -26,7 +26,10 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double INITIAL_ABILITY = 3.0;    // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.5;   // 难度斜率
     private static final double LEARNING_RATE = 0.15;     // 学习率
-    private static final int MAX_CONSECUTIVE_WRONG = 3;   // 最大连续错误次数
+
+    // 窗口相关常量
+    private static final int ANSWER_WINDOW_SIZE = 5;      // 最近答题观察数
+    private static final int MAX_WRONG_ALLOWED = 3;       // 允许的最大错误数
 
     /**
      * 构造函数
@@ -44,7 +47,7 @@ public class IRTAlgorithm implements TestAlgorithm {
      */
     public void initializeUser(UserModel user) {
         user.setAbilityEstimate(INITIAL_ABILITY);
-        user.resetWrongAnswers();
+        user.initAnswerRecord(ANSWER_WINDOW_SIZE);
     }
 
     @Override
@@ -99,15 +102,15 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     @Override
     public void updateUserModel(UserModel user, Question question, boolean isCorrect) {
-        if (isCorrect) {
-            // 答对时更新能力值并重置连续错误计数
-            user.resetWrongAnswers();
+        // 记录答题结果
+        user.recordAnswer(isCorrect);
 
+        if (isCorrect) {
+            // 只在答对时更新能力值
             double currentEstimate = user.getAbilityEstimate();
             double questionDifficulty = question.getWord().getDifficulty();
             double probability = calculateProbability(currentEstimate, questionDifficulty);
 
-            // 只在答对时增加能力值
             double adjustment = LEARNING_RATE * (1 - probability);
             double information = calculateInformation(probability);
 
@@ -115,9 +118,6 @@ public class IRTAlgorithm implements TestAlgorithm {
                 double newEstimate = currentEstimate + (adjustment / information);
                 user.setAbilityEstimate(Math.max(MIN_ABILITY, Math.min(MAX_ABILITY, newEstimate)));
             }
-        } else {
-            // 答错只增加连续错误计数，不降低能力值
-            user.incrementWrongAnswers();
         }
     }
 
@@ -135,17 +135,19 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     @Override
     public boolean isTestComplete(UserModel user, List<Question> answeredQuestions) {
-        // 条件1: 连续答错达到上限，立即停止测试
-        if (user.getConsecutiveWrongAnswers() >= MAX_CONSECUTIVE_WRONG) {
-            return true;
-        }
-
-        // 条件2: 达到最大题目数，停止测试
+        // 判断是否达到最大题目数
         if (answeredQuestions.size() >= MAX_QUESTIONS) {
             return true;
         }
 
-        // 条件3: 题目数少于最小题目数且未连续答错，继续测试
+        // 在达到最小观察数量后，开始检查错误数
+        if (answeredQuestions.size() >= ANSWER_WINDOW_SIZE) {
+            // 检查最近N题中的错误数
+            if (user.getRecentWrongCount() >= MAX_WRONG_ALLOWED) {
+                return true;
+            }
+        }
+
         return false;
     }
 

@@ -97,11 +97,12 @@ public class TestManager {
                 "当前题目数：%d\n" +
                         "当前能力估计：%.2f\n" +
                         "当前正确率：%.2f%%\n" +
-                        "连续答错数：%d",
+                        "近%d题错误数：%d",
                 answeredQuestions.size(),
                 currentUser.getAbilityEstimate(),
                 correctRate,
-                currentUser.getConsecutiveWrongAnswers()
+                currentUser.getWindowSize(),    // 使用实例方法获取窗口大小
+                currentUser.getRecentWrongCount()
         );
     }
 }
