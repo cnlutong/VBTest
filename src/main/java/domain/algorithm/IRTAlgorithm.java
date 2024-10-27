@@ -17,17 +17,16 @@ public class IRTAlgorithm implements TestAlgorithm {
     private final Set<Word> usedWords;
 
     // 定义算法相关的常量
-    private static final int MIN_QUESTIONS = 10;  // 最少问题数
-    private static final int MAX_QUESTIONS = 80;  // 最多问题数
-    private static final int STABILITY_CHECK_INTERVAL = 5;  // 稳定性检查间隔
-    private static final double MIN_DIFFICULTY = 3.0;  // 最小难度
-    private static final double MAX_DIFFICULTY = 13.0;  // 最大难度
-    private static final double MIN_ABILITY = 0.0;  // 最小能力值
-    private static final double MAX_ABILITY = 13.0;  // 最大能力值
-    private static final double INITIAL_ABILITY = 3.0;  // 初始能力值
-    private static final double DIFFICULTY_SLOPE = 1.2;  // 难度斜率
-    private static final double LEARNING_RATE = 0.25;  // 学习率
-    private static final double ABILITY_STABILITY_THRESHOLD = 0.1;  // 能力稳定性阈值
+    private static final int MIN_QUESTIONS = 10;          // 最少问题数
+    private static final int MAX_QUESTIONS = 80;          // 最多问题数
+    private static final double MIN_DIFFICULTY = 3.0;     // 最小难度
+    private static final double MAX_DIFFICULTY = 13.0;    // 最大难度
+    private static final double MIN_ABILITY = 0.0;        // 最小能力值
+    private static final double MAX_ABILITY = 13.0;       // 最大能力值
+    private static final double INITIAL_ABILITY = 3.0;    // 初始能力值
+    private static final double DIFFICULTY_SLOPE = 1.5;   // 难度斜率
+    private static final double LEARNING_RATE = 0.15;     // 学习率
+    private static final int MAX_CONSECUTIVE_WRONG = 3;   // 最大连续错误次数
 
     /**
      * 构造函数
@@ -45,6 +44,7 @@ public class IRTAlgorithm implements TestAlgorithm {
      */
     public void initializeUser(UserModel user) {
         user.setAbilityEstimate(INITIAL_ABILITY);
+        user.resetWrongAnswers();
     }
 
     @Override
@@ -65,7 +65,6 @@ public class IRTAlgorithm implements TestAlgorithm {
         List<Word> availableWords = findAvailableWordsAtDifficulty(roundedDifficulty);
 
         if (availableWords.isEmpty()) {
-            // 如果在目标难度没有可用单词，逐步扩大搜索范围
             for (int i = 1; i <= 5; i++) {
                 if (roundedDifficulty - i >= MIN_DIFFICULTY) {
                     availableWords = findAvailableWordsAtDifficulty(roundedDifficulty - i);
@@ -79,7 +78,6 @@ public class IRTAlgorithm implements TestAlgorithm {
         }
 
         if (availableWords.isEmpty()) {
-            // 如果仍然没有可用单词，重置已使用单词集合并重新尝试
             usedWords.clear();
             return selectWordByDifficulty(targetDifficulty);
         }
@@ -87,22 +85,12 @@ public class IRTAlgorithm implements TestAlgorithm {
         return availableWords.get(random.nextInt(availableWords.size()));
     }
 
-    /**
-     * 查找指定难度下的可用单词
-     * @param difficulty 难度值
-     * @return 可用单词列表
-     */
     private List<Word> findAvailableWordsAtDifficulty(int difficulty) {
         List<Word> wordsAtDifficulty = wordBank.getWordsByDifficulty(difficulty);
         wordsAtDifficulty.removeAll(usedWords);
         return wordsAtDifficulty;
     }
 
-    /**
-     * 创建问题
-     * @param word 选中的单词
-     * @return 创建的问题
-     */
     private Question createQuestion(Word word) {
         List<String> options = wordBank.getRandomOptions(word, 4);
         int correctOptionIndex = options.indexOf(word.getChinese());
@@ -111,92 +99,75 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     @Override
     public void updateUserModel(UserModel user, Question question, boolean isCorrect) {
-        double currentEstimate = user.getAbilityEstimate();
-        double questionDifficulty = question.getWord().getDifficulty();
+        if (isCorrect) {
+            // 答对时更新能力值并重置连续错误计数
+            user.resetWrongAnswers();
 
-        double probability = calculateProbability(currentEstimate, questionDifficulty);
-        double information = calculateInformation(probability);
-        double adjustment = LEARNING_RATE * ((isCorrect ? 1 : 0) - probability);
+            double currentEstimate = user.getAbilityEstimate();
+            double questionDifficulty = question.getWord().getDifficulty();
+            double probability = calculateProbability(currentEstimate, questionDifficulty);
 
-        if (information > 1e-10) {
-            double newEstimate = currentEstimate + (adjustment / information);
-            user.setAbilityEstimate(Math.max(MIN_ABILITY, Math.min(MAX_ABILITY, newEstimate)));
+            // 只在答对时增加能力值
+            double adjustment = LEARNING_RATE * (1 - probability);
+            double information = calculateInformation(probability);
+
+            if (information > 1e-10) {
+                double newEstimate = currentEstimate + (adjustment / information);
+                user.setAbilityEstimate(Math.max(MIN_ABILITY, Math.min(MAX_ABILITY, newEstimate)));
+            }
+        } else {
+            // 答错只增加连续错误计数，不降低能力值
+            user.incrementWrongAnswers();
         }
     }
 
     /**
      * 计算回答正确的概率
-     * @param ability 能力值
-     * @param difficulty 难度值
-     * @return 回答正确的概率
      */
     private double calculateProbability(double ability, double difficulty) {
         double exponent = Math.max(-20, Math.min(20, DIFFICULTY_SLOPE * (ability - difficulty)));
         return 1 / (1 + Math.exp(-exponent));
     }
 
-    /**
-     * 计算信息量
-     * @param probability 概率
-     * @return 信息量
-     */
     private double calculateInformation(double probability) {
         return probability * (1 - probability);
     }
 
     @Override
     public boolean isTestComplete(UserModel user, List<Question> answeredQuestions) {
-        int questionCount = answeredQuestions.size();
-        if (questionCount < MIN_QUESTIONS) return false;
-        if (questionCount >= MAX_QUESTIONS) return true;
-        return questionCount % STABILITY_CHECK_INTERVAL == 0 && isAbilityEstimateStable(answeredQuestions);
-    }
-
-    /**
-     * 检查能力估计是否稳定
-     * @param answeredQuestions 已回答的问题列表
-     * @return 能力估计是否稳定
-     */
-    private boolean isAbilityEstimateStable(List<Question> answeredQuestions) {
-        if (answeredQuestions.size() < STABILITY_CHECK_INTERVAL) return false;
-
-        int startIndex = Math.max(0, answeredQuestions.size() - STABILITY_CHECK_INTERVAL);
-        double sumAbility = 0;
-        for (int i = startIndex; i < answeredQuestions.size(); i++) {
-            sumAbility += answeredQuestions.get(i).getWord().getDifficulty();
+        // 条件1: 连续答错达到上限，立即停止测试
+        if (user.getConsecutiveWrongAnswers() >= MAX_CONSECUTIVE_WRONG) {
+            return true;
         }
-        double averageAbility = sumAbility / STABILITY_CHECK_INTERVAL;
 
-        double variance = 0;
-        for (int i = startIndex; i < answeredQuestions.size(); i++) {
-            double diff = answeredQuestions.get(i).getWord().getDifficulty() - averageAbility;
-            variance += diff * diff;
+        // 条件2: 达到最大题目数，停止测试
+        if (answeredQuestions.size() >= MAX_QUESTIONS) {
+            return true;
         }
-        variance /= STABILITY_CHECK_INTERVAL;
 
-        return Math.sqrt(variance) < ABILITY_STABILITY_THRESHOLD;
+        // 条件3: 题目数少于最小题目数且未连续答错，继续测试
+        return false;
     }
 
     @Override
     public TestResult calculateFinalResult(UserModel user, List<Question> answeredQuestions) {
-        int correctAnswers = (int) answeredQuestions.stream().filter(Question::isAnsweredCorrectly).count();
+        int correctAnswers = (int) answeredQuestions.stream()
+                .filter(Question::isAnsweredCorrectly)
+                .count();
         double finalAbility = user.getAbilityEstimate();
         int estimatedVocabularySize = estimateVocabularySize(finalAbility);
         int totalVocabularySize = wordBank.getTotalWordCount();
-        return new TestResult(user, finalAbility, answeredQuestions.size(), correctAnswers, estimatedVocabularySize, totalVocabularySize);
+        return new TestResult(user, finalAbility, answeredQuestions.size(),
+                correctAnswers, estimatedVocabularySize, totalVocabularySize);
     }
 
     /**
      * 估算词汇量大小
-     * @param ability 能力值
-     * @return 估算的词汇量大小
      */
     private int estimateVocabularySize(double ability) {
-        // 获取最低难度（MIN_DIFFICULTY）对应的词汇量
         int baseVocabulary = wordBank.getWordCountUpToDifficulty((int)MIN_DIFFICULTY);
 
         if (ability <= MIN_DIFFICULTY) {
-            // 在0到最低难度之间使用线性插值
             double fraction = ability / MIN_DIFFICULTY;
             return (int) Math.round(fraction * baseVocabulary);
         }

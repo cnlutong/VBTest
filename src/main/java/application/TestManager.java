@@ -90,9 +90,18 @@ public class TestManager {
      * @return 包含当前统计信息的字符串
      */
     public String getRealTimeStats() {
-        double correctRate = answeredQuestions.isEmpty() ? 0 : (double) correctAnswersCount / answeredQuestions.size() * 100;
+        double correctRate = answeredQuestions.isEmpty() ? 0 :
+                (double) correctAnswersCount / answeredQuestions.size() * 100;
 
-        return String.format("当前题目数：%d\n当前能力估计：%.2f\n当前正确率：%.2f%%",
-                answeredQuestions.size(), currentUser.getAbilityEstimate(), correctRate);
+        return String.format(
+                "当前题目数：%d\n" +
+                        "当前能力估计：%.2f\n" +
+                        "当前正确率：%.2f%%\n" +
+                        "连续答错数：%d",
+                answeredQuestions.size(),
+                currentUser.getAbilityEstimate(),
+                correctRate,
+                currentUser.getConsecutiveWrongAnswers()
+        );
     }
 }
