@@ -32,7 +32,7 @@ public class ResultMean {
     // 词汇量估计值修正
     public int correctVocabEstimate(int estimatedVocab) {
 
-        return Math.min(3500, (int) (estimatedVocab * (3500.0 / 5980.0)));
+        return Math.min(3500, (int) (estimatedVocab * (3500.0 / 5800.0)));
     }
 
     private String getResultInterpretation(int estimatedVocab) {

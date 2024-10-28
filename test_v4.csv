@@ -363,7 +363,6 @@ food,食物,5
 onion,洋葱,5
 sing,唱,5
 song,歌曲,5
-sing English songs,唱英文歌曲,5
 play the pipa,弹琵琶,5
 kung fu,功夫,5
 do kung fu,练武术,5
@@ -374,10 +373,7 @@ draw cartoons,画漫画,5
 cook,烹饪,5
 swim,游泳,5
 play basketball,打篮球,5
-ping-pong,乒乓球,5
-play ping-pong,打乒乓球,5
 speak English,说英语,5
-we'll,我们将……（=we will）,5
 party,聚会,5
 next,下一个的,5
 wonderful,极好的,5
@@ -401,7 +397,6 @@ between,在??中间,5
 above,在??上面,5
 beside,在旁边,5
 behind,在??后面,5
-there,（存在或发生）,5
 grandparent,（外）祖父母,5
 their,他们的,5
 house,房子,5
@@ -425,11 +420,8 @@ village,村庄,5
 house.,房屋,5
 boating,划船,5
 go boating,去划船,5
-aren't,不是（= are not）,5
 rabbit,兔,5
 high,高的,5
-eat breakfast,吃早饭,5
-have...class,上??课,5
 play sports,进行体育运动,5
 exercise,活动,5
 do morning exercise,做早操,5
@@ -437,9 +429,7 @@ eat dinner,吃晚饭,5
 clean my room,打扫我的房间,5
 go for a walk,散步,5
 go shopping,购物,5
-take,上（课）,5
 dancing,跳舞,5
-take a dancing class,上舞蹈课,5
 when,什么时候,5
 after,在??之后,5
 start,开始,5
@@ -461,7 +451,6 @@ live,居住,5
 island,岛,5
 always,总是,5
 cave,山洞,5
-go swimming,去游泳,5
 win,获胜,5
 spring,春天,5
 summer,夏天,5
@@ -469,12 +458,9 @@ autumn,秋天,5
 winter,冬天,5
 season,季节,5
 picnic,野餐,5
-go on a picnic,去野餐,5
 pick,摘,5
 pick apples,摘苹果,5
 snowman,雪人,5
-make a snowman,堆雪人,5
-go swimming.,去游泳,5
 which,哪一个,5
 best,最,5
 snow,雪,5
@@ -491,7 +477,6 @@ few,不多,5
 a few,一些,5
 thing,事情,5
 meet,集会,5
-sports meet,运动会,5
 trip,旅行,5
 year,年,5
 plant,种植,5
@@ -540,13 +525,7 @@ other,其他,5
 each other,相互,5
 excited,兴奋地,5
 like,像??那样,5
-doing morning exercises,做早操,5
-having...class,上??课,5
-reading a book,看书,5
-listening to music,听音乐,5
 keep,保持,5
-keep to the right,靠右,5
-keep your desk clean,保持课桌干净,5
 talk quietly,小声讲话,5
 turn,顺序,5
 take turns,按顺序来,5
@@ -705,7 +684,6 @@ cleaned,打扫,6
 stayed,待,6
 washed,洗,6
 watched,看,6
-had,得病（例如 had a cold 得了感冒）,6
 had a cold,感冒,6
 slept,睡觉,6
 read,读,6
@@ -778,7 +756,6 @@ restaurant,餐馆,6
 pizza,比萨饼,6
 street,大街,6
 get,到达,6
-GPS,全球（卫星）,6
 gave,提供,6
 feature,特点,6
 follow,跟着,6
@@ -812,7 +789,6 @@ story,故事；小说,7
 write,写作，写字,7
 show,演出;表演,7
 talk,说话；谈话,7
-talk to …,跟……说,7
 drum,鼓,7
 play the drums,敲鼓,7
 piano,钢琴,7
@@ -821,13 +797,12 @@ violin,小提琴,7
 play the violin,拉小提琴,7
 also,而且；也,7
 today,在今天,7
-help (sb) with sth,在某方面帮助（某人）,7
 musician,音乐家,7
 get up,站起；起床,7
 dress,穿衣服,7
 get dressed,穿上衣服,7
 brush,"刷, 刷净",7
-tooth,(pl  teeth)牙齿,7
+tooth,牙齿,7
 shower,淋浴器（间）；淋浴,7
 take a shower,洗淋浴,7
 usually,通常地；一般地,7
@@ -871,7 +846,7 @@ ninety,九十,7
 hundred,一百,7
 minute,分钟,7
 far,远；远的,7
-kilometer,公里（等于kilometre）,7
+kilometer,公里,7
 every,每一；每个,7
 every day,每天,7
 by,由谁/什么做某事,7
@@ -911,7 +886,7 @@ important,重要的,7
 bring,带来；取来,7
 uniform,校服；制服,7
 quiet,安静的,7
-go out,外出（娱乐）,7
+go out,外出,7
 practice,练习,7
 dish,碟；盘,7
 do the dishes,清洗餐具,7
@@ -923,7 +898,6 @@ noisy,吵闹的,7
 relax,放松；休息,7
 terrible,非常讨厌的；可怕的,7
 strict,严格的；严厉的,7
-be strict (with sb),（对某人）要求严格,7
 remember,记住； 记起,7
 follow,跟随；遵循,7
 follow the rules,遵守规则,7
@@ -951,7 +925,6 @@ forget,忘记；遗忘,7
 get lost,迷路,7
 place,地点；位置,7
 danger,危险,7
-be in (great) danger,处于（极大）危险之中,7
 cut,砍；切,7
 down,（坐、躺、倒）下；向下；沿着，顺着,7
 cut down,砍倒,7
@@ -967,14 +940,12 @@ go to movies,看电影,7
 just,只是；恰好,7
 eat out,出去吃饭,7
 house,房子,7
-drink,一杯（份）饮料；饮，喝,7
-drink  tea,喝茶,7
+drink,饮，喝,7
 tomorrow,在明天,7
 pool,游泳池； 水池,7
 supermarket,超市,7
 race,竞赛,7
 host,主人；东道主,7
-study,研究 (对某一课题或问题的)；中文释义: 学习 (尤指在家里或放学后的),7
 state,洲,7
 children,儿童,7
 miss,"怀念, 思念",7
@@ -1098,7 +1069,6 @@ beef,牛肉,7
 cabbage,卷心菜；洋白菜,7
 potato,土豆；马铃薯,7
 special,特别的；特殊的,7
-would,（用于礼貌地请求）,7
 would like,愿意；喜欢,7
 yet,（常用于否定句或疑问句）还；仍然,7
 large,大号的；大的,7
@@ -1106,7 +1076,6 @@ order,命令；点菜，点饮料,7
 take one's order,点菜,7
 size,大小；尺码,7
 bowl,碗,7
-one(large)bowl of,一（大）碗,7
 tofu,豆腐,7
 meat,（可食用的）肉,7
 dumpling,饺子,7
@@ -1143,7 +1112,7 @@ feed chickens,喂鸡,7
 farmer,农民；农场主,7
 quite,相当；颇,7
 quite a lot(of…),许多,7
-anything,（常用于否定句或疑问句）任何东西；任何事物,7
+anything,任何东西；任何事物,7
 grow,生长；种植,7
 farm,务农；种田,7
 pick,采；摘,7
@@ -1172,7 +1141,6 @@ everything,一切；所有事物,7
 interested,感兴趣的,7
 be interested in,对……感兴趣,7
 dark,黑暗的；昏暗的,7
-hear,听到；听见(过去式，过去分词 heard）,7
 camp,扎营;扎帐篷,7
 lake,湖，湖泊,7
 beach,海滩，沙滩,7
@@ -1217,7 +1185,7 @@ anyone,任何人,8
 anywhere,任何地方,8
 wonderful,精彩的；极好的,8
 few,很少的；,8
-quite a few,相当多；不少(后接可数名词),8
+quite a few,相当多；不少,8
 most,最多的；大多数的,8
 something,某事物,8
 nothing,没有什么,8
@@ -1231,8 +1199,8 @@ bored,无聊的；厌烦的；郁闷的,8
 someone,某人；有人,8
 diary,日记；日记簿,8
 activity,活动；活跃,8
-decide,决定；选定(decide to do sth),8
-try,尝试；设法；努力  (try to do sth /try doing sth),8
+decide,决定；选定,8
+try,尝试；设法；努力,8
 paragliding,空中滑翔跳伞,8
 feel like(doing sth.),想要,8
 bird,鸟；禽,8
@@ -1242,20 +1210,16 @@ trader,商人,8
 wonder,想知道；惊奇；怀疑,8
 difference,差异；不同,8
 top,顶部；顶,8
-wait,等；等待(wait for),8
+wait,等；等待,8
 wet,湿的；雨天的；雨天的,8
 because of,因为；由于,8
 below,低于；在...下面,8
 enough,足够的,8
-hungry,(反full)饥饿的；渴望的,8
+hungry,饥饿的；渴望的,8
 as,如同；像一样,8
 hill,小山；丘陵；山冈；斜坡,8
 duck,鸭；鸭肉,8
 dislike,不喜欢；厌恶,8
-have a good time,等于enjoy oneself/have fun(doing sth)玩得痛快,8
-Huangguoshu waterfall,黄果树瀑布,8
-Weld Quay,"海乾街/码头, 位于马来西亚槟城岛(州)",8
-tian'anmen square,天安门广场,8
 housework,家务劳动,8
 hardly,几乎不；简直不；刚刚,8
 ever,在任何时候,8
@@ -1381,11 +1345,7 @@ seriously,严重地；严肃地,8
 take…seriously,认真对待......,8
 give,给；赠予；送,8
 crowded,拥挤的,8
-sitcom,情景喜剧（situation comedy的缩写）,8
-situation comedy,情景喜剧,8
 news,消息；新闻,8
-soap,肥皂,8
-soap opera,肥皂剧,8
 educational,教育的；有教育意义的,8
 plan,计划,8
 hope,希望；期望；盼望,8
@@ -1407,7 +1367,6 @@ appear,似乎；显得；出现,8
 become,变成；成为,8
 rich,富有的；富饶的；丰富的,8
 successful,成功的；圆满的,8
-might,可能；也许；may的过去式,8
 main,主要的；最重要的,8
 reason,原因；理由,8
 comedy.,喜剧,8
@@ -1421,9 +1380,7 @@ character,个性；品质；人物,8
 simple,简单的；朴素的；单纯的,8
 dress up,装扮；乔装打扮,8
 take sb.’s place,代替；替换,8
-do a good job,工作干得好；做得好,8
 grow up,长大；成长,8
-computer programmer,计算机管理员,8
 cook,烹调，煮，烧，做(饭),8
 doctor,医生,8
 engineer,工程师,8
@@ -1478,7 +1435,7 @@ plant,植物,8
 part,部分；参加,8
 play a part,参与（某事）　,8
 peace,和平,8
-sea,海；海洋；；许多；大量（与of连用）,8
+sea,海；海洋,8
 sky,天空,8
 astronaut,宇航员,8
 apartment,公寓,8
@@ -1508,7 +1465,6 @@ during,在……的时候，在……的期间,8
 holiday,假日,8
 word,字；词；单词,8
 shake,摇动；震动；动摇；发抖,8
-milk shake,奶昔（牛奶和冰淇淋等的混合饮料）,8
 blender,搅拌器；果汁机,8
 turn on,打开,8
 peel,削皮；剥落,8
@@ -1569,8 +1525,8 @@ sad,难过的；悲哀的，令人悲痛的,8
 goodbye,再见,8
 take a trip,去旅行,8
 glad,高兴的；乐意的,8
-preparation,准备；准备工作（用复数形式）,8
-glue,粘合；盯着某物看（后接to）,8
+preparation,准备；准备工作,8
+glue,粘合；盯着某物看,8
 without,没有,8
 surprised,感到惊讶的,8
 look forward to,盼望，期待,8
@@ -1620,7 +1576,7 @@ have a cold,感冒,8
 stomach,胃；腹部,8
 stomachache,胃痛，腹痛,8
 have a stomachache,胃痛,8
-foot,脚(复数feet),8
+foot,脚,8
 neck,颈，脖子,8
 throat,喉咙,8
 fever,发烧，发热,8
@@ -1634,7 +1590,7 @@ take one's temperature,量体温,8
 headache,头痛,8
 have a fever,发烧,8
 break,打破；休息；中断,8
-take breaks,休息(take a break）,8
+take breaks,休息,8
 hurt,伤害，使受伤；损害,8
 passenger,乘客，旅客,8
 off,离开（某处）；从…去掉,8
@@ -1659,7 +1615,6 @@ risk,风险，危险；冒险,8
 take risks,冒险(take a risk),8
 accident,意外事件；事故；交通事故；车祸；失事,8
 situation,状况，形势，情况,8
-kg,公斤，千克(kilogram),8
 rock,岩石,8
 run out (of),用尽，耗尽,8
 knife,刀，餐刀,8
@@ -1768,7 +1723,7 @@ What's wrong?,哪儿不舒服？,8
 midnight,午夜，子夜,8
 look through,浏览，逐一查看,8
 guess,猜测，估计,8
-deal,处理，应付（与with连用）,8
+deal,处理，应付,8
 big deal,重要的事,8
 work out,解决；成功地发展,8
 get on well (with),和睦相处，关系良好,8
@@ -1897,7 +1852,6 @@ square,正方形；平方,8
 deep,深的,8
 desert,沙漠,8
 population,人口(数量）；全体居民,8
-feel free,（可以）随便（做某事),8
 tour,旅行，观光,8
 wall,墙,8
 amazing,令人惊异的,8
@@ -1920,7 +1874,6 @@ force,力，力量；军事行动，武力,8
 nature,自然界，大自然,8
 even though,（等于even if） 即使，虽然,8
 ocean,海洋,8
-cm,厘米(等于centimeter),8
 weigh,重量是…；称…重量,8
 birth,生孩子；生下（某人）；出生；诞生,8
 at birth,出生时,8
@@ -2092,7 +2045,6 @@ active,活跃的；积极的,9
 attention,注意；关注,9
 pay attention to,注意；关注,9
 connect,（使）连接；与...有联系,9
-connect … with,把...和...连接或联系起来,9
 overnight,一夜之间；在夜间,9
 review,回顾,9
 knowledge,知识；学问,9
@@ -2117,8 +2069,6 @@ treat,款待；招待,9
 spider,蜘蛛,9
 fool,蠢人；傻瓜,9
 lie,平躺；处于,9
-novel,（长篇）小说,9
-eve,（尤指宗教节假日的）前夕；前夜,9
 bookstore,书店,9
 dead,死的；失去生命的,9
 business,生意；商业,9
@@ -2128,7 +2078,6 @@ present,礼物；现在,9
 nobody,没有人,9
 warmth,温暖；暖和,9
 spread,蔓延；传播,9
-restroom,（美）洗手间；公共厕所,9
 stamp,邮票；印章,9
 postcard,明信片,9
 pardon,请再说一遍；抱歉，对不起,9
@@ -2232,7 +2181,7 @@ scoop,勺；铲子,9
 style,样式；款式,9
 project,项目；工程,9
 pleasure,高兴；愉快,9
-zipper,(zip) 拉链；拉锁,9
+zipper,拉链；拉锁,9
 daily,每日的；日常的,9
 website,网站,9
 list,列表；列清单,9
@@ -2259,14 +2208,13 @@ sour,酸的；有酸味的,9
 by mistake,错误地；无意中,9
 customer,顾客；客户,9
 divide,分开；分散,9
-divide ... into,把...分开,9
 purpose,目的；目标,9
 basket,篮；筐,9
 the Olympics,奥林匹克运动会,9
 look up to,钦佩；仰慕,9
 hero,英雄；男主角,9
 smoke,吸烟；冒烟,9
-license,(licence) 证；证件,9
+license,证；证件,9
 safety,安全；安全性,9
 earring,耳环；耳饰,9
 cry,哭；叫喊,9
@@ -2319,14 +2267,14 @@ prevent,阻止；阻挠,9
 energy,精力，力量,9
 position,位置；地方,9
 burial,埋葬；安葬,9
-honor,( honour) 尊重；表示敬意；荣幸,9
+honor,尊重；表示敬意；荣幸,9
 ancestor,祖宗；祖先,9
 victory,胜利；成功,9
 enemy,敌人；仇人,9
 period,一段时间；时期,9
 mystery,奥秘；神秘事物,9
 prefer,更喜欢,9
-lyrics,(pl) 歌词,9
+lyrics,歌词,9
 electronic,电子的；电子设备的,9
 suppose,推断；料想,9
 smooth,平滑的；悦耳的,9
@@ -2335,12 +2283,11 @@ case,情况；实情,9
 in that case,既然那样；假使那样的话,9
 war,战争；战争状态,9
 director,部门负责人；导演,9
-dialogue,(dialog) 对话；对白,9
+dialogue,对话；对白,9
 documentary,纪录片,9
 drama,戏；剧,9
 plenty,大量；众多,9
 plenty of,大量；充足,9
-shut,"(过去式 shut, 过去分词 shut) 关闭；关上",9
 superhero,超级英雄,9
 horror,震惊；恐惧,9
 thriller,惊险电影（小说、戏剧）,9
@@ -2427,7 +2374,6 @@ agreement,（意见或看法）一致；同意,9
 fault,过失；缺点,9
 disappoint,使失望,9
 backpack,背包；旅行包,9
-oversleep,"(过去式 overslept, 过去分词 overslept) 睡过头；睡得太久",9
 give ... a lift,捎（某人）一程,9
 miss,错过；未得到,9
 unexpected,出乎意料的；始料不及的,9
@@ -2538,7 +2484,6 @@ set down,记下；放下；制定,10
 series,连续；系列,10
 a series of,一连串的；一系列；一套,10
 outdoors,在户外；在野外,10
-spellbind,"(过去式 spellbound, 过去分词 spellbound)迷住；迷惑",10
 on purpose,故意,10
 in order to,为了……,10
 dusk,黄昏；傍晚,10
@@ -2550,8 +2495,6 @@ power,能力；力量；权力,10
 face to face,面对面地,10
 curtain,窗帘；门帘；幕布,10
 dusty,积满灰尘的,10
-no longer,不再……,10
-not…any longer,不再……,10
 partner,合作者；合伙人；伙伴,10
 settle,安家；定居；停留；解决,10
 suffer,遭受；忍受；经历,10
@@ -2579,7 +2522,6 @@ swap,交换,10
 item,项目；条款,10
 subway,<美>地铁；地下人行道,10
 elevator,电梯；升降机,10
-petrol,<英>汽油（<美>gasoline）,10
 gas,气体；汽油；煤气；毒气,10
 official,官方的；正式的；公务的,10
 voyage,航行；航海,10
@@ -2589,7 +2531,6 @@ native,本国的；本地的,10
 come up,走近；上来；提出,10
 apartment,<美> 公寓住宅；单元住宅,10
 actually,实际上；事实上,10
-AD,公元,10
 base,以……为根据,10
 at present,现在；目前,10
 gradual,逐渐的；逐步的,10
@@ -2611,7 +2552,6 @@ request,请求；要求,10
 dialect,方言,10
 expression,表示；表达；词语,10
 midwestern,中西部的,10
-play a part (in),扮演一个角色；参与,10
 eastern,东方的；东部的,10
 southeastern,东南方的；来自东南的,10
 northwestern,西北方的；来自西北的,10
@@ -2682,7 +2622,6 @@ crack,裂缝；噼啪声,10
 smelly,发臭的；有臭味的,10
 farmyard,农场；农家,10
 pipe,管；导管,10
-burst,"(过去式 burst, 过去分词 burst) 爆裂；爆发",10
 million,百万,10
 event,事件；大事,10
 as if,仿佛；好像,10
@@ -2712,7 +2651,6 @@ bury,埋葬；掩埋；隐藏,10
 mine,矿；矿山；矿井,10
 miner,矿工,10
 shelter,掩蔽；掩蔽处；避身处,10
-a (great) number of,许多；大量的,10
 title,标题；头衔,10
 reporter,记者,10
 bar,条；棒；条状物,10
@@ -2880,7 +2818,6 @@ majesty,最高权威，王权；雄伟,10
 lord,封建领主，地主，统治者；（宗）上帝,10
 bridegroom,新郎,10
 distribute,分发，分配,10
-troop,(pl)军队；英文释义：〔集结在一起活动的〕一群人[动物],10
 contradict,同……矛盾或抵触；反驳,10
 hear out,听某人把话说完,10
 on behalf of,代表……,10
@@ -3028,7 +2965,6 @@ concrete,具体的，有形的,10
 literary,文学的,10
 genre,（文学作品的）类型，载体,10
 recount,重新计算选票,10
-Tess of d’Urbevilles,德伯家的苔丝（书名）,10
 prejudice,偏见，成见,10
 Wuthering Heights,呼啸山庄（书名）,10
 consensus,共识，共同意见,10
@@ -3102,7 +3038,6 @@ fault,错，缺点,10
 hasty,匆忙的，慌忙的,10
 hastily,匆忙地，慌忙地,10
 sensible,有感觉的，明智的,10
-kiwi,几维鸟（新西兰产的一种无翼鸟）,10
 tectonic,地壳构造上的，起因于地壳运动的,10
 geological,地质学的，地质的,10
 geology,地质学,10
@@ -3122,7 +3057,6 @@ wipe out,清除，垮台,10
 take over,接管，接收,10
 fence,栅栏，篱笆，围墙,10
 immunity,免疫性,10
-immune,免疫的，免受（伤害）的,10
 treaty,条约，协议，协定,10
 representative,代表,10
 owenrship,所有权，物主身份,10
@@ -3136,12 +3070,10 @@ appetite,食欲，胃口,10
 buffet,自助餐,10
 pasta,意大利面食（包括通心粉及面条等）,10
 porter,守门人；行李搬运工,10
-suite,（宾馆中的）套房,10
 lounge,休息室；起居室,10
 laundry,洗衣店,10
 helicopter,直升飞机,10
 brunch,早午餐,10
-Lake Taupo,陶波湖（新西兰最大湖）,10
 dairy,牛奶场；乳品公司,10
 statistics,统计数据,10
 eco-friendly,对生态环境友好的，不妨害生态环境的,10
@@ -3157,7 +3089,7 @@ extensive,广阔的，大量的；广泛的,10
 flexible,灵活的，可通融的,10
 pace,速度；步调,10
 insurance,保险,10
-insure,（常与 against 连用）保险，确保,10
+insure,保险，确保,10
 theft,盗窃,10
 handy,近便的，便利的，容易取得的,10
 consultant,顾问，咨询者,10
@@ -3180,7 +3112,6 @@ wrap,包，裹,10
 bind,缚，绑,10
 torso,（人体的）躯干,10
 surgeon,外科医生,10
-X-ray,照 X 光，照 X 射线,10
 abnormal,不正常的，反常的，变态的,10
 emergency,紧急情况，紧急事件,10
 by law,根据法律,10
@@ -3203,7 +3134,7 @@ trend,趋势，趋向,10
 unemployment,失业，失业状态,10
 taxpayer,纳税人,10
 import,输入，进口，引进,10
-aluminium,Al 铝,10
+aluminium,铝,10
 surplus,过剩的，剩余的,10
 flame,火焰,10
 greengrocer,蔬菜水果商,10
@@ -3258,7 +3189,6 @@ sake,目的，利益,10
 for one’s own sake,为了……的缘故,10
 pursuit,寻求，追求,10
 pursue,追求，寻求不断努力以取得,10
-pedicab,（人力）三轮车,10
 sleep rough,露宿,10
 feed on,从……中得到滋养或者满足,10
 philosophical,哲学上的,10
@@ -3286,8 +3216,7 @@ quick as a flash,立刻，马上，一刹那,10
 hatch,孵化，出壳,10
 whistle,哨子，口哨,10
 heel,脚后跟，踵,10
-a wolf in sheep’s clothing,披着羊皮的狼，伪装好友的敌人,10
-pint,品脱（等于05 夸脱，英制液量 0568 升，美制液量 0473 升）,10
+pint,品脱,10
 dead to the world,熟睡的,10
 socket,孔，洞；眼窝,10
 stagger,蹒跚，摇晃，踉跄,10
@@ -3328,13 +3257,11 @@ vice versa,反之亦然,10
 (be) faced with,面临,10
 scholarship,奖学金,10
 in disbelief,不相信，怀疑,10
-drop into,进入（某地），顺便拜访,10
 unsettling,使人不安的，（消息）混乱的,10
 dozens of,许多的,10
 now and again,不时地，有时,10
 expectantly,预期地，期望地，期待地,10
 suck,吸，吮,10
-co-operate,（常与 with 连用）合作,10
 hand out,拿出，分发,10
 preference,偏爱，优先选择,10
 pleasureable,愉快的，快乐的，高兴的,10
@@ -3358,7 +3285,6 @@ referee,介绍人，裁判,10
 brake,（常用复数）制动装置，刹车,10
 swerve,突然转向,10
 missile,导弹，飞弹,10
-bishop,（基督教的）主教,10
 circuit,环形道路,10
 go on circuit,巡回,10
 razor,剃刀，剃须刀,10
@@ -3373,7 +3299,6 @@ fabulous,巨大的；绝妙的，精彩的,10
 accountancy,会计工作，会计职务,10
 function,功能，作用，职责，职能,10
 bureaucratic,官僚的，官僚般的,10
-ethos,（集体、社团、文化的）气质、道德观、思想或信仰,10
 minefield,布雷区；充满隐伏危险的事物或场合,10
 unwary,无警惕的，易受欺骗的,10
 autobiography,自传,10
@@ -3421,14 +3346,12 @@ apart,分离地；分别地,10
 take apart,拆开,10
 painting,绘画；画,10
 castle,城堡,10
-Windsor Castle,温莎城堡（英国著名城堡）,10
 trial,审判；审讯；试验,10
 eyewitness,目击者；证人,10
 evidence,根据；证据,10
 explode,爆炸,10
 entrance,入口,10
 sailor,水手；海员；船员,10
-sink,"(过去式 sank, 过去分词 sunk; 过去式 sunk, 过去分词 sunken) 下沉；沉下",10
 maid,女仆；少女,10
 think highly of,看重；器重,10
 informal,非正式的,10
@@ -3481,15 +3404,12 @@ deserve,应受（报答或惩罚）；值得,10
 striker,（足球的）前锋,10
 abacus,算盘,10
 calculator,计算器,10
-PC,（personal computer）个人电脑；个人计算机,10
-laptop,手提电脑,10
-PDA,(personal digital assistant)掌上电脑；个人数码助理,10
 analytical,头脑周密的,10
 calculate,计算,10
 universal,普遍的；通用的,10
 simplify,简化,10
 sum,金额；总数；算术题,10
-operator,电话接线员；〔机器或设备的〕操作者，操作员,10
+operator,操作者，操作员,10
 logical,合情理的；合逻辑的,10
 logically,逻辑上；合逻辑地；有条理地,10
 technology,工艺；科技；技术,10
@@ -3513,7 +3433,6 @@ total,总的；整个的,10
 totally,完全地；整个地,10
 so…that…,如此……以致于……,10
 network,网络；网状物,10
-web,网,10
 application,申请；应用；用途,10
 finance,金融；财经,10
 mobile,可移动的；机动的,10
@@ -3533,7 +3452,6 @@ teammate,队友,10
 type,类型,10
 in a way,在某种程度上,10
 coach,教练,10
-arise,"(过去式 arose, 过去分词 arisen)出现；发生",10
 with the help of,在……的帮助下,10
 electronic,电子的,10
 appearance,外观；外貌；出现,10
@@ -3573,7 +3491,6 @@ importance,重要（性）,10
 rub,擦；摩擦,10
 protect…from,保护……不受……（危害）,10
 mosquito,蚊子,10
-millipede,(等同于millepede) 千足虫,10
 insect,昆虫,10
 contain,包含；容纳；克制〔强烈的感情〕,10
 powerful,强大的；有力的,10
@@ -3588,7 +3505,6 @@ income,收入,10
 employ,雇用；利用（时间、精力等）,10
 harm,损害；危害,10
 Milu deer,麋鹿,10
-bite,"(过去式 bit, 过去分词 bitten)咬；叮；刺痛",10
 extinction,灭绝；消亡,10
 dinosaur,恐龙,10
 come into being,形成；产生,10
@@ -3605,7 +3521,6 @@ ending,结局；结尾,10
 faithfully,忠诚地；忠实地,10
 classical,古典的；古典文艺的,10
 roll,滚动；（使）摇摆,10
-rock’n’roll,(rock-and-roll) 摇滚乐,10
 orchestra,管弦乐队,10
 rap,说唱乐,10
 folk,民间的,10
@@ -3617,8 +3532,6 @@ dream of,梦见；梦想；设想,10
 pretend,假装；假扮,10
 to be honest,说实在地；实话说,10
 attach,系上；缚上；附加；连接,10
-attach…to,认为有（重要性、意义）；附上；连接,10
-form,（使）组成；形成；构成,10
 passer-by,过路人；行人,10
 earn,赚；挣得；获得,10
 extra,额外的；外加的,10
@@ -3637,8 +3550,6 @@ rely on,依赖；依靠,10
 broadcast,广播；播放,10
 humorous,幽默的；诙谐的,10
 familiar,熟悉的；常见的；亲近的,10
-be familiar with,熟悉；与……熟悉起来,10
-get familiar with,熟悉；与……熟悉起来,10
 or so,大约,10
 break up,打碎；分裂；解体,10
 reunite,再统一；再联合；重聚,10
@@ -3696,7 +3607,6 @@ rooster,雄禽；公鸡,11
 admire,赞美；钦佩；羡慕,11
 energetic,充满活力的；精力充沛的；积极的,11
 look forward to,期望；期待；盼望,11
-carnival,狂欢节；（四旬斋前的）饮宴狂欢；嘉年华（会）,11
 lunar,月的；月亮的；阴历的,11
 parade,游行；阅兵；检阅,11
 day and night,日夜；昼夜；整天,11
@@ -3706,32 +3616,23 @@ as though,好像,11
 have fun with,玩得开心,11
 custom,习惯；风俗,11
 worldwide,遍及全世界的；世界性的,11
-rosebud,玫瑰花蕾,11
 fool,愚人；白痴；受骗者,11
 necessity,必要性；需要,11
 permission,许可；允许,11
 prediction,预言；预报；预告,11
 fashion,时尚；样子；方式,11
-parking,（汽车等）停放,11
-parking lot,停车场,11
 turn up,出现；到场,11
-keep one’s word,守信用；履行诺言,11
-hold one’s breath,屏息；屏气,11
 apologize,道歉；辩白,11
 drown,淹没；溺死；淹死,11
 sadness,悲哀，悲伤,11
 obvious,明显的；显而易见的,11
 wipe,擦；揩；擦去,11
-weave,"(过去式 wove, 过去分词 woven)（使）迂回",11
 herd,牧群；兽群,11
 the Milky Way,银河,11
 magpie,喜鹊,11
-weep,"(过去式 wept, 过去分词 wept) 哭泣；流泪",11
 announcer,广播员；告知者；报幕员,11
 set off,出发；动身；使爆炸,11
 remind,提醒；使想起,11
-remind…of…,使……想起……,11
-forgive,"(过去式 forgave, 过去分词 forgiven) 原谅；饶恕",11
 spaghetti,意大利式细面条,11
 nut,坚果；果仁,11
 muscle,肌肉,11
@@ -3748,11 +3649,9 @@ balance,平衡；权衡,11
 balanced diet,平衡膳食,11
 barbecue,烧烤；烤肉,11
 mutton,羊肉,11
-kebab,(印度)烤腌羊肉串；肉串上的肉块,11
 roast,烤制的,11
 stir,摇动；搅和,11
 fry,油煎；油炸,11
-stir-fry,用旺火炒（或煎、煸）,11
 ought,应当；应该,11
 ought to,应当；应该,11
 bacon,熏咸肉；腊肉,11
@@ -3765,9 +3664,7 @@ curiosity,好奇心,11
 hostess,女主人；女主持人,11
 raw,生的；未加工的,11
 vinegar,醋,11
-get away with,被放过；（做坏事）不受惩罚,11
 lie,谎话；谎言,11
-tell a lie,说谎,11
 customer,顾客；消费者,11
 discount,折扣,11
 win…back,赢回；重新获得,11
@@ -3808,7 +3705,6 @@ novel,小说；长篇故事,11
 boyhood,少年时代,11
 adventure,奇遇；冒险,11
 phrase,短语；词组；惯用语,11
-fathom,英寻（长度单位，等于六英尺）,11
 author,著者；作家,11
 scene,（戏剧）一场；场面；现场；景色,11
 narrator,讲述者，叙述者,11
@@ -3820,7 +3716,6 @@ pavement,人行道,11
 businessman,商人,11
 permit,许可；允许；准许,11
 ahead,在前；向前；提前,11
-go ahead,前进；（用于祈使句）可以；往下说,11
 by accident,偶然；无意中；不小心,11
 bay,海湾,11
 stare,凝视；盯着看,11
@@ -3828,7 +3723,6 @@ stare at,盯着看；凝视,11
 nightfall,黄昏,11
 fault,过错；缺点；故障,11
 spot,发现；认出,11
-passage,〔乘船旅行的〕航程；〔书、诗歌、演讲、乐曲等的〕一段；通道,11
 unpaid,未付款的；不受报酬的,11
 account,认为；说明；总计有,11
 account for,导致；做出解释,11
@@ -3840,7 +3734,6 @@ on the contrary,与此相反；正相反,11
 charity,慈善（团体）；施舍,11
 envelope,信封,11
 unbelievable,难以置信的,11
-steak,(供煎、烤的)肉块；鱼排；牛排,11
 pineapple,菠萝,11
 amount,数量,11
 take a chance,冒险,11
@@ -3857,13 +3750,10 @@ as for,关于；至于,11
 bow,鞠躬；弯腰,11
 barber,理发师,11
 astronomy,天文学,11
-astronomer,天文学家,11
 solar,太阳的；日光的,11
 system,系统；体系；制度,11
-solar system,太阳系,11
 religion,宗教信仰；宗教,11
 theory,学说；理论,11
-Big Bang,宇宙大爆炸；创世大爆炸,11
 atom,原子,11
 billion,亿万,11
 globe,地球仪；球体；地球,11
@@ -3893,25 +3783,20 @@ exist,存在；生存,11
 mammal,哺乳动物,11
 give birth to,产生；分娩,11
 thus,因此；于是,11
-in one’s turn,轮到某人；接着,11
 dioxide,二氧化物,11
-carbon dioxide,二氧化碳,11
 prevent...from,阻止；制止,11
 puzzle,谜；难题,11
 biology,生物学,11
-biologist,生物学家,11
 gravity,万有引力；重力,11
 satellite,人造卫星；卫星,11
 gentle,温和的；文雅的,11
 geologist,地质学家,11
-physicist,物理学家,11
 block out,挡住（光线）,11
 extinct,灭绝的；绝种的,11
 climate,气候,11
 comet,慧星,11
 crash,碰撞；坠落,11
 spaceship,宇宙飞船,11
-pull,拉（力）；拖；牵引,11
 lessen,减少；减轻,11
 cheer up,感到高兴；感到振奋,11
 float,（使）浮动；（使）漂浮,11
@@ -3947,18 +3832,15 @@ aboard,在船、飞机、火车或公共汽车上,11
 settle down,定居；平静下来；专心于,11
 manage to do,设法做,11
 catch sight of,看见；瞥见,11
-stampede,（美国西部或加拿大）大西部赛马会；(人群或兽群的) 狂奔,11
 have a gift for,对……有天赋,11
 within,在……之内,11
 border,边界；国界；边沿,11
 slight,轻微的；微小的,11
 slightly,稍稍；轻微地,11
-acre,英亩,11
 urban,城市的；市镇的,11
 location,位置；地方,11
 topic,话题,11
 mix,混合；调配,11
-mixture,混合（物）；混合状态,11
 maple,枫；枫树,11
 frost,霜冻；霜,11
 confirm,证实；证明,11
@@ -3987,7 +3869,6 @@ welfare,福利；福利事业,11
 project,项目；工程；规划,11
 institute,学会；学院；协会,11
 specialist,专家；专业工作者,11
-specialize,专攻；专门从事；专注于,11
 chimp,（非洲）黑猩猩,11
 connection,关系；连接,11
 human being,人类,11
@@ -3995,7 +3876,6 @@ campaign,运动；战役,11
 landmine,地雷,11
 organization,组织；机构；团体,11
 behave,（举止或行为）表现,11
-behaviour,(等于behaior)行为；举止；习性,11
 shade,荫；阴凉处,11
 move off,离开；起程；出发,11
 worthwhile,值得的；值得做的,11
@@ -4036,7 +3916,6 @@ deliver,递送；生（小孩儿）；接生；发表（演说等）,11
 carry on,继续；坚持,11
 modest,谦虚的；谦让的；适度的,11
 statistic,[pl]统计数字；统计资料；[sg]数据；统计；,11
-sunburnt,晒黑的(等于sunburned),11
 struggle,拼搏；努力；斗争,11
 decade,十年；十年期,11
 super,特级的；超级的,11
@@ -4070,7 +3949,7 @@ organic,有机的；器官的,11
 fertile,肥沃的；富饶的,11
 fertilizer,肥料；化肥,11
 production,生产；制造,11
-bacteria,（bacterium的复数形式）细菌,11
+bacteria,细菌,11
 pest,害虫；害兽；害鸟,11
 build up,逐渐增强；建立；开发,11
 lead to,导致；造成（后果）,11
@@ -4081,9 +3960,6 @@ focus,焦点；中心点,11
 focus on,集中（注意力、精力等）于,11
 soil,土壤,11
 reduce,减少；减缩,11
-keep…free of,使……免受（影响；害等）；使……不含（有害物）,11
-keep…free from,使……免受（影响；害等）；使……不含（有害物）,11
-soybean,(等于soyabean) 大豆,11
 root,根；根源,11
 skim,浏览；略读,11
 underline,画底线标出；强调,11
@@ -4101,14 +3977,11 @@ up to now,直到现在,11
 brighten,使更明亮,11
 depressed,忧愁的；沮丧的,11
 content,满足的；满意的,11
-feel content with,对……满足,11
-be content with,对……满足,11
 astonish,使惊诧,11
 astonishing,令人感到惊讶的,11
 fortunate,幸运的；吉利的,11
 unfortunately,不幸地,11
 badly off,穷的；缺少的,11
-teens,十几岁（13至19岁的年龄）,11
 ordinary,平常的；普通的,11
 bored,厌烦的,11
 subtle,微妙的，细微的,11
@@ -4147,7 +4020,6 @@ particularly,特别，尤其,11
 occasion,时刻,11
 budget,预算；开支,11
 actress,女演员,11
-slide,（使）滑动；（使）滑行,11
 amuse,使发笑；使愉快,11
 amusing,好笑的；有趣的,11
 pancake,烙饼；薄饼,11
@@ -4173,7 +4045,6 @@ curiously,好奇地,11
 approach,接近；靠近；走近,11
 cheek,面颊,11
 defend,保护；保卫,11
-defend against,保卫……以免受,11
 defence,防御；保卫,11
 major,主要的,11
 misunderstand,误解，误会,11
@@ -4233,7 +4104,6 @@ length,长度；长,11
 deed,行动；事迹,11
 be modeled after,根据……模仿；仿造,11
 sword,剑,11
-joust,（指中世纪骑士）骑着马用长予打斗,11
 tournament,锦标赛；联赛,11
 settler,移民；殖民者,11
 athletic,运动的,11
@@ -4334,9 +4204,7 @@ accomplish,完成；达到；实现,12
 conflict,矛盾；冲突,12
 unwilling,不愿意（的）；不乐意（的）,12
 break away,挣脱（束缚）；脱离,12
-break away from,挣脱（束缚）；脱离,12
 union,工会；；联盟；协会；联合,12
-the Union Jack,英国国旗,12
 credit,赊购；信贷；赞扬；信任；学分,12
 to one’s credit,为……带来荣誉；值得赞扬；在……名下,12
 currency,货币；通货,12
@@ -4351,19 +4219,16 @@ historical,有关历史的；历史（上）的,12
 architecture,建筑学；建筑艺术,12
 collection,收藏品,12
 administration,管理；行政部门,12
-port,港口（城市）,12
 countryside,乡下；农村,12
 enjoyable,令人愉快的；使人高兴的,12
 leave out,省去；遗漏；不考虑,12
 opportunity,机会；时机,12
 description,描写；描述,12
-fax,传真（机）,12
 possibility,可能（性）,12
 plus,加上；和,12
 quarrel,争吵；争论；吵架,12
 alike,相同的；类似的,12
 take the place of,代替,12
-break down,(机器)损坏；破坏,12
 arrange,筹备；安排；整理,12
 wedding,婚礼,12
 fold,折叠；对折,12
@@ -4398,7 +4263,6 @@ expertise,专业技能; 专业知识（技能等）,12
 capsule,胶囊；太空舱,12
 steward,乘务员；服务员,12
 stewardess,女乘务员,12
-opening,（出入的）通路；开口；开端,12
 sideways,往（向、从）一侧；侧着；侧面朝前,12
 surrounding,周围的事物；环境,12
 tolerate,容忍；忍受,12
@@ -4406,7 +4270,6 @@ combination,结合；组合,12
 lack,缺乏；没有,12
 adjustment,调整；调节,12
 mask,面具；面罩；伪装,12
-be back on one’s feet,(困境后)恢复；完全复原,12
 hover,盘旋,12
 carriage,运输工具；四轮马车；客车,12
 press,按；压,12
@@ -4415,7 +4278,6 @@ belt,腰带；皮带,12
 safety belt,安全带,12
 lose sight of…,看不见……,12
 sweep up,打扫；横扫,12
-flash,（使）闪光；（使）闪现,12
 switch,开关；转换,12
 timetable,时间表；时刻表,12
 exhausted,筋疲力尽的；疲惫不堪的,12
@@ -4485,12 +4347,9 @@ meanwhile,其间；同时,12
 depend on,依靠；依赖,12
 case,情况；病例；案例,12
 accuse,指责；谴责；控告,12
-accuse…of,因……指责或控告……,12
 accusation,指责；谴责；控告,12
 deliberately,故意地,12
-so as to (do sth),为了（做）……,12
 deny,否认；拒绝,12
-sceptical,怀疑的（<美>skeptical）,12
 guilty,犯罪的；有罪的；有过错的，有过失的；内疚的,12
 dilemma,（进退两难的）困境；窘境,12
 demand,需求；要求,12
@@ -4501,7 +4360,6 @@ section,部分；节,12
 concise,简明的；简练的,12
 imaginative,富于想象力的,12
 technical,技术（上）的；技巧方面的,12
-technically,技术上；工艺上,12
 thorough,彻底的；详尽的,12
 gifted,有天赋的,12
 idiomatic,合乎语言习惯的,12
@@ -4519,7 +4377,6 @@ process,过程，进程；；工序；工艺流程,12
 negative,底片,12
 appointment,约会；任命,12
 aid,帮助；援助；资助,12
-first aid,（对伤患者的）急救,12
 temporary,暂时的；临时的,12
 fall ill,生病,12
 injury,损伤；伤害,12
@@ -4545,7 +4402,6 @@ mild,轻微的；暖和的；温柔的,12
 mildly,轻微地；温和地,12
 pan,平底锅,12
 stove,炉子；火炉,12
-heal,（使）康复；痊愈,12
 tissue,手巾纸；（生物）组织,12
 electric shock,触电；电休克,12
 swell,（使）膨胀；隆起,12
@@ -4620,7 +4476,6 @@ shadow,影子；阴影,12
 ridiculous,荒谬的；可笑的,12
 controversial,争论的；争议的,12
 attempt,尝试，试图,12
-on the other hand,(可是)另一方面,12
 predict,预言；预告；预测,12
 landscape,风景；景色,12
 specific,特定的；确切的,12
@@ -4646,7 +4501,6 @@ avenue,道路；大街；林荫道,12
 preference,喜爱；偏爱,12
 display,展示；陈列,12
 appeal,呼吁,12
-appeal to,（对某人）有吸引力；（使某人）感兴趣,12
 fragile,精细的；易碎的；脆弱的,12
 circular,"圆(形)的,环形的；循环的；环行的",12
 metropolitan,主要都市的；大城市的,12
@@ -4670,7 +4524,6 @@ concrete,具体的,12
 repetition,重复；反复,12
 contradictory,引起矛盾的,12
 hush,（使某人）安静下来,12
-mockingbird,嘲鸫（一种鸟，能模仿其他鸟的叫声）,12
 diamond,钻石；菱形,12
 brass,黄铜；黄铜器,12
 billy-goat,公山羊,12
@@ -4738,7 +4591,6 @@ stress,压力；重音,12
 stressful,产生压力的；紧张的,12
 obesity,（过度）肥胖；肥胖症,12
 adolescent,青少年,12
-adolescence,青春期,12
 ban,"取缔,查禁,禁止",12
 due,预定的；欠款的,12
 due to,由于……,12
@@ -4755,7 +4607,6 @@ automatic,自动的,12
 automatically,自动地；无意识地,12
 mental,精神的,12
 mentally,精神上；智力上,12
-quit,离开；停止（做某事）,12
 effect,影响；结果,12
 lung,肺,12
 pregnant,怀孕的,12
@@ -4766,8 +4617,6 @@ strengthen,加强；巩固；使坚强,12
 resolve,决心,12
 decide on,对……作出决定,12
 packet,小包；小盒,12
-feel like,想要（做）……,12
-feel like doing,想要（做）……,12
 relaxation,放松，松弛,12
 desperate,绝望的，拼命的,12
 chemist,化学家；药剂师,12
@@ -4781,16 +4630,11 @@ in spite of,不顾；不管,12
 take risks,冒险,12
 take a risk,冒险,12
 get into,陷入；染上（坏习惯）,12
-etc,诸如此类的事物；等等；et cetera的缩写,12
 appendix,附录；附件,12
 illegal,不合法的；违法的,12
 pill,药丸；药片,12
 robbery,抢劫；盗窃,12
 slippery,滑的,12
-HIV,人体免疫缺损病毒（艾滋病病毒）；（Human Immunodeficiency Virus）的缩写,12
-AIDS,艾滋病（后天免疫缺损综合症）；（Acquired Immune Deficiency Syndrome）的缩写,12
-at risk,处境危险；遭受危险,12
-SARS,非典型性肺炎；（Severe Acute Respiratory Syndromes）的缩写,12
 immune,有免疫力的,12
 survival,幸存,12
 sex,性别,12
@@ -4957,7 +4801,6 @@ hearing,听力；听觉,13
 eyesight,视力,13
 syndrome,综合病征；综合症状,13
 infantile paralysis,小儿麻痹,13
-lap,（人坐着时）大腿的上方；跑道的一圈,13
 ambition,雄心；野心,13
 ambitious,有雄心的；有野心的,13
 dictation,口授；听写（的文字）,13
@@ -4972,7 +4815,6 @@ outgoing,外向的；友好的；外出的；离开的,13
 adapt,使适应；改编,13
 adapt to,使适合,13
 bench,长凳,13
-cut out,切去；省略；停止（做某事）,13
 microscope,显微镜,13
 out of breath,上气不接下气,13
 absence,缺席；不在某处,13
@@ -4986,11 +4828,9 @@ software,软件,13
 sit around,闲坐着,13
 as well as,和；也,13
 parrot,鹦鹉,13
-tank,（盛液体、气体的）大容器；缸；大桶,13
 tortoise,陆龟；龟,13
 in many ways,在很多方面,13
 psychology,心理（学）,13
-psychologically,心理（学）地；精神上地,13
 make fun of,取笑,13
 encouragement,鼓励；奖励,13
 conduct,行为；品行,13
@@ -5010,7 +4850,6 @@ congratulation,祝贺；贺词,13
 bowling,保龄球,13
 graduation,毕业；毕业典礼,13
 certificate,证书,13
-all the best,（口语）（祝你）一切顺利,13
 architect,建筑师,13
 adequate,足够的；充分的,13
 access,通路；进入；到达；面见〔的难易度〕；进入权,13
@@ -5061,7 +4900,6 @@ declare,宣布；声明；表明；宣称,13
 cuisine,烹饪（风味）；菜肴,13
 envy,忌妒；羡慕,13
 leave…alone,不管；别惹；让……一个人待着；和……单独在一起,13
-mailbox,（美）邮筒；信箱,13
 state,陈述；宣布,13
 aside,在一边；向一边,13
 set aside,将……放在一边；为……节省或保留（钱或时间）,13
@@ -5113,7 +4951,6 @@ teamwork,协作；配合,13
 blow-hole,（隧道的）通风口；（鲸鱼的）鼻孔,13
 dive,跳水；潜水；俯冲,13
 flee,逃避；逃跑；逃离,13
-harpoon,（捕鲸用的）鱼叉,13
 drag,拖；拉；扯,13
 depth,深（度）；深处,13
 meantime,其间；同时,13
