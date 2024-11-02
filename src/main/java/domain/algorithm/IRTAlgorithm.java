@@ -25,7 +25,7 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double MAX_ABILITY = 13.0;       // 最大能力值
     private static final double INITIAL_ABILITY = 3.0;    // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.5;   // 难度斜率
-    private static final double LEARNING_RATE = 0.15;     // 学习率
+    private static final double LEARNING_RATE = 0.10;     // 学习率
 
     // 窗口相关常量
     private static final int ANSWER_WINDOW_SIZE = 5;      // 最近答题观察数
@@ -157,6 +157,16 @@ public class IRTAlgorithm implements TestAlgorithm {
                 .filter(Question::isAnsweredCorrectly)
                 .count();
         double finalAbility = user.getAbilityEstimate();
+
+        // 对3-4分段做线性映射到0-4
+        if (finalAbility <= 3.0) {
+            finalAbility = 0;
+        } else if (finalAbility < 4.0) {
+            // 线性映射公式：(x - 3.0) * (4.0 - 0) / (4.0 - 3.0)
+            finalAbility = (finalAbility - 3.0) * 4.0;
+        }
+        // 4分及以上保持不变
+
         int estimatedVocabularySize = estimateVocabularySize(finalAbility);
         int totalVocabularySize = wordBank.getTotalWordCount();
         return new TestResult(user, finalAbility, answeredQuestions.size(),
