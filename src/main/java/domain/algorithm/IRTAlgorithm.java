@@ -28,8 +28,8 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double LEARNING_RATE = 0.10;     // 学习率
 
     // 窗口相关常量
-    private static final int ANSWER_WINDOW_SIZE = 5;      // 最近答题观察数
-    private static final int MAX_WRONG_ALLOWED = 2;       // 允许的最大错误数
+    private static final int ANSWER_WINDOW_SIZE = 6;      // 最近答题观察数
+    private static final int MAX_WRONG_ALLOWED = 3;       // 允许的最大错误数
 
     /**
      * 构造函数
