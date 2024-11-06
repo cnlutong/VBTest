@@ -31,9 +31,31 @@ public class ResultMean {
 
     // 词汇量估计值修正
     public int correctVocabEstimate(int estimatedVocab) {
+        // 常量定义
+        double MAX_SCORE = 3500.0; // 最大分数
+        double MAX_VOCAB = 5800.0; // 最大词汇量
+        double reductionPercentage = 0.20; // 减少比例
+        double randomFactorPercentage = 0.02; // 随机因子
 
-        return Math.min(3500, (int) (estimatedVocab * (3500.0 / 5800.0)));
+        // 计算调整映射的指数
+        double p = 0.7; // 中点参考值
+        double logOneMinusReduction = Math.log(1 - reductionPercentage);
+        double logP = Math.log(p);
+        double k = 1 + logOneMinusReduction / logP;
+
+        // 调整后的映射函数
+        double baseScore = MAX_SCORE * Math.pow(estimatedVocab / MAX_VOCAB, k);
+
+        // 应用随机因子
+        double randomFactor = (Math.random() * 2 * randomFactorPercentage) - randomFactorPercentage;
+        double finalScore = baseScore * (1 + randomFactor);
+
+        // 确保最终分数在0到MAX_SCORE之间
+        finalScore = Math.max(0, Math.min(MAX_SCORE, finalScore));
+
+        return (int) finalScore;
     }
+
 
     private String getResultInterpretation(int estimatedVocab) {
         NavigableMap<Integer, String> vocabLevels = new TreeMap<>();
