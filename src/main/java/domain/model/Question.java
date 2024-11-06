@@ -12,7 +12,7 @@ public class Question {
     private final List<String> options;     // 选项列表
     private final int correctOptionIndex;   // 正确选项的索引
     private boolean answeredCorrectly;      // 是否回答正确
-    private static final String I_DONT_KNOW_OPTION = "我不会";  // "我不会"选项
+    private static final String I_DONT_KNOW_OPTION = "跳过";  // "跳过"选项
 
     /**
      * 构造一个新的 Question 对象。
@@ -24,7 +24,7 @@ public class Question {
     public Question(Word word, List<String> options, int correctOptionIndex) {
         this.word = word;
         this.options = new ArrayList<>(options);  // 创建可变列表
-        this.options.add(I_DONT_KNOW_OPTION);  // 添加"我不会"选项
+        this.options.add(I_DONT_KNOW_OPTION);  // 添加"跳过"选项
         this.correctOptionIndex = correctOptionIndex;
         this.answeredCorrectly = false;
     }
@@ -41,7 +41,7 @@ public class Question {
      * @return 如果答案正确返回 true，否则返回 false
      */
     public boolean isCorrect(int answerIndex) {
-        if (answerIndex == options.size() - 1) {  // 如果选择了"我不会"
+        if (answerIndex == options.size() - 1) {  // 如果选择了"跳过"
             this.answeredCorrectly = false;
         } else {
             this.answeredCorrectly = (answerIndex == correctOptionIndex);
