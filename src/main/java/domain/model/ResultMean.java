@@ -34,11 +34,11 @@ public class ResultMean {
         // 常量定义
         double MAX_SCORE = 3500.0; // 最大分数
         double MAX_VOCAB = 5800.0; // 最大词汇量
-        double reductionPercentage = 0.15; // 减少比例
-        double randomFactorPercentage = 0.02; // 随机因子
+        double reductionPercentage = 0.08; // 减少比例
+        double randomFactorPercentage = 0.01; // 随机因子
 
         // 计算调整映射的指数
-        double p = 0.7; // 中点参考值
+        double p = 0.50; // 中点参考值
         double logOneMinusReduction = Math.log(1 - reductionPercentage);
         double logP = Math.log(p);
         double k = 1 + logOneMinusReduction / logP;
