@@ -26,6 +26,9 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double INITIAL_ABILITY = 3.0;    // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.5;   // 难度斜率
     private static final double LEARNING_RATE = 0.10;     // 学习率
+    private static final int OPTIONS_COUNT = 5;  // 答案选项数量
+
+
 
     // 窗口相关常量
     private static final int ANSWER_WINDOW_SIZE = 6;      // 最近答题观察数
@@ -94,8 +97,9 @@ public class IRTAlgorithm implements TestAlgorithm {
         return wordsAtDifficulty;
     }
 
+    // 选项
     private Question createQuestion(Word word) {
-        List<String> options = wordBank.getRandomOptions(word, 4);
+        List<String> options = wordBank.getRandomOptions(word, OPTIONS_COUNT);
         int correctOptionIndex = options.indexOf(word.getChinese());
         return new Question(word, options, correctOptionIndex);
     }
