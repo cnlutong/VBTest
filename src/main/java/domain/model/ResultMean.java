@@ -29,16 +29,42 @@ public class ResultMean {
         return getLearningBucket(correctedVocab);
     }
 
-    // 词汇量估计值修正
+//    // 词汇量估计值修正
+//    public int correctVocabEstimate(int estimatedVocab) {
+//        // 常量定义
+//        double MAX_SCORE = 3500.0; // 最大分数
+//        double MAX_VOCAB = 5800.0; // 最大词汇量
+//        double reductionPercentage = 0.12; // 减少比例
+//        double randomFactorPercentage = 0.015; // 随机因子
+//
+//        // 计算调整映射的指数
+//        double p = 0.50; // 中点参考值
+//        double logOneMinusReduction = Math.log(1 - reductionPercentage);
+//        double logP = Math.log(p);
+//        double k = 1 + logOneMinusReduction / logP;
+//
+//        // 调整后的映射函数
+//        double baseScore = MAX_SCORE * Math.pow(estimatedVocab / MAX_VOCAB, k);
+//
+//        // 应用随机因子
+//        double randomFactor = (Math.random() * 2 * randomFactorPercentage) - randomFactorPercentage;
+//        double finalScore = baseScore * (1 + randomFactor);
+//
+//        // 确保最终分数在0到MAX_SCORE之间
+//        finalScore = Math.max(0, Math.min(MAX_SCORE, finalScore));
+//
+//        return (int) finalScore;
+//    }
+
     public int correctVocabEstimate(int estimatedVocab) {
         // 常量定义
-        double MAX_SCORE = 3500.0; // 最大分数
-        double MAX_VOCAB = 5800.0; // 最大词汇量
-        double reductionPercentage = 0.12; // 减少比例
-        double randomFactorPercentage = 0.015; // 随机因子
+        double MAX_SCORE = 3150.0; //
+        double MAX_VOCAB = 5800.0; // 最大词汇量保持不变
+        double reductionPercentage = 0.15; // 略微增加减少比例，使得分数更容易降低
+        double randomFactorPercentage = 0.02; // 略微增加随机因子，使分数波动更明显
 
         // 计算调整映射的指数
-        double p = 0.50; // 中点参考值
+        double p = 0.50; // 降低中点参考值，使得整体曲线更倾向于产生较低的分数
         double logOneMinusReduction = Math.log(1 - reductionPercentage);
         double logP = Math.log(p);
         double k = 1 + logOneMinusReduction / logP;
