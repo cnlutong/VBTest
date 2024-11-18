@@ -61,7 +61,7 @@ public class ResultMean {
         double MAX_SCORE = 3150.0; //
         double MAX_VOCAB = 5800.0; // 最大词汇量保持不变
         double reductionPercentage = 0.15; // 略微增加减少比例，使得分数更容易降低
-        double randomFactorPercentage = 0.02; // 略微增加随机因子，使分数波动更明显
+        double randomFactorPercentage = 0.015; // 略微增加随机因子，使分数波动更明显
 
         // 计算调整映射的指数
         double p = 0.50; // 降低中点参考值，使得整体曲线更倾向于产生较低的分数
