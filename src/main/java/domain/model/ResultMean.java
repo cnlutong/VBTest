@@ -58,10 +58,10 @@ public class ResultMean {
 
     public int correctVocabEstimate(int estimatedVocab) {
         // 常量定义
-        double MAX_SCORE = 3150.0; //
-        double MAX_VOCAB = 5800.0; // 最大词汇量保持不变
-        double reductionPercentage = 0.15; // 略微增加减少比例，使得分数更容易降低
-        double randomFactorPercentage = 0.015; // 略微增加随机因子，使分数波动更明显
+        double MAX_SCORE = 3150.0; // 修正后的最大词汇量
+        double MAX_VOCAB = 5800.0; // 词库最大词汇量
+        double reductionPercentage = 0.20; // 增加减少比例，使得分数更容易降低
+        double randomFactorPercentage = 0.015; // 增加随机因子，使分数波动更明显
 
         // 计算调整映射的指数
         double p = 0.50; // 降低中点参考值，使得整体曲线更倾向于产生较低的分数
@@ -92,9 +92,9 @@ public class ResultMean {
 
         vocabLevels.put(2400, "经评估，您的词汇量达到高一年级水平，具备高中学习的基础词汇储备，能理解基础文章内容。建议系统扩充词汇量，注重词组积累，为高考做好准备。");
 
-        vocabLevels.put(1500, "经评估，您的词汇量达到初三水平，符合中考要求，能理解初中课本和基础材料。建议加强中考常考词组和短语的积累，通过真题演练提升应试能力。");
+        vocabLevels.put(1800, "经评估，您的词汇量达到初三水平，符合中考要求，能理解初中课本和基础材料。建议加强中考常考词组和短语的积累，通过真题演练提升应试能力。");
 
-        vocabLevels.put(1200, "经评估，您的词汇量达到初二水平，掌握较丰富的基础词汇，能理解课本内容和简单英语材料。建议积累中考词汇，注重重点词组和表达，通过练习逐步提高应用能力。");
+        vocabLevels.put(1400, "经评估，您的词汇量达到初二水平，掌握较丰富的基础词汇，能理解课本内容和简单英语材料。建议积累中考词汇，注重重点词组和表达，通过练习逐步提高应用能力。");
 
         vocabLevels.put(1000, "经评估，您的词汇量达到初一水平，具备初中英语学习的基础，能理解简单内容。建议系统扩充词汇，积累基础短语，逐步提升实际应用能力。");
 
@@ -129,9 +129,9 @@ public class ResultMean {
         learningBuckets.put(2400, "梳理高中词汇和语法，重视词组搭配和句型积累。基础题型训练，培养解题思维。每日听力，定期口语练习，强化语法专项。安排课内外学习时间，建立错题本和重点笔记。");
 
         // 初中阶段 - 以中考达标为目标
-        learningBuckets.put(1500, "复习中考词汇与短语，通过真题和专项训练提升解题技巧。强化听说训练，规范写作，积累常用句型。制定复习计划，定期测试，建立知识框架和错题记录。");
+        learningBuckets.put(1800, "复习中考词汇与短语，通过真题和专项训练提升解题技巧。强化听说训练，规范写作，积累常用句型。制定复习计划，定期测试，建立知识框架和错题记录。");
 
-        learningBuckets.put(1200, "巩固初中重点词汇和语法，注重听说读写的全面培养。结合单元测试查漏补缺，整理错题本，培养答题习惯和学习兴趣。定期朗读听力，提升表达能力。");
+        learningBuckets.put(1400, "巩固初中重点词汇和语法，注重听说读写的全面培养。结合单元测试查漏补缺，整理错题本，培养答题习惯和学习兴趣。定期朗读听力，提升表达能力。");
 
         learningBuckets.put(1000, "系统学习初中基础词汇和语法，积累课文重点句型。课内外结合训练，提高学习兴趣。定期听力训练，坚持朗读，合理安排学习时间，做好笔记整理。");
 
@@ -161,8 +161,8 @@ public class ResultMean {
         gradeLevels.put(3500, "高三水平");
         gradeLevels.put(2800, "高二水平");
         gradeLevels.put(2400, "高一水平");
-        gradeLevels.put(2000, "初三水平");
-        gradeLevels.put(1500, "初二水平");
+        gradeLevels.put(1800, "初三水平");
+        gradeLevels.put(1400, "初二水平");
         gradeLevels.put(1000, "初一水平");
         gradeLevels.put(800, "小学六年级水平");
         gradeLevels.put(650, "小学五年级水平");
