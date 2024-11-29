@@ -20,9 +20,9 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final int MIN_QUESTIONS = 10;          // 最少问题数
     private static final int MAX_QUESTIONS = 80;          // 最多问题数
     private static final double MIN_DIFFICULTY = 3.0;     // 最小难度
-    private static final double MAX_DIFFICULTY = 12.0;    // 最大难度
+    private static final double MAX_DIFFICULTY = 14.0;    // 最大难度
     private static final double MIN_ABILITY = 0.0;        // 最小能力值
-    private static final double MAX_ABILITY = 12.0;       // 最大能力值
+    private static final double MAX_ABILITY = 14.5;       // 最大能力值
     private static final double INITIAL_ABILITY = 3.0;    // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.5;   // 难度斜率
     private static final double LEARNING_RATE = 0.10;     // 学习率

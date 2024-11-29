@@ -32,11 +32,11 @@ public class ResultMean {
 
     public int correctVocabEstimate(int estimatedVocab) {
         // 目标最大分数
-        double MAX_SCORE = 3500.0;
+        double MAX_SCORE = 5200.0;
         // 词库最大词汇量
-        double MAX_VOCAB = 4580.0;
+        double MAX_VOCAB = 7000.0;
 
-        // 将输入分数映射到0-3500范围
+        // 将输入分数映射到0-5000范围
         double mappedScore = (estimatedVocab / MAX_VOCAB) * MAX_SCORE;
 
         // 随机波动范围为±1.5%
@@ -46,7 +46,7 @@ public class ResultMean {
         // 应用随机因子计算最终分数
         double finalScore = mappedScore * (1 + randomFactor);
 
-        // 确保分数在0到3500之间
+        // 确保分数在0到5000之间
         return (int) Math.min(Math.max(0, finalScore), MAX_SCORE);
     }
 
@@ -80,6 +80,10 @@ public class ResultMean {
 
     private String getResultInterpretation(int estimatedVocab) {
         NavigableMap<Integer, String> vocabLevels = new TreeMap<>();
+
+        vocabLevels.put(4500, "经评估，您的词汇量达到大学四级水平，能够应对日常英语交流和基础学术场景。建议巩固核心词汇的用法，特别是高频短语和固定搭配，通过四级真题提高听力和写作能力。");
+
+        vocabLevels.put(5000, "经评估，您的词汇量超越大学四级水平（四级+），具备更强的阅读和表达能力。建议拓展学术类词汇储备，进一步提升语言逻辑和表达多样性，为大学六级或更高考试做准备。");
 
         vocabLevels.put(3500, "经评估，您的词汇量达到高三水平，符合高考要求。具备理解复杂阅读材料和应对高考题型的能力。建议强化高频词组的应用，提高阅读和写作中的词汇灵活性，并通过真题训练提升准确性。");
 
@@ -118,7 +122,10 @@ public class ResultMean {
     private String getLearningBucket(int estimatedVocab) {
         NavigableMap<Integer, String> learningBuckets = new TreeMap<>();
 
-        // 高中阶段 - 以高考备考为核心
+        learningBuckets.put(4500, "完善四级词汇体系，重点复习核心高频词汇及短语。结合真题和专项训练，提高听力和阅读理解能力。注重写作中的句型多样性，积累模板和表达技巧。每天坚持听力练习和口语输出，定期完成模拟题并分析薄弱环节。");
+        learningBuckets.put(5000, "巩固和扩展四级+词汇，注重学术性和难度较高词汇的掌握。通过六级真题或高难度阅读材料提升理解能力，加强听力语速适应性训练。强化写作逻辑性和高级句型表达，积累例句和经典短文。每周完成总结性学习，识别并攻克易错点，为六级或其他高级考试奠定基础。");
+
+                // 高中阶段 - 以高考备考为核心
         learningBuckets.put(3500, "制定系统的备考计划，注重真题和模拟题练习。建立词汇体系，强化完形填空、阅读理解等重点题型训练。每日听说训练，定期写作，积累高分句型。每周完成模拟题并分析错题，整理同义词、固定搭配等。");
 
         learningBuckets.put(2800, "复习高考词汇，强化重点词组与搭配应用。进行专题训练，完成近年真题练习，提升解题技巧。定期听力训练，注重口语表达。规范写作，积累亮点句型，定期测试查漏补缺。");
@@ -153,6 +160,9 @@ public class ResultMean {
 
     private String getGradeLevelVersion0(int estimatedVocab) {
         NavigableMap<Integer, String> gradeLevels = new TreeMap<>();
+
+        gradeLevels.put(4500, "大学四级水平");
+        gradeLevels.put(5000, "大学四级+水平");
 
         gradeLevels.put(3500, "高三水平");
         gradeLevels.put(2800, "高二水平");
