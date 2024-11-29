@@ -132,30 +132,37 @@ public class WordBank {
     }
 
     /**
-     * 获取随机单词。
-     *
-     * @return 随机选择的 Word 对象
-     */
-    public Word getRandomWord() {
-        return words.get(random.nextInt(words.size()));
-    }
-
-    /**
-     * 获取除了给定单词以外的随机选项。
-     *
-     * @param correctWord 正确的单词
-     * @param optionCount 需要的选项数量
-     * @return 包含正确答案和干扰项的选项列表
+     * 生成包含正确答案和相近难度干扰项的选项列表
+     * @param correctWord 正确单词
+     * @param optionCount 选项数量
+     * @return 打乱顺序的选项列表
      */
     public List<String> getRandomOptions(Word correctWord, int optionCount) {
-        List<String> options = new ArrayList<>();
+        List<String> options = new ArrayList<>(optionCount);
         options.add(correctWord.getChinese());
-        while (options.size() < optionCount) {
-            Word randomWord = getRandomWord();
-            if (!randomWord.getChinese().equals(correctWord.getChinese()) && !options.contains(randomWord.getChinese())) {
-                options.add(randomWord.getChinese());
+
+        List<Word> sameLevel = new ArrayList<>();
+        int difficulty = correctWord.getDifficulty();
+
+        // 逐步扩大难度范围直到获得足够的干扰项
+        for (int range = 0; range <= 2 && sameLevel.size() < optionCount * 2; range++) {
+            if (difficulty - range > 0) {
+                sameLevel.addAll(getWordsByDifficulty(difficulty - range));
+            }
+            if (range > 0 && difficulty + range <= 12) {
+                sameLevel.addAll(getWordsByDifficulty(difficulty + range));
             }
         }
+
+        sameLevel.remove(correctWord);
+        Collections.shuffle(sameLevel);
+
+        sameLevel.stream()
+                .map(Word::getChinese)
+                .distinct()
+                .limit(optionCount - 1)
+                .forEach(options::add);
+
         Collections.shuffle(options);
         return options;
     }

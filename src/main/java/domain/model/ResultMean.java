@@ -29,16 +29,37 @@ public class ResultMean {
         return getLearningBucket(correctedVocab);
     }
 
-//    // 词汇量估计值修正
+
+    public int correctVocabEstimate(int estimatedVocab) {
+        // 目标最大分数
+        double MAX_SCORE = 3500.0;
+        // 词库最大词汇量
+        double MAX_VOCAB = 4580.0;
+
+        // 将输入分数映射到0-3500范围
+        double mappedScore = (estimatedVocab / MAX_VOCAB) * MAX_SCORE;
+
+        // 随机波动范围为±1.5%
+        double randomFactorPercentage = 0.015;
+        // 生成-1.5%到+1.5%之间的随机因子
+        double randomFactor = (Math.random() * 2 * randomFactorPercentage) - randomFactorPercentage;
+        // 应用随机因子计算最终分数
+        double finalScore = mappedScore * (1 + randomFactor);
+
+        // 确保分数在0到3500之间
+        return (int) Math.min(Math.max(0, finalScore), MAX_SCORE);
+    }
+
+
 //    public int correctVocabEstimate(int estimatedVocab) {
 //        // 常量定义
-//        double MAX_SCORE = 3500.0; // 最大分数
-//        double MAX_VOCAB = 5800.0; // 最大词汇量
-//        double reductionPercentage = 0.12; // 减少比例
-//        double randomFactorPercentage = 0.015; // 随机因子
+//        double MAX_SCORE = 3150.0; // 修正后的最大词汇量
+//        double MAX_VOCAB = 4580.0; // 词库最大词汇量
+//        double reductionPercentage = 0.20; // 增加减少比例，使得分数更容易降低
+//        double randomFactorPercentage = 0.015; // 增加随机因子，使分数波动更明显
 //
 //        // 计算调整映射的指数
-//        double p = 0.50; // 中点参考值
+//        double p = 0.50; // 降低中点参考值，使得整体曲线更倾向于产生较低的分数
 //        double logOneMinusReduction = Math.log(1 - reductionPercentage);
 //        double logP = Math.log(p);
 //        double k = 1 + logOneMinusReduction / logP;
@@ -56,32 +77,6 @@ public class ResultMean {
 //        return (int) finalScore;
 //    }
 
-    public int correctVocabEstimate(int estimatedVocab) {
-        // 常量定义
-        double MAX_SCORE = 3150.0; // 修正后的最大词汇量
-        double MAX_VOCAB = 5800.0; // 词库最大词汇量
-        double reductionPercentage = 0.20; // 增加减少比例，使得分数更容易降低
-        double randomFactorPercentage = 0.015; // 增加随机因子，使分数波动更明显
-
-        // 计算调整映射的指数
-        double p = 0.50; // 降低中点参考值，使得整体曲线更倾向于产生较低的分数
-        double logOneMinusReduction = Math.log(1 - reductionPercentage);
-        double logP = Math.log(p);
-        double k = 1 + logOneMinusReduction / logP;
-
-        // 调整后的映射函数
-        double baseScore = MAX_SCORE * Math.pow(estimatedVocab / MAX_VOCAB, k);
-
-        // 应用随机因子
-        double randomFactor = (Math.random() * 2 * randomFactorPercentage) - randomFactorPercentage;
-        double finalScore = baseScore * (1 + randomFactor);
-
-        // 确保最终分数在0到MAX_SCORE之间
-        finalScore = Math.max(0, Math.min(MAX_SCORE, finalScore));
-
-        return (int) finalScore;
-    }
-
 
     private String getResultInterpretation(int estimatedVocab) {
         NavigableMap<Integer, String> vocabLevels = new TreeMap<>();
@@ -92,12 +87,14 @@ public class ResultMean {
 
         vocabLevels.put(2400, "经评估，您的词汇量达到高一年级水平，具备高中学习的基础词汇储备，能理解基础文章内容。建议系统扩充词汇量，注重词组积累，为高考做好准备。");
 
+//        初中
         vocabLevels.put(1800, "经评估，您的词汇量达到初三水平，符合中考要求，能理解初中课本和基础材料。建议加强中考常考词组和短语的积累，通过真题演练提升应试能力。");
 
         vocabLevels.put(1400, "经评估，您的词汇量达到初二水平，掌握较丰富的基础词汇，能理解课本内容和简单英语材料。建议积累中考词汇，注重重点词组和表达，通过练习逐步提高应用能力。");
 
         vocabLevels.put(1000, "经评估，您的词汇量达到初一水平，具备初中英语学习的基础，能理解简单内容。建议系统扩充词汇，积累基础短语，逐步提升实际应用能力。");
 
+//        小学
         vocabLevels.put(800, "经评估，您的词汇量达到小学六年级水平，掌握核心词汇，能理解基础课文和日常用语。建议巩固小学词汇，提升应用能力，为初中学习做好准备。");
 
         vocabLevels.put(650, "经评估，您的词汇量达到小学五年级水平，积累了一定基础词汇，能理解课本内容和简单表达。建议扩充基础词汇，注重实际运用，为小升初打下基础。");
@@ -140,7 +137,6 @@ public class ResultMean {
 
         learningBuckets.put(650, "掌握五年级词汇和句型，注重语音语调训练。定期单元测试查漏补缺，养成预习复习习惯，提升口语表达能力。通过有趣的学习活动激发学习兴趣。");
 
-        // 小学中低年级 - 以兴趣培养为主
         learningBuckets.put(450, "掌握四年级词汇和句型，通过课堂活动和练习提升兴趣和效果。培养听说能力，定期测试巩固信心，坚持每日听写和朗读。");
 
         learningBuckets.put(350, "学习三年级词汇和句型，重视发音训练，激发兴趣。定期朗读和听写练习，通过游戏和歌曲增加学习趣味性。");

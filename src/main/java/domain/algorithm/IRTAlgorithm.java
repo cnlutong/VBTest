@@ -20,9 +20,9 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final int MIN_QUESTIONS = 10;          // 最少问题数
     private static final int MAX_QUESTIONS = 80;          // 最多问题数
     private static final double MIN_DIFFICULTY = 3.0;     // 最小难度
-    private static final double MAX_DIFFICULTY = 13.0;    // 最大难度
+    private static final double MAX_DIFFICULTY = 12.0;    // 最大难度
     private static final double MIN_ABILITY = 0.0;        // 最小能力值
-    private static final double MAX_ABILITY = 13.0;       // 最大能力值
+    private static final double MAX_ABILITY = 12.0;       // 最大能力值
     private static final double INITIAL_ABILITY = 3.0;    // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.5;   // 难度斜率
     private static final double LEARNING_RATE = 0.10;     // 学习率
@@ -32,7 +32,7 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     // 窗口相关常量
     private static final int ANSWER_WINDOW_SIZE = 6;      // 最近答题观察数
-    private static final int MAX_WRONG_ALLOWED = 3;       // 允许的最大错误数
+    private static final int MAX_WRONG_ALLOWED = 3;       // 不允许的最大错误数
 
     /**
      * 构造函数
@@ -162,14 +162,15 @@ public class IRTAlgorithm implements TestAlgorithm {
                 .count();
         double finalAbility = user.getAbilityEstimate();
 
-        // 对3-4分段做线性映射到0-4
+        // 对3-4分段做线性映射到0-5
         if (finalAbility <= 3.0) {
             finalAbility = 0;
-        } else if (finalAbility < 4.0) {
-            // 线性映射公式：(x - 3.0) * (4.0 - 0) / (4.0 - 3.0)
-            finalAbility = (finalAbility - 3.0) * 4.0;
+        } else if (finalAbility < 5.0) {
+            // 线性映射公式：(x - 3.0) * (5.0 - 0) / (5.0 - 3.0)
+            finalAbility = (finalAbility - 3.0) * 5.0;
+            finalAbility = finalAbility * 0.65;
         }
-        // 4分及以上保持不变
+        // 5分及以上保持不变
 
         int estimatedVocabularySize = estimateVocabularySize(finalAbility);
         int totalVocabularySize = wordBank.getTotalWordCount();
