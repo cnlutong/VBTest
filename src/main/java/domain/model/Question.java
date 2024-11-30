@@ -12,7 +12,7 @@ public class Question {
     private final List<String> options;     // 选项列表
     private final int correctOptionIndex;   // 正确选项的索引
     private boolean answeredCorrectly;      // 是否回答正确
-    private static final String I_DONT_KNOW_OPTION = "跳过";  // "跳过"选项
+    private static final String I_DONT_KNOW_OPTION = "以上都不对";  // "以上都不对"选项
 
     /**
      * 构造一个新的 Question 对象。

@@ -25,14 +25,31 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double MAX_ABILITY = 14.5;       // 最大能力值
     private static final double INITIAL_ABILITY = 3.0;    // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.5;   // 难度斜率
-    private static final double LEARNING_RATE = 0.10;     // 学习率
+    private static final double LEARNING_RATE = 0.08;     // 学习率
     private static final int OPTIONS_COUNT = 5;  // 答案选项数量
 
 
 
     // 窗口相关常量
-    private static final int ANSWER_WINDOW_SIZE = 5;      // 最近答题观察数
-    private static final int MAX_WRONG_ALLOWED = 3;       // 不允许的最大错误数
+    private static final int ANSWER_WINDOW_SIZE = 6;      // 最近答题观察数
+    private static final int MAX_WRONG_ALLOWED = 4;       // 不允许的最大错误数
+
+
+    // 定义每个难度等级对应的累计词汇量
+    private static final Map<Integer, Integer> LEVEL_VOCABULARY_SIZE = new HashMap<>() {{
+        put(3, 100);
+        put(4, 200);
+        put(5, 500);
+        put(6, 700);
+        put(7, 1000);
+        put(8, 1300);
+        put(9, 1600);
+        put(10, 2000);
+        put(11, 3000);
+        put(12, 3500);
+        put(13, 4500);
+        put(14, 5500);
+    }};
 
     /**
      * 构造函数
@@ -162,44 +179,45 @@ public class IRTAlgorithm implements TestAlgorithm {
                 .count();
         double finalAbility = user.getAbilityEstimate();
 
-        // 对3-4分段做线性映射到0-5
+        // 将3-6范围映射到0-6范围
         if (finalAbility <= 3.0) {
             finalAbility = 0;
-        } else if (finalAbility < 5.0) {
-            // 线性映射公式：(x - 3.0) * (5.0 - 0) / (5.0 - 3.0)
-            finalAbility = (finalAbility - 3.0) * 5.0;
-            finalAbility = finalAbility * 0.65;
+        } else if (finalAbility <= 6.0) {
+            // 3-6 映射到 0-6 的线性变换公式
+            // newValue = (oldValue - oldMin) * (newMax - newMin) / (oldMax - oldMin) + newMin
+            finalAbility = (finalAbility - 3.0) * 6.0 / (6.0 - 3.0);
         }
-        // 5分及以上保持不变
+        // 大于6的值保持不变
 
         int estimatedVocabularySize = estimateVocabularySize(finalAbility);
-        int totalVocabularySize = wordBank.getTotalWordCount();
         return new TestResult(user, finalAbility, answeredQuestions.size(),
-                correctAnswers, estimatedVocabularySize, totalVocabularySize);
+                correctAnswers, estimatedVocabularySize, LEVEL_VOCABULARY_SIZE.get(14));
     }
 
     /**
      * 估算词汇量大小
      */
     private int estimateVocabularySize(double ability) {
-        // 获取最低难度级别的基础词汇量
-        int baseVocabulary = wordBank.getWordCountUpToDifficulty((int)MIN_DIFFICULTY);
-
-        // 如果能力值低于最低难度,按比例计算
+        // 如果能力值低于最低难度，按比例计算最低等级的词汇量
         if (ability <= MIN_DIFFICULTY) {
             double fraction = ability / MIN_DIFFICULTY;
-            return (int) Math.round(fraction * baseVocabulary);
+            return (int) Math.round(fraction * LEVEL_VOCABULARY_SIZE.get(3));
         }
 
-        // 对于正常范围的能力值,在相邻难度等级之间进行插值
+        // 获取能力值所在的难度区间
         int lowerDifficulty = (int) Math.floor(ability);
         int upperDifficulty = (int) Math.ceil(ability);
 
-        int lowerCount = wordBank.getWordCountUpToDifficulty(Math.min((int)MAX_DIFFICULTY, lowerDifficulty));
-        int upperCount = wordBank.getWordCountUpToDifficulty(Math.min((int)MAX_DIFFICULTY, upperDifficulty));
+        // 确保不超过最高难度
+        lowerDifficulty = Math.min(14, Math.max(3, lowerDifficulty));
+        upperDifficulty = Math.min(14, Math.max(3, upperDifficulty));
 
-        // 线性插值
+        // 获取区间对应的词汇量
+        int lowerVocabulary = LEVEL_VOCABULARY_SIZE.get(lowerDifficulty);
+        int upperVocabulary = LEVEL_VOCABULARY_SIZE.get(upperDifficulty);
+
+        // 线性插值计算最终词汇量
         double fraction = ability - lowerDifficulty;
-        return (int) Math.round(lowerCount + fraction * (upperCount - lowerCount));
+        return (int) Math.round(lowerVocabulary + fraction * (upperVocabulary - lowerVocabulary));
     }
 }
