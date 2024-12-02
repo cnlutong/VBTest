@@ -14,7 +14,7 @@ public class Main {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        WordBank wordBank = initializeWordBank("C:\\Users\\cnlut\\Desktop\\test_v6.csv");
+        WordBank wordBank = initializeWordBank("C:\\Users\\cnlut\\Desktop\\test_v8.csv");
         if (wordBank == null) {
             System.exit(1);
         }
@@ -48,6 +48,8 @@ public class Main {
      * @return TestService 对象
      */
     private static TestService initializeTestService(WordBank wordBank) {
+//        启用没有正确答案的题目
+        Question.enableNoCorrectAnswerFeature();
         IRTAlgorithm algorithm = new IRTAlgorithm(wordBank);
         TestManager testManager = new TestManager(algorithm, wordBank);
         return new TestService(testManager);

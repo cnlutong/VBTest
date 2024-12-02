@@ -21,8 +21,8 @@ public class UserModel {
     public UserModel(String id, String name) {
         this.id = id;
         this.name = name;
-        this.abilityEstimate = 3.0;        // 初始能力值
-        this.windowSize = 5;               // 默认窗口大小
+        this.abilityEstimate = 0.0;        // 初始能力值
+        this.windowSize = 6;               // 默认窗口大小
         this.recentAnswers = new int[windowSize];
         this.totalAnswers = 0;
     }
