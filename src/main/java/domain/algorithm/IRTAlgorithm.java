@@ -25,12 +25,12 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double MAX_ABILITY = 6.5;       // 最大能力值
     private static final double INITIAL_ABILITY = 1.0;    // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.2;   // 难度斜率
-    private static final double LEARNING_RATE = 0.023;     // 学习率
+    private static final double LEARNING_RATE = 0.025;     // 学习率
     private static final int OPTIONS_COUNT = 5;  // 答案选项数量
 
     // 窗口相关常量
-    private static final int ANSWER_WINDOW_SIZE = 6;      // 最近答题观察数
-    private static final int MAX_WRONG_ALLOWED = 4;       // 不允许的最大错误数
+    private static final int ANSWER_WINDOW_SIZE = 8;      // 最近答题观察数
+    private static final int MAX_WRONG_ALLOWED = 5;       // 不允许的最大错误数
 
     // 定义每个难度等级对应的累计词汇量
     private static final Map<Integer, Integer> LEVEL_VOCABULARY_SIZE = new HashMap<>() {{
@@ -165,6 +165,11 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     @Override
     public TestResult calculateFinalResult(UserModel user, List<Question> answeredQuestions) {
+        // 定义最小打折系数参数
+        final double MIN_DISCOUNT_FACTOR = 0.80;
+        // 定义每1%正确率对应的打折比例(0.75%)
+        final double DISCOUNT_RATE = 0.75;
+
         // 计算正确率
         int totalQuestions = answeredQuestions.size();
         int correctAnswers = (int) answeredQuestions.stream()
@@ -172,15 +177,18 @@ public class IRTAlgorithm implements TestAlgorithm {
                 .count();
         double accuracy = totalQuestions > 0 ? (correctAnswers * 100.0) / totalQuestions : 0.0;
 
-        // 计算打折系数（正确率100%不打折，每降低1%打折1%）
-        double discountFactor = accuracy / 100.0;
+        // 计算打折系数
+        double discountFactor = 1.0 - ((100.0 - accuracy) * DISCOUNT_RATE / 100.0);
+
+        // 设置最小打折系数
+        discountFactor = Math.max(discountFactor, MIN_DISCOUNT_FACTOR);
 
         // 对能力值进行打折
         double finalAbility = user.getAbilityEstimate() * discountFactor;
 
         // 基于打折后的能力值计算词汇量
         int estimatedVocabularySize = estimateVocabularySize(finalAbility);
-        int maxVocabularySize = LEVEL_VOCABULARY_SIZE.get(6);  //
+        int maxVocabularySize = LEVEL_VOCABULARY_SIZE.get(6);
 
         return new TestResult(user, finalAbility, answeredQuestions.size(),
                 correctAnswers, estimatedVocabularySize, maxVocabularySize);
@@ -203,7 +211,6 @@ public class IRTAlgorithm implements TestAlgorithm {
 
         // 计算词汇量
         if (level < 1) {
-            // 能力值小于1时，在0到300之间插值
             return (int) Math.round(fraction * LEVEL_VOCABULARY_SIZE.get(1));
         } else {
             // 根据当前等级和下一等级的词汇量进行插值
