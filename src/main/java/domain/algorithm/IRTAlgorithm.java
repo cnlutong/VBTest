@@ -29,8 +29,8 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final int OPTIONS_COUNT = 5;  // 答案选项数量
 
     // 窗口相关常量
-    private static final int ANSWER_WINDOW_SIZE = 8;      // 最近答题观察数
-    private static final int MAX_WRONG_ALLOWED = 5;       // 不允许的最大错误数
+    private static final int ANSWER_WINDOW_SIZE = 6;      // 最近答题观察数
+    private static final int MAX_WRONG_ALLOWED = 4;       // 不允许的最大错误数
 
     // 定义每个难度等级对应的累计词汇量
     private static final Map<Integer, Integer> LEVEL_VOCABULARY_SIZE = new HashMap<>() {{

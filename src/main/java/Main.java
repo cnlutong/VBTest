@@ -14,7 +14,7 @@ public class Main {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        WordBank wordBank = initializeWordBank("C:\\Users\\cnlut\\Desktop\\test_v8.5.csv");
+        WordBank wordBank = initializeWordBank("C:\\Users\\cnlut\\Desktop\\test_v8.6.csv");
         if (wordBank == null) {
             System.exit(1);
         }

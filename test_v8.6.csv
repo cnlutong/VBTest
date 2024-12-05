@@ -514,7 +514,7 @@ great,大师；大人物；伟人们,2
 answer,回答；答案；答辩,2
 feet,脚（foot的复数形式）；尺；韵脚,2
 then,然后，当时,2
-has,有，吃，得到，从事，允许，雇用，享有（have的第三人称单数）；（亲属关系中）接受；拿；买到,2
+has,有，吃，得到，从事，允许，雇用，享有,2
 wonderful,极好的，精彩的，绝妙的；奇妙的；美妙；胜；神妙,2
 be,是； 有，存在； 做，成为； 发生,2
 parent,父亲（或母亲）；父母亲；根源,2
@@ -1075,7 +1075,7 @@ lion, 狮子,3
 wine, 酒,3
 object, 反对， 不赞成； 反对， 不赞成,3
 flight, 航班， 班机； 飞行， 飞翔,3
-hang, [hung-hung] 悬挂， 吊； 徘徊； [hanged-hanged] 吊,3
+hang, 悬挂， 吊； 徘徊； 吊,3
 role, 作用； 职责； 角色； 任务,3
 achieve, 实现， 完成； 获得， 达到,3
 anybody, 任何人； 随便哪一个人,3
@@ -1095,7 +1095,7 @@ standard, 标准的,3
 correct,正确的，对的；合适的，符合的,3
 nobody,没有人，无人,3
 empty,空的；空闲的；空虚的,3
-tie, [tying]　拴， 扎， 捆； 把…打结， 系上； 连接， 使有关联； 不分胜负,3
+tie, 拴， 扎， 捆； 把…打结， 系上； 连接， 使有关联； 不分胜负,3
 wise, 有智慧的， 聪明的； 英明的， 明智的； 博学的， 贤明的,3
 serious, 严重的， 危急的； 重要的， 重大的； 认真的， 严肃的， 庄重的,3
 conversation, 交谈， 谈话,3
@@ -1117,7 +1117,7 @@ society, 社会； 阶层； 社交界； 社团； 协会,3
 root, 生根， 扎根,3
 treasure, 珍爱， 珍视,3
 airline, 航空公司； 航线,3
-lend, [lent-lent] 把…借给， 出借； 贷,3
+lend,  把…借给， 出借； 贷,3
 November, 十一月,3
 ticket, 票， 入场券， 车票； 罚款传票； 候选,3
 perform, 做， 履行， 完成； 演出， 表演,3
@@ -1135,7 +1135,7 @@ hate,憎恨，不喜欢,3
 block,阻碍；堵塞,3
 period, 时间， 时期， 时代； 学时， 课时； 句号， 句点,3
 bulb, 植物的球茎； 灯泡,3
-understand, [understood-understood] 理解， 懂； 了解， 意识到； 认为， 以为,3
+understand,理解， 懂； 了解， 意识到； 认为， 以为,3
 birth, 出生， 分娩； 出身； 起源， 根源,3
 dismiss, 不予考虑， 不接受； 解雇， 开除； 解散， 遣散； 驳回， 不受理,3
 heaven,天堂，,3
@@ -1193,7 +1193,7 @@ design, 设计； 预订， 指定； 谋划， 构思,3
 extra,特别地,3
 land, 靠岸， 登陆； 降落,3
 department, 部， 局， 处， 科； 系,3
-burn, [burnt/burned-burnt/burned] 燃烧， 点燃；,3
+burn, 燃烧， 点燃；,3
 modern, 现代的， 新式的,3
 obey, 服从， 听从,3
 lamb, 羔羊， 小羊； 羔羊肉,3
@@ -1224,7 +1224,6 @@ prize,第一流的，了不起的,3
 chase, 追捕； 追求； 寻求,3
 accident, 意外遭遇， 事故,3
 anyway, 不管怎么说， 无论如何； 不论以何种方式， 无论从什么角度,3
-pop,突然[出人意料]地从〔某物〕中出来，蹦出，离开，脱落,3
 found, 创立， 创办， 创建,3
 excuse, 原谅， 宽恕； 使免除； 为…辩解， 作为开脱…的理由,3
 escape,逃脱，逃走；避免，躲避,3
@@ -1234,19 +1233,19 @@ receive, 收到， 接到； 受到， 遭到； 接待； 接见； 欢迎,3
 team, 合作；　结成一队,3
 tragedy, 惨事， 灾难； 悲剧,3
 speech, 讲话， 演说； 言语， 言论； 说话方式,3
-clap," [clapped-clapped, clapping] 拍手， 鼓掌",3
+clap," 拍手， 鼓掌",3
 Jew, 犹太人； 犹太教徒,3
 fashion, 流行款式， 时兴式样；　时尚，　时兴,3
 medical, 医学的， 医疗的,3
 friendship, 友谊， 友好,3
-lie," [lay-lain, lying] 躺， 平放； 位于； 处于(某种状",3
+lie,"  躺， 平放； 位于； 处于(某种状",3
 anymore, 再， 更， 还； 目前， 现在， 今后,3
 smell,气味,3
 unable, 不能的， 不会的,3
 ham, 火腿,3
 continue, 继续； 延续； 延伸,3
 avenue, 林荫道； 道路， 大街,3
-shoot, [shot-shot] 发射， 射击； 投， 射门， 投篮； 拍摄； 射杀， 射伤； 发芽,3
+shoot,  发射， 射击； 投， 射门， 投篮； 拍摄； 射杀， 射伤； 发芽,3
 realize, 认识到； 了解； 实现,3
 chest, 胸， 胸腔； 柜子， 橱,3
 eastern, 东方的， 东部的,3
@@ -1311,9 +1310,9 @@ stomach, 承受， 忍受； 吃得下,3
 husband, 丈夫,3
 appointment, 约会； 约定； 任命， 委派； 职务， 职位,3
 experience, 经历， 体验， 感受,3
-hit, [hit-hit; hitting] 打， 击中； 碰撞,3
+hit,  打， 击中； 碰撞,3
 major,较大的；主要的,3
-beat, [beat-beaten]　打， 击， 敲； 打败， 胜过； 跳动,3
+beat,　打， 击， 敲； 打败， 胜过； 跳动,3
 worldwide, 在世界各地， 在全世界,3
 consider, 考虑， 细想； 认为， 把…看作； 关心， 照顾,3
 housework, 家务劳动,3
@@ -1370,10 +1369,10 @@ waiter, 侍者， 服务员,3
 purse, 钱包； 女用小包,3
 spotlight, 用聚光灯照； 特别关注； 突出报道,3
 represent, 作为…的代表； 描述； 表示； 象征； 描绘， 表现； 阐明， 说明； 扮演,3
-die, [dying]　死， 死亡； 消失； 停止运行； 渴望； 消,3
+die, 　死， 死亡； 消失； 停止运行； 渴望； 消,3
 dig,挖（土等），掘（洞）,3
 promise,允诺，答应；有…可能，有希望,3
-hold, [held-held] 拿， 握； 使保持某种状态；,3
+hold, 拿， 握； 使保持某种状态；,3
 tale, 故事， 传说,3
 passport, 护照,3
 lookout, 警戒， 监视； ■望台， 监视哨； ■望员， 监视者； 与个人有关的事情， 任务,3
@@ -1433,7 +1432,7 @@ mad, 疯的， 神经错乱的； 恼火的， 狂怒的； 狂热的， 着迷�
 barbecue, 在烤架上烧烤,3
 stream, 流， 涌,3
 member, 成员， 会员,3
-stand, [stood-stood] 站， 站立； 坐落， 位于； 继续存在， 保持有效； 处于特定状态,3
+stand,站， 站立； 坐落， 位于； 继续存在， 保持有效； 处于特定状态,3
 illness, 病， 疾病,3
 cigarette, 香烟,3
 may,可能，也许,3
@@ -1704,7 +1703,7 @@ polar, 地极的， 近地极的； 磁极的； 正好相反的， 截然对立
 shark, 鲨鱼； 勒索者， 诈骗者； 放高利贷的人,3
 chairman, 主席； 会议主持人； 董事长,3
 future,将来的，未来的,3
-shake, [shook-shaken] 摇动， 摇； 颤抖， 震动,3
+shake,  摇动， 摇； 颤抖， 震动,3
 cent, 分， 分币,3
 honor, 尊敬,3
 screen, 掩蔽， 遮蔽， 包庇； 放映， 播放(电视,3
@@ -1753,7 +1752,7 @@ boil,沸腾，煮沸,3
 remain, 仍然是， 依旧是； 留下， 逗留； 剩余， 余留； 留待,3
 himself, 他自己； 他亲自， 他本人,3
 envelope, 信封,3
-turkey, 火鸡； [T-] 土耳其,3
+turkey, 火鸡；土耳其,3
 tasty,美味的；引起食欲的,3
 maybe, 大概， 也许,3
 enemy, 敌人， 仇敌,3
@@ -1813,7 +1812,6 @@ slide,（使）滑行，（使）滑动,3
 style, 风格， 文体； 式样， 类型； 流行式样， 时尚,3
 jungle, 丛林， 密林,3
 suit, 一套衣服； 套,3
-Yin, 阴,3
 care,关心，关怀；担心；介意,3
 boss, 老板， 上司， 头儿,3
 direct,直接地,3
@@ -1830,7 +1828,7 @@ born, 出生的， 产生的； 天生的,3
 criticize, 批评； 评论； 非难,3
 certain, 某一， 某种； 肯定的， 确信的； 确实的， 无疑的,3
 board, 板， 牌子； 木板， 纸板； 委员会， 董事会， 理事会； 伙食,3
-shut," [shut-shut, shutting]　关闭， 关上； 打烊",3
+shut," 　关闭， 关上； 打烊",3
 simple, 简单的； 朴素的； 单纯的， 直率的； 迟钝的， 头脑简单的,3
 autograph, 签名,3
 eleventh, 第十一,3
@@ -2058,7 +2056,6 @@ Internet, 互联网， 因特网,3
 support, 支撑， 扶持， 拥护； 供养， 赡养； 维持,3
 coin, 创造,3
 drop,掉下，落下,3
-Yang, 阳,3
 life, 生命， 性命； 一生， 寿命； 生活， 生存； 人生； 生物； 生气， 活力,3
 we, 我们,3
 cola, 可乐饮料,3
@@ -2096,7 +2093,7 @@ course, 过程； 经过； 路线， 航线； 方针； 课程,3
 copy, 抄写； 复印； 抄袭； 模仿， 仿效,3
 regular, 规则的； 有规律的， 定期的； 整齐的， 匀称的； 正规的， 正式的； 常规的，,3
 dare,敢，敢做,3
-sell, [sold-sold] 卖， 出售； 推销,3
+sell,  卖， 出售； 推销,3
 suggest, 建议， 提出； 使想起； 暗示,3
 brain, 脑， 脑髓； 脑袋； 智慧,3
 lead, 铅； 铅,3
@@ -2222,7 +2219,7 @@ psychology, 心理学,4
 wrestle, 摔跤， 格斗； 斟酌,4
 multiply,   相乘； 增加,4
 approval, 赞成； 认可； 批准,4
-victory, [C] 胜利,4
+victory,  胜利,4
 mobile, 活动的， 可移动的,4
 evolution, 进展， 演变， 进化,4
 expose, 暴露； 揭露,4
@@ -2283,7 +2280,7 @@ swap,  交换,4
 hatch,  孵蛋,4
 pardon, 原谅， 宽恕； 对不起,4
 tick, 发出滴答声,4
-basis, [C] 基础； 根据； 原则,4
+basis,  基础； 根据； 原则,4
 adventure, 冒险； 奇遇,4
 ceremony, 典礼， 仪式,4
 bingo, 宾果,4
@@ -2618,7 +2615,7 @@ bless, 保佑， 降福,4
 Pacific, 太平洋的,4
 conscience, 道德心， 良心,4
 bonus, 奖金， 红利,4
-cassette, [C]卡式盒； 暗盒,4
+cassette, 卡式盒； 暗盒,4
 accelerate, 加速， 促进,4
 grain, 谷物， 谷类,4
 maid, 女仆； 少女,4
@@ -2673,7 +2670,7 @@ spray, 喷洒,4
 distinguish, 区分， 辨别,4
 outer, 外部的,4
 fluent, 流利的， 流畅的,4
-shortcoming, [C] 缺点， 短处,4
+shortcoming, 缺点， 短处,4
 haircut,  理发,4
 howl, 嚎叫， 嚎哭,4
 benefit,利益，好处,4
@@ -2739,10 +2736,10 @@ gesture, 姿势； 手势,4
 admit,  承认； 准许,4
 sleepy, 想睡的， 困倦的， 瞌睡的,4
 sneeze, 打喷嚏,4
-bath, [C] 洗澡； 浴室； 澡盆,4
+bath, 洗澡； 浴室； 澡盆,4
 mask, 戴面具； 掩饰,4
 thermos, 热水瓶,4
-summary, [C] 摘要， 概要,4
+summary,  摘要， 概要,4
 apply, 申请； 应用,4
 overlook, 俯瞰； 远眺,4
 politician, 政治家,4
@@ -2755,7 +2752,7 @@ forever, 永远地， 永恒地,4
 base,根据地；底部,4
 employ, 雇用,4
 trend, 倾向， 趋势； 时尚,4
-achievement, [U] 完成， 达到； [C] 成就， 成绩,4
+achievement,  完成， 达到；  成就， 成绩,4
 balcony, 阳台； 包厢,4
 revolution, 革命， 变革,4
 mop,用拖把拖地,4
@@ -2914,7 +2911,7 @@ atmosphere, 气氛； 大气,4
 decorate, 装饰， 修饰,4
 education, 教育， 培养,4
 occupation, 职业， 工作； 占领， 占据,4
-tendency, [C] 倾向， 趋势,4
+tendency,  倾向， 趋势,4
 slim, 苗条的， 纤细的,4
 arithmetic, 算术,4
 caption, 标题； 字幕,4
@@ -2976,7 +2973,7 @@ amusement, 娱乐， 消遣,4
 boundary, 边界， 分界线,4
 rob,  抢夺， 抢劫,4
 outing, 远足； 郊游,4
-trick, [C] 诡计， 把戏,4
+trick,  诡计， 把戏,4
 favour, 恩惠； 好感； 帮助,4
 pollute, 污染,4
 disappoint, 失望,4
@@ -3067,7 +3064,7 @@ cautious, 小心的， 谨慎的,4
 disappear, 消失,4
 perfume, 香味； 香水,4
 shot, 射击， 开枪， 开炮， 射击声； 子弹； 拍摄,4
-conclusion, [C] 结论； 结束,4
+conclusion,  结论； 结束,4
 central, 中心的， 中央的； 主要的,4
 defend, 保护， 防御,4
 memorial, 纪念的,4
@@ -3301,12 +3298,12 @@ tradition, 传统， 惯例,4
 unbearable, 无法忍受的,4
 urgent, 急迫的， 紧急的,4
 programme, 为…编制程序,4
-belief, [C] 信条， 信念， 信仰； [U] 信任， 相信,4
+belief,  信条， 信念， 信仰；  信任， 相信,4
 delight,快乐，乐事,4
 immigration, 移民,4
 chain store, 连锁店,4
 vest, 背心， 内衣,4
-suggestion, [C] 建议,4
+suggestion,  建议,4
 fluency, 流利， 流畅,4
 systematic, 系统的， 有体系的,4
 trolleybus, 无轨电车,4
@@ -3376,7 +3373,7 @@ worthwhile, 值得做的,4
 nation, 民族， 国家,4
 upper, 较高的， 较上的,4
 splendid, 灿烂的， 辉煌的； 〈口语〉 极好的,4
-adaptation, [U] 适应， 适合； [C] 改编本,4
+adaptation,  适应， 适合；  改编本,4
 behalf, 利益； 代表,4
 eastward, 向东,4
 horrible, 令人恐惧的， 恐怖的,4
@@ -3404,7 +3401,7 @@ primitive, 原始的， 远古的,4
 overcome, 战胜， 克服， 胜过,4
 variety, 种种； 种类,4
 adore, 爱慕， 崇拜,4
-lecture, [C] 讲课， 演讲,4
+lecture, 讲课， 演讲,4
 civilian, 平民， 老百姓,4
 pump,用泵抽水；抽,4
 caution, 小心， 谨慎,4
@@ -3498,11 +3495,11 @@ apologize, 道歉， 谢罪,4
 depth, 深， 深度,4
 assess, 估定， 评定,4
 prescription, 处方， 药方,4
-behaviour, [U] 行为， 举止,4
+behaviour,  行为， 举止,4
 chorus, 合唱,4
 minimum, 最小的,4
 apology, 道歉； 歉意,4
-argument, [C] 争论， 辩论,4
+argument,  争论， 辩论,4
 theoretical, 理论的,4
 adequate, 足够的， 适当的,4
 hopeful, 有希望的； 有前途的,4
@@ -3955,7 +3952,7 @@ primarily, 首先； 主要地,5
 duration, 持续， 持久,5
 plantation, 种植园， 人工林,5
 nuclear, 核子的， 核能的， 核武器的； 核心的,5
-bloody,[用于加强语气]非常，很,5
+bloody,非常，很,5
 poetry, 诗， 诗歌， 诗集,5
 vapour, 蒸汽,5
 sole, 单独的， 唯一的,5
@@ -4015,7 +4012,7 @@ revenue, 收入， 收益； 税收， 岁入,5
 strip,脱光衣服；剥夺，夺去,5
 continuous, 连续不断的； 延伸的,5
 opponent, 对手， 敌手， 对抗者,5
-backward, [-]倒； 向后， 往回,5
+backward, 倒； 向后， 往回,5
 residence, 住处， 住宅； 居住； 居住资格,5
 intensive, 加强的； 精深的， 透彻的； 精耕细作的,5
 alter, 改变， 变更， 变动,5
@@ -4278,7 +4275,7 @@ particle, 粒子， 微粒； 小品词， 语助词,5
 behavior, 行为， 举止， 表现,5
 minimize, 将…减少； 最小化,5
 descend, 下来， 下降； 下倾,5
-saint, 圣徒； 圣人， 道德高尚的人； [用于人名或地名等前]圣,5
+saint, 圣徒； 圣人， 道德高尚的人； 圣,5
 density, 密集， 稠密； 密度,5
 logical, 逻辑的， 合乎常理的,5
 oblige, 迫使； 施恩于， 帮…的忙； 使感激,5
@@ -4684,7 +4681,7 @@ elaborate, 复杂的； 精心制作的,5
 feather, 羽毛， 翎毛,5
 corridor, 走廊， 回廊， 通路,5
 fulfill, 履行， 实现， 完成； 满足， 使满意,5
-congress, 代表大会； [C-]国会， 议会,5
+congress, 代表大会； 国会， 议会,5
 advanced, 先进的； 高级的； 年迈的； 后阶段的,5
 mechanical, 机械的， 机械制造的； 机械学的， 力学的； 呆板的,5
 recommendation, 推荐， 推荐信； 建议； 优点， 可取之处,5
@@ -5183,7 +5180,7 @@ bypass,旁道，迂回道,6
 silicon, 硅,6
 clarity, 清楚， 明晰,6
 recipient, 接受者， 接收者,6
-commonwealth, [C-]英联邦； 联邦， 联合体,6
+commonwealth, 英联邦； 联邦， 联合体,6
 watt, 瓦,6
 buzz,发出嗡嗡声；忙乱，急行；发出嘈杂的谈话声,6
 incur, 招致， 引起； 遭受,6
@@ -5207,7 +5204,7 @@ pirate,非法盗印者，侵犯版权者；海盗,6
 formulate, 构想出， 规划； 系统地阐述,6
 dome, 圆屋顶， 穹顶,6
 fuse, 熔合， 合并； 因保险丝熔断而中断工作,6
-elite, [总称] 上层人士， 掌权人物， 实力集团； [总称]出类拔萃的人， 精英,6
+elite, 上层人士， 掌权人物， 实力集团；出类拔萃的人， 精英,6
 premium, 高级的，优质的；售价高的,6
 ornament,装饰品，点缀品；装饰，点缀,6
 pretext, 借口， 托辞,6
@@ -5626,7 +5623,7 @@ manipulate, 操纵， 控制； 影响； 操作， 使用,6
 melody, 旋律， 曲调； 悦耳的音乐,6
 likelihood, 可能， 可能性,6
 converge, 会合， 互相靠拢； 聚集， 集中； 趋近,6
-catholic,[C-]天主教的；普遍的，广泛的,6
+catholic,天主教的；普遍的，广泛的,6
 supersonic, 超声的， 超音速的,6
 optimism, 乐观， 乐观主义,6
 drastic, 严厉的， 极端的； 激烈的， 迅猛的,6
@@ -5659,7 +5656,7 @@ symmetry, 对称； 匀称， 整齐,6
 visualize, 想象； 设想,6
 reap, 收割， 收获； 获得， 得到,6
 presume,擅自行事,6
-complement,补充，互为补充的东西；编制名额；装备定额；补语['kɒmplɪm3nt],6
+complement,补充，互为补充的东西；编制名额；装备定额；6
 nasty, 令人讨厌的， 令人厌恶的； 难弄的， 困难的； 严重的， 恶劣的， 险恶的； 下流的， 道德败坏的,6
 articulate, 善于表达的， 发音清晰的； 表达得清楚有力的,6
 adhere, 黏附， 附着； 遵守； 坚持； 追随， 支持,6
@@ -5811,7 +5808,7 @@ foil,箔，金属薄片；陪衬，衬托,6
 cellar, 地窖， 地下室； 酒窖,6
 tangle,缠结，乱作一团,6
 intrigue,耍阴谋，施诡计,6
-orient,转向特定方向；适应[theO-],6
+orient,转向特定方向；适应,6
 handicap,缺陷；障碍，不利条件,6
 shatter, 碎裂,6
 plea, 恳求， 请求； 抗辩， 答辩， 辩护； 借口， 托辞,6
@@ -6025,7 +6022,7 @@ wardrobe, 衣柜； 全部衣物,6
 conscientious, 认真的， 勤勤恳恳的,6
 tuck,把边塞到下面；把…夹入，把…藏入,6
 authoritative, 有权威性的， 可信的； 专断的， 命令式的,6
-extract,取出，抽出；采掘，提炼，榨取；获得，索取；摘录['3kstrækt],6
+extract,取出，抽出；采掘，提炼，榨取；获得，索取；摘录,6
 obscure,不著名的，不重要的；费解的，模糊不清的,6
 dismay,失望，气馁；惊恐,6
 expend, 花费， 消费； 消耗,6
