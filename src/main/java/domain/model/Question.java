@@ -45,16 +45,34 @@ public class Question {
      */
     public Question(Word word, List<String> options, int correctOptionIndex) {
         this.word = word;
-        this.options = new ArrayList<>(options);  // 创建可变列表
-        this.options.add(I_DONT_KNOW_OPTION);  // 添加"以上都不对"选项
 
-        // 只有在功能启用时才可能生成没有正确答案的题目
+        // 确定这个题目是否没有正确答案
         this.hasNoCorrectAnswer = noCorrectAnswerFeatureEnabled &&
                 random.nextDouble() < NO_CORRECT_ANSWER_PROBABILITY;
 
+        // 创建选项列表
+        this.options = new ArrayList<>();
         if (this.hasNoCorrectAnswer) {
-            // 如果是没有正确答案的题目，正确答案索引指向"以上都不对"选项
-            this.correctOptionIndex = this.options.size() - 1;
+            // 如果是没有正确答案的题目，则只添加错误选项
+            for (int i = 0; i < options.size(); i++) {
+                if (i != correctOptionIndex) {
+                    this.options.add(options.get(i));
+                }
+            }
+            while (this.options.size() < options.size()) {
+                this.options.add("好奇心" + (this.options.size() + 1));
+            }
+        } else {
+            // 如果是普通题目，使用原始选项列表
+            this.options.addAll(options);
+        }
+
+        // 添加"以上都不对"选项
+        this.options.add(I_DONT_KNOW_OPTION);
+
+        // 设置正确答案索引
+        if (this.hasNoCorrectAnswer) {
+            this.correctOptionIndex = this.options.size() - 1; // "以上都不对"是正确答案
         } else {
             this.correctOptionIndex = correctOptionIndex;
         }

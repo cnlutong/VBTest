@@ -25,21 +25,23 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double MAX_ABILITY = 6.5;       // 最大能力值
     private static final double INITIAL_ABILITY = 1.0;    // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.2;   // 难度斜率
-    private static final double LEARNING_RATE = 0.025;     // 学习率
+    private static final double LEARNING_RATE = 0.035;     // 学习率
     private static final int OPTIONS_COUNT = 5;  // 答案选项数量
 
     // 窗口相关常量
     private static final int ANSWER_WINDOW_SIZE = 6;      // 最近答题观察数
     private static final int MAX_WRONG_ALLOWED = 4;       // 不允许的最大错误数
 
+
     // 定义每个难度等级对应的累计词汇量
     private static final Map<Integer, Integer> LEVEL_VOCABULARY_SIZE = new HashMap<>() {{
-        put(1, 300);
-        put(2, 700);
-        put(3, 1600);
-        put(4, 3500);
-        put(5, 4500);
-        put(6, 5500);
+        put(1, 200);
+        put(2, 500);
+        put(3, 1300);
+        put(4, 2500);
+        put(5, 3500);
+        put(6, 4500);
+        put(7, 5500);
     }};
 
     /**
