@@ -48,9 +48,9 @@ public class Main {
      * @return TestService 对象
      */
     private static TestService initializeTestService(WordBank wordBank) {
-//        启用没有正确答案的题目
-        Question.enableNoCorrectAnswerFeature();
         IRTAlgorithm algorithm = new IRTAlgorithm(wordBank);
+        // 启用没有正确答案的题目功能
+        IRTAlgorithm.enableNoCorrectAnswerFeature();
         TestManager testManager = new TestManager(algorithm, wordBank);
         return new TestService(testManager);
     }

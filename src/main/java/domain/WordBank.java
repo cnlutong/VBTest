@@ -166,4 +166,25 @@ public class WordBank {
         Collections.shuffle(options);
         return options;
     }
+
+    /**
+     * 获取指定数量的干扰项（不包含正确答案）
+     * @param correctWord 正确单词
+     * @param optionCount 需要的选项数量
+     * @return 干扰项列表
+     */
+    public List<String> getRandomDistractors(Word correctWord, int optionCount) {
+        List<String> distractors = new ArrayList<>();
+        // 获取同等级的单词列表
+        List<Word> wordsAtLevel = getWordsByDifficulty(correctWord.getDifficulty());
+
+        while (distractors.size() < optionCount) {
+            Word randomWord = wordsAtLevel.get(random.nextInt(wordsAtLevel.size()));
+            if (!randomWord.getChinese().equals(correctWord.getChinese())
+                    && !distractors.contains(randomWord.getChinese())) {
+                distractors.add(randomWord.getChinese());
+            }
+        }
+        return distractors;
+    }
 }

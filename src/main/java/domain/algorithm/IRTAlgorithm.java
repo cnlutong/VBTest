@@ -25,12 +25,15 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double MAX_ABILITY = 6.5;       // 最大能力值
     private static final double INITIAL_ABILITY = 1.0;    // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.2;   // 难度斜率
-    private static final double LEARNING_RATE = 0.038;     // 学习率
+    private static final double LEARNING_RATE = 0.04;     // 学习率
     private static final int OPTIONS_COUNT = 5;  // 答案选项数量
 
     // 窗口相关常量
     private static final int ANSWER_WINDOW_SIZE = 6;      // 最近答题观察数
     private static final int MAX_WRONG_ALLOWED = 4;       // 不允许的最大错误数
+
+    private static boolean noCorrectAnswerFeatureEnabled = true;
+    private static final double NO_CORRECT_ANSWER_PROBABILITY = 0.1;
 
     // 定义每个难度等级对应的累计词汇量
     private static final Map<Integer, Integer> LEVEL_VOCABULARY_SIZE = new HashMap<>() {{
@@ -42,6 +45,14 @@ public class IRTAlgorithm implements TestAlgorithm {
         put(6, 4500);
         put(7, 5500);
     }};
+
+    public static void enableNoCorrectAnswerFeature() {
+        noCorrectAnswerFeatureEnabled = true;
+    }
+
+    public static void disableNoCorrectAnswerFeature() {
+        noCorrectAnswerFeatureEnabled = false;
+    }
 
     /**
      * 构造函数
@@ -108,8 +119,19 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     // 选项
     private Question createQuestion(Word word) {
-        List<String> options = wordBank.getRandomOptions(word, OPTIONS_COUNT);
-        int correctOptionIndex = options.indexOf(word.getChinese());
+        List<String> options;
+        int correctOptionIndex;
+
+        if (noCorrectAnswerFeatureEnabled && random.nextDouble() < NO_CORRECT_ANSWER_PROBABILITY) {
+            // 生成全是干扰项的选项列表
+            options = wordBank.getRandomDistractors(word, 5);
+            correctOptionIndex = 5;  // "以上都不对"是正确答案
+        } else {
+            // 普通题目
+            options = wordBank.getRandomOptions(word, 5);
+            correctOptionIndex = options.indexOf(word.getChinese());
+        }
+
         return new Question(word, options, correctOptionIndex);
     }
 
