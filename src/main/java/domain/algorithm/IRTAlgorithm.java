@@ -25,7 +25,7 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double MAX_ABILITY = 6.5;       // 最大能力值
     private static final double INITIAL_ABILITY = 1.0;    // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.2;   // 难度斜率
-    private static final double LEARNING_RATE = 0.035;     // 学习率
+    private static final double LEARNING_RATE = 0.038;     // 学习率
     private static final int OPTIONS_COUNT = 5;  // 答案选项数量
 
     // 窗口相关常量
@@ -37,7 +37,7 @@ public class IRTAlgorithm implements TestAlgorithm {
         put(1, 200);
         put(2, 500);
         put(3, 1300);
-        put(4, 3000);
+        put(4, 2000);
         put(5, 3500);
         put(6, 4500);
         put(7, 5500);
