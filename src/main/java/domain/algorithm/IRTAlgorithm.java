@@ -25,7 +25,7 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double MAX_ABILITY = 6.5;       // 最大能力值
     private static final double INITIAL_ABILITY = 1.0;    // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.2;   // 难度斜率
-    private static final double LEARNING_RATE = 0.04;     // 学习率
+    private static final double LEARNING_RATE = 0.05;     // 学习率
     private static final int OPTIONS_COUNT = 5;  // 答案选项数量
 
     // 窗口相关常量
@@ -140,21 +140,33 @@ public class IRTAlgorithm implements TestAlgorithm {
         // 记录答题结果
         user.recordAnswer(isCorrect);
 
-        if (isCorrect) {
-            // 只在答对时更新能力值
-            double currentEstimate = user.getAbilityEstimate();
-            double questionDifficulty = question.getWord().getDifficulty();
-            double probability = calculateProbability(currentEstimate, questionDifficulty);
+        double currentEstimate = user.getAbilityEstimate();
+        double questionDifficulty = question.getWord().getDifficulty();
+        double probability = calculateProbability(currentEstimate, questionDifficulty);
 
-            double adjustment = LEARNING_RATE * (1 - probability);
-            double information = calculateInformation(probability);
+        // 这条“adjustment”原本是答对时要加的分值
+        double adjustment = LEARNING_RATE * (1 - probability);
 
-            if (information > 1e-10) {
+        // 计算信息量，避免分母过小导致数值波动太大
+        double information = calculateInformation(probability);
+
+        if (information > 1e-10) {
+            if (isCorrect) {
+                // 答对时，原逻辑：直接加 adjustment / information
                 double newEstimate = currentEstimate + (adjustment / information);
-                user.setAbilityEstimate(Math.max(MIN_ABILITY, Math.min(MAX_ABILITY, newEstimate)));
+                user.setAbilityEstimate(
+                        Math.max(MIN_ABILITY, Math.min(MAX_ABILITY, newEstimate))
+                );
+            } else {
+                // 答错时，降低能力值，数值为答对时的一半，故为 - (adjustment / information) * 0.5
+                double newEstimate = currentEstimate - (adjustment / information / 2.0);
+                user.setAbilityEstimate(
+                        Math.max(MIN_ABILITY, Math.min(MAX_ABILITY, newEstimate))
+                );
             }
         }
     }
+
 
     /**
      * 计算回答正确的概率
@@ -190,8 +202,8 @@ public class IRTAlgorithm implements TestAlgorithm {
     public TestResult calculateFinalResult(UserModel user, List<Question> answeredQuestions) {
         // 定义最小打折系数参数
         final double MIN_DISCOUNT_FACTOR = 0.80;
-        // 定义每1%正确率对应的打折比例(0.75%)
-        final double DISCOUNT_RATE = 0.75;
+        // 定义每1%正确率对应的打折比例
+        final double DISCOUNT_RATE = 0.5;
 
         // 计算正确率
         int totalQuestions = answeredQuestions.size();
