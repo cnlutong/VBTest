@@ -27,11 +27,14 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double DIFFICULTY_SLOPE = 1.2;   // 难度斜率
     private static final double LEARNING_RATE = 0.05;     // 学习率
     private static final int OPTIONS_COUNT = 5;  // 答案选项数量
+    private static final double WRONG_ANSWER_PENALTY_RATIO = 0.7; //
 
-    // 窗口相关常量
+
+    // 成绩判断窗口相关常量
     private static final int ANSWER_WINDOW_SIZE = 6;      // 最近答题观察数
     private static final int MAX_WRONG_ALLOWED = 4;       // 不允许的最大错误数
 
+//    无正确选项开关
     private static boolean noCorrectAnswerFeatureEnabled = true;
     private static final double NO_CORRECT_ANSWER_PROBABILITY = 0.1;
 
@@ -144,22 +147,21 @@ public class IRTAlgorithm implements TestAlgorithm {
         double questionDifficulty = question.getWord().getDifficulty();
         double probability = calculateProbability(currentEstimate, questionDifficulty);
 
-        // 这条“adjustment”原本是答对时要加的分值
+        // 原本用于答对时增加的值
         double adjustment = LEARNING_RATE * (1 - probability);
 
-        // 计算信息量，避免分母过小导致数值波动太大
-        double information = calculateInformation(probability);
+        double information = calculateInformation(probability); // probability * (1 - probability)
 
         if (information > 1e-10) {
             if (isCorrect) {
-                // 答对时，原逻辑：直接加 adjustment / information
-                double newEstimate = currentEstimate + (adjustment / information);
+                // 答对时
+                double newEstimate = currentEstimate + adjustment / information;
                 user.setAbilityEstimate(
                         Math.max(MIN_ABILITY, Math.min(MAX_ABILITY, newEstimate))
                 );
             } else {
-                // 答错时，降低能力值，数值为答对时的一半，故为 - (adjustment / information) * 0.5
-                double newEstimate = currentEstimate - (adjustment / information / 2.0);
+                // 答错时，扣分为答对加分的一定比例
+                double newEstimate = currentEstimate - (adjustment / information * WRONG_ANSWER_PENALTY_RATIO);
                 user.setAbilityEstimate(
                         Math.max(MIN_ABILITY, Math.min(MAX_ABILITY, newEstimate))
                 );
