@@ -27,7 +27,7 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double DIFFICULTY_SLOPE = 1.2;   // 难度斜率
     private static final double LEARNING_RATE = 0.05;     // 学习率
     private static final int OPTIONS_COUNT = 5;  // 答案选项数量
-    private static final double WRONG_ANSWER_PENALTY_RATIO = 0.5; //
+    private static final double WRONG_ANSWER_PENALTY_RATIO = 0.8; //
 
 
     // 成绩判断窗口相关常量
@@ -40,13 +40,20 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     // 定义每个难度等级对应的累计词汇量
     private static final Map<Integer, Integer> LEVEL_VOCABULARY_SIZE = new HashMap<>() {{
+//        小学3年纪
         put(1, 200);
+//        小学4-6
         put(2, 500);
-        put(3, 1300);
+//        初中
+        put(3, 1000);
+//        高中
         put(4, 2000);
+//        四级
         put(5, 3500);
-        put(6, 4500);
-        put(7, 5500);
+//        六级
+        put(6, 5000);
+//        八级
+        put(7, 6000);
     }};
 
     public static void enableNoCorrectAnswerFeature() {
