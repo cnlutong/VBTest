@@ -212,7 +212,7 @@ public class IRTAlgorithm implements TestAlgorithm {
         // 定义最小打折系数参数
         final double MIN_DISCOUNT_FACTOR = 0.80;
         // 定义每1%正确率对应的打折比例
-        final double DISCOUNT_RATE = 0.5;
+        final double DISCOUNT_RATE = 0.4;
 
         // 计算正确率
         int totalQuestions = answeredQuestions.size();
