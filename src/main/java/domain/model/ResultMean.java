@@ -188,11 +188,11 @@ public class ResultMean {
         gradeLevels.put(5000, "大学四级进阶水平");
         gradeLevels.put(4500, "大学四级水平");
         gradeLevels.put(3500, "高中高级水平");
-        gradeLevels.put(3000, "高中中级水平");
+        gradeLevels.put(2800, "高中中级水平");
         gradeLevels.put(2000, "高中初级水平");
         gradeLevels.put(1600, "初中高级水平");
-        gradeLevels.put(1300, "初中中级水平");
-        gradeLevels.put(1000, "初中初级水平");
+        gradeLevels.put(1200, "初中中级水平");
+        gradeLevels.put(900, "初中初级水平");
         gradeLevels.put(500, "小学高级水平");
         gradeLevels.put(300, "小学中级水平");
         gradeLevels.put(50, "小学初级水平");

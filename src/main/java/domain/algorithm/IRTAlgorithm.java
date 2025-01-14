@@ -45,11 +45,11 @@ public class IRTAlgorithm implements TestAlgorithm {
 //        小学4-6
         put(2, 500);
 //        初中
-        put(3, 1000);
+        put(3, 1200);
 //        高中
-        put(4, 2000);
+        put(4, 2800);
 //        四级
-        put(5, 3500);
+        put(5, 4500);
 //        六级
         put(6, 5000);
 //        八级
