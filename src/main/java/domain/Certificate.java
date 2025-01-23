@@ -27,7 +27,7 @@ public class Certificate {
         this.resultMean = new ResultMean(0);
         this.certificateName = certificateName;
 //        对应信息6
-        this.estimatedVocab = this.resultMean.correctVocabEstimate(estimatedVocab);
+        this.estimatedVocab = estimatedVocab;
         this.userName = userName;
         this.userSchoolName = userSchoolName;
         this.userClass = userClass;
@@ -59,7 +59,7 @@ public class Certificate {
 
     // 获取海报中展示的词库信息，对应信息2
     public String getInfo() {
-        return "中小学课表单词，共" + this.totalWordSize + "词";
+        return "家庭CEO 综合题库，共" + this.totalWordSize + "词";
     }
 
     // 获取海报中展示的学生名，对应信息3

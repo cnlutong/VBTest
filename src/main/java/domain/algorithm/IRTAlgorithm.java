@@ -18,11 +18,11 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     // 定义算法相关的常量
     private static final int MIN_QUESTIONS = 10;          // 最少问题数
-    private static final int MAX_QUESTIONS = 120;          // 最多问题数
+    private static final int MAX_QUESTIONS = 100;          // 最多问题数
     private static final double MIN_DIFFICULTY = 1.0;     // 最小难度
-    private static final double MAX_DIFFICULTY = 6.0;    // 最大难度
+    private static final double MAX_DIFFICULTY = 7.0;    // 最大难度
     private static final double MIN_ABILITY = 0.0;        // 最小能力值
-    private static final double MAX_ABILITY = 6.5;       // 最大能力值
+    private static final double MAX_ABILITY = 7.5;       // 最大能力值
     private static final double INITIAL_ABILITY = 1.0;    // 初始能力值
     private static final double DIFFICULTY_SLOPE = 1.2;   // 难度斜率
     private static final double LEARNING_RATE = 0.05;     // 学习率
@@ -49,9 +49,9 @@ public class IRTAlgorithm implements TestAlgorithm {
 //        高中
         put(4, 2800);
 //        四级
-        put(5, 4500);
+        put(5, 3500);
 //        六级
-        put(6, 5000);
+        put(6, 4500);
 //        八级
         put(7, 6000);
     }};
@@ -235,7 +235,19 @@ public class IRTAlgorithm implements TestAlgorithm {
         int maxVocabularySize = LEVEL_VOCABULARY_SIZE.get(6);
 
         return new TestResult(user, finalAbility, answeredQuestions.size(),
-                correctAnswers, estimatedVocabularySize, maxVocabularySize);
+                correctAnswers, correctVocabEstimate(estimatedVocabularySize), maxVocabularySize);
+    }
+
+    private int correctVocabEstimate(int estimatedVocab) {
+
+        // 随机波动范围为±1.5%
+        double randomFactorPercentage = 0.015;
+        // 生成-1.5%到+1.5%之间的随机因子
+        double randomFactor = (Math.random() * 2 * randomFactorPercentage) - randomFactorPercentage;
+        // 应用随机因子计算最终分数
+        double finalScore = estimatedVocab * (1 + randomFactor);
+
+        return (int) finalScore;
     }
 
     /**

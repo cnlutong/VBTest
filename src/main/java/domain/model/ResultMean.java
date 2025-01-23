@@ -13,35 +13,18 @@ public class ResultMean {
 
     // 返回海报中的词汇量水平
     public String getGradeLevel(int estimatedVocab) {
-        int correctedVocab = correctVocabEstimate(estimatedVocab);
-        return getGradeLevelVersion0(correctedVocab);
+        return getGradeLevelVersion0(estimatedVocab);
     }
 
     // 返回成绩中的成绩解读
     public String getResultMean(int estimatedVocab) {
-        int correctedVocab = correctVocabEstimate(estimatedVocab);
-        return getResultInterpretation(correctedVocab);
+        return getResultInterpretation(estimatedVocab);
     }
 
     // 返回成绩中的学习建议
     public String getResultBucket(int estimatedVocab) {
-        int correctedVocab = correctVocabEstimate(estimatedVocab);
-        return getLearningBucket(correctedVocab);
+        return getLearningBucket(estimatedVocab);
     }
-
-
-    public int correctVocabEstimate(int estimatedVocab) {
-
-        // 随机波动范围为±1.5%
-        double randomFactorPercentage = 0.015;
-        // 生成-1.5%到+1.5%之间的随机因子
-        double randomFactor = (Math.random() * 2 * randomFactorPercentage) - randomFactorPercentage;
-        // 应用随机因子计算最终分数
-        double finalScore = estimatedVocab * (1 + randomFactor);
-
-        return (int) finalScore;
-    }
-
 
     private String getResultInterpretation(int estimatedVocab) {
         // 根据新的阶段划分标准，为不同词汇量设置相应的结果解读
@@ -76,11 +59,11 @@ public class ResultMean {
                 "经评估，您的词汇量已达到初中高级水平，能应对大部分初中阅读和听说材料。建议继续积累常见词汇，加强书面表达与听说练习，以平稳衔接高中学习。");
 
         // 1300-1599：初中中级水平
-        vocabLevels.put(1300,
+        vocabLevels.put(1200,
                 "经评估，您的词汇量已达到初中中级水平，对初中英语教材和基础练习有较好理解。建议夯实语法与词汇，多运用所学进行口语交流，提升综合应用能力。");
 
         // 1000-1299：初中初级水平
-        vocabLevels.put(1000,
+        vocabLevels.put(800,
                 "经评估，您的词汇量已达到初中初级水平，掌握了初步的初中基础词汇和语法。建议继续扩充常用词汇，加强听说读写全方位训练，为更高级别的学习打下基础。");
 
         // 500-999：小学高级水平
@@ -138,11 +121,11 @@ public class ResultMean {
                 "初中高级阶段，结合中考词汇与语法要点强化重点难点。通过真题训练提升解题能力，每天坚持听力与口语练习，培养基本的篇章写作意识。");
 
         // 1300-1599：初中中级水平
-        learningBuckets.put(1300,
+        learningBuckets.put(1200,
                 "初中中级阶段，积累常见词汇与短语，熟悉常用语法结构。可通过课后练习与简单阅读材料提高理解能力，每周进行听说巩固并适度加强写作训练。");
 
         // 1000-1299：初中初级水平
-        learningBuckets.put(1000,
+        learningBuckets.put(800,
                 "初中初级阶段，重点掌握初中常见单词与基础语法。可每天进行单词听写与短篇阅读，多做口语互动练习，逐步增强词汇应用与表达能力。");
 
         // 500-999：小学高级水平
@@ -169,21 +152,6 @@ public class ResultMean {
     private String getGradeLevelVersion0(int estimatedVocab) {
         NavigableMap<Integer, String> gradeLevels = new TreeMap<>();
 
-        // 按照新标准设置等级
-//        gradeLevels.put(5500, "大学四级+水平");
-//        gradeLevels.put(4500, "大学四级进阶水平");
-//        gradeLevels.put(3500, "大学四级入门水平");
-//        gradeLevels.put(3000, "高中高级水平");
-//        gradeLevels.put(2000, "高中中级水平");
-//        gradeLevels.put(1600, "高中初级水平");
-//        gradeLevels.put(1300, "初中高级水平");
-//        gradeLevels.put(1000, "初中中级水平");
-//        gradeLevels.put(700, "初中初级水平");
-//        gradeLevels.put(500, "小学高级水平");
-//        gradeLevels.put(300, "小学中级水平");
-//        gradeLevels.put(50, "小学初级水平");
-//        gradeLevels.put(0, "学龄前水平");
-
         gradeLevels.put(6000, "大学六级水平");
         gradeLevels.put(5000, "大学四级进阶水平");
         gradeLevels.put(4500, "大学四级水平");
@@ -192,7 +160,7 @@ public class ResultMean {
         gradeLevels.put(2000, "高中初级水平");
         gradeLevels.put(1600, "初中高级水平");
         gradeLevels.put(1200, "初中中级水平");
-        gradeLevels.put(900, "初中初级水平");
+        gradeLevels.put(800, "初中初级水平");
         gradeLevels.put(500, "小学高级水平");
         gradeLevels.put(300, "小学中级水平");
         gradeLevels.put(50, "小学初级水平");

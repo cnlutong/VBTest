@@ -53,7 +53,7 @@ public class TestResult {
                 totalQuestions,
                 correctAnswers,
                 (double) correctAnswers / totalQuestions * 100,
-                resultMean.correctVocabEstimate(estimatedVocabularySize),
+                estimatedVocabularySize,
                 totalVocabularySize,
                 (double) estimatedVocabularySize / totalVocabularySize * 100
         );
