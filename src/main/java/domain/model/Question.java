@@ -13,6 +13,7 @@ public class Question {
     private final int correctOptionIndex;   // 正确选项的索引
     private boolean answeredCorrectly;      // 是否回答正确
     private static final String I_DONT_KNOW_OPTION = "以上都不对";  // "以上都不对"选项
+    private static final String I_DONT_KNOW_THIS_OPTION = "我不会";  // "我不会"选项
 
     /**
      * 构造一个新的 Question 对象。
@@ -25,6 +26,7 @@ public class Question {
         this.word = word;
         this.options = new ArrayList<>(options);  // 创建选项的副本
         this.options.add(I_DONT_KNOW_OPTION);    // 添加"以上都不对"选项
+        this.options.add(I_DONT_KNOW_THIS_OPTION); // 添加"我不会"选项
         this.correctOptionIndex = correctOptionIndex;
         this.answeredCorrectly = false;
     }
@@ -58,7 +60,10 @@ public class Question {
      * @return 如果答案正确返回 true，否则返回 false
      */
     public boolean isCorrect(int answerIndex) {
-        if (answerIndex == options.size() - 1) {  // 如果选择了"以上都不对"
+        if (answerIndex == options.size() - 1) {  // 如果选择了"我不会"
+            this.answeredCorrectly = false;  // 直接判定为错误
+            return false;
+        } else if (answerIndex == options.size() - 2) {  // 如果选择了"以上都不对"
             this.answeredCorrectly = (answerIndex == correctOptionIndex);  // 只有在正确答案为"以上都不对"时才正确
         } else {
             this.answeredCorrectly = (answerIndex == correctOptionIndex);  // 检查是否选择了正确答案

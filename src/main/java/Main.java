@@ -1,3 +1,4 @@
+
 import application.TestManager;
 import application.TestService;
 import domain.WordBank;
@@ -111,10 +112,10 @@ public class Main {
             System.out.print("请选择正确的选项：");
             try {
                 int answer = Integer.parseInt(scanner.nextLine().trim());
-                if (answer >= 1 && answer <= 6) {
+                if (answer >= 1 && answer <= 7) {
                     return answer;
                 }
-                System.out.println("无效输入，请输入1到6之间的数字。");
+                System.out.println("无效输入，请输入1到7之间的数字。");
             } catch (NumberFormatException e) {
                 System.out.println("无效输入，请输入一个数字。");
             }
