@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
  * WordBank 类负责管理词库，包括加载、统计和提供单词。
  */
 public class WordBank {
+    private static final int MAX_DIFFICULTY = 7;  // 最大难度等级，与IRT算法保持一致
+    
     private final List<Word> words;
     private final Map<Integer, Integer> wordCountByDifficulty;
     private final Random random;
@@ -149,7 +151,7 @@ public class WordBank {
             if (difficulty - range > 0) {
                 sameLevel.addAll(getWordsByDifficulty(difficulty - range));
             }
-            if (range > 0 && difficulty + range <= 12) {
+            if (range > 0 && difficulty + range <= MAX_DIFFICULTY) {
                 sameLevel.addAll(getWordsByDifficulty(difficulty + range));
             }
         }

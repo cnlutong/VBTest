@@ -261,8 +261,8 @@ public class IRTAlgorithm implements TestAlgorithm {
         double fraction = ability - level;
 
         // 处理边界情况
-        if (level >= 6) {
-            return LEVEL_VOCABULARY_SIZE.get(6);
+        if (level >= 7) {
+            return LEVEL_VOCABULARY_SIZE.get(7);
         }
 
         // 计算词汇量
