@@ -41,6 +41,8 @@ public class TestManager {
         this.currentUser = user;
         this.answeredQuestions.clear();
         this.correctAnswersCount = 0;
+        // 初始化用户模型，应用自定义初始能力值
+        algorithm.initializeUser(user);
     }
 
     /**

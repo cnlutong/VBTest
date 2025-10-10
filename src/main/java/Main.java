@@ -15,13 +15,16 @@ public class Main {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        WordBank wordBank = initializeWordBank("C:\\Users\\cnlut\\Desktop\\test_v9.csv");
+        WordBank wordBank = initializeWordBank("test_v9.csv");
         if (wordBank == null) {
             System.exit(1);
         }
 
         TestService testService = initializeTestService(wordBank);
         UserModel user = createUser();
+        
+        // 设置自定义初始能力值
+        setupCustomInitialAbility();
 
         runTest(testService, user);
 
@@ -64,6 +67,52 @@ public class Main {
         System.out.print("请输入您的名字：");
         String userName = scanner.nextLine().trim();
         return new UserModel("user1", userName);
+    }
+
+    /**
+     * 设置自定义初始能力值
+     */
+    private static void setupCustomInitialAbility() {
+        System.out.println("\n--- 初始能力值设置 ---");
+        System.out.println("是否要自定义初始能力值？（默认为1.0）");
+        System.out.println("能力值范围：0.0 - 7.5");
+        System.out.println("参考：1.0=小学水平, 3.0=初中水平, 5.0=高中水平, 7.0=大学水平");
+        System.out.print("是否自定义？(y/n，默认y)：");
+        
+        String choice = scanner.nextLine().trim().toLowerCase();
+        
+        if (choice.equals("n") || choice.equals("no")) {
+            IRTAlgorithm.disableCustomInitialAbility();
+            System.out.println("已禁用自定义初始能力值功能，将使用默认值1.0");
+            return;
+        }
+        
+        // 启用自定义功能
+        IRTAlgorithm.enableCustomInitialAbility();
+        
+        while (true) {
+            System.out.print("请输入初始能力值（0.0-7.5，默认1.0）：");
+            String input = scanner.nextLine().trim();
+            
+            if (input.isEmpty()) {
+                IRTAlgorithm.setCustomInitialAbility(1.0);
+                System.out.println("已设置初始能力值为默认值：1.0");
+                break;
+            }
+            
+            try {
+                double ability = Double.parseDouble(input);
+                if (ability >= 0.0 && ability <= 7.5) {
+                    IRTAlgorithm.setCustomInitialAbility(ability);
+                    System.out.printf("已设置初始能力值为：%.2f\n", IRTAlgorithm.getCustomInitialAbility());
+                    break;
+                } else {
+                    System.out.println("输入超出范围，请输入0.0到7.5之间的数值。");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("无效输入，请输入一个有效的数字。");
+            }
+        }
     }
 
     /**

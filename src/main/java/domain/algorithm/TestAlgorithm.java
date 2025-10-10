@@ -12,6 +12,13 @@ import java.util.List;
  */
 public interface TestAlgorithm {
     /**
+     * 初始化用户模型。
+     *
+     * @param user 要初始化的用户
+     */
+    void initializeUser(UserModel user);
+
+    /**
      * 选择下一个问题。
      *
      * @param user              当前用户

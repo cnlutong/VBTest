@@ -38,6 +38,10 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static boolean noCorrectAnswerFeatureEnabled = true;
     private static final double NO_CORRECT_ANSWER_PROBABILITY = 0.1;
 
+    // 自定义初始能力值功能开关
+    private static boolean customInitialAbilityEnabled = true;
+    private static double customInitialAbility = INITIAL_ABILITY;
+
     // 定义每个难度等级对应的累计词汇量
     private static final Map<Integer, Integer> LEVEL_VOCABULARY_SIZE = new HashMap<>() {{
 //        小学3年纪
@@ -65,6 +69,44 @@ public class IRTAlgorithm implements TestAlgorithm {
     }
 
     /**
+     * 启用自定义初始能力值功能
+     */
+    public static void enableCustomInitialAbility() {
+        customInitialAbilityEnabled = true;
+    }
+
+    /**
+     * 禁用自定义初始能力值功能
+     */
+    public static void disableCustomInitialAbility() {
+        customInitialAbilityEnabled = false;
+    }
+
+    /**
+     * 设置自定义初始能力值
+     * @param ability 初始能力值，范围应在MIN_ABILITY到MAX_ABILITY之间
+     */
+    public static void setCustomInitialAbility(double ability) {
+        customInitialAbility = Math.max(MIN_ABILITY, Math.min(MAX_ABILITY, ability));
+    }
+
+    /**
+     * 获取当前设置的自定义初始能力值
+     * @return 当前的自定义初始能力值
+     */
+    public static double getCustomInitialAbility() {
+        return customInitialAbility;
+    }
+
+    /**
+     * 检查自定义初始能力值功能是否启用
+     * @return 如果启用返回true，否则返回false
+     */
+    public static boolean isCustomInitialAbilityEnabled() {
+        return customInitialAbilityEnabled;
+    }
+
+    /**
      * 构造函数
      * @param wordBank 词库对象
      */
@@ -79,7 +121,8 @@ public class IRTAlgorithm implements TestAlgorithm {
      * @param user 用户模型对象
      */
     public void initializeUser(UserModel user) {
-        user.setAbilityEstimate(INITIAL_ABILITY);
+        double initialAbility = customInitialAbilityEnabled ? customInitialAbility : INITIAL_ABILITY;
+        user.setAbilityEstimate(initialAbility);
         user.initAnswerRecord(ANSWER_WINDOW_SIZE);
     }
 
