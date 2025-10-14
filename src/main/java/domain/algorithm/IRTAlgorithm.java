@@ -31,7 +31,7 @@ public class IRTAlgorithm implements TestAlgorithm {
 
 
     // 成绩判断窗口相关常量
-    private static final int ANSWER_WINDOW_SIZE = 6;      // 最近答题观察数
+    private static final int ANSWER_WINDOW_SIZE = 5;      // 最近答题观察数
     private static final int MAX_WRONG_ALLOWED = 4;       // 不允许的最大错误数
 
 //    无正确选项开关
