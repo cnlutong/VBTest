@@ -10,19 +10,18 @@ import domain.model.UserModel;
 import java.io.IOException;
 import java.util.Scanner;
 
-
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        WordBank wordBank = initializeWordBank("test_v9.csv");
+        WordBank wordBank = initializeWordBank("test_v9.6.csv");
         if (wordBank == null) {
             System.exit(1);
         }
 
         TestService testService = initializeTestService(wordBank);
         UserModel user = createUser();
-        
+
         // 设置自定义初始能力值
         setupCustomInitialAbility();
 
@@ -33,6 +32,7 @@ public class Main {
 
     /**
      * 初始化词库
+     * 
      * @return 初始化成功返回 WordBank 对象，失败返回 null
      */
     private static WordBank initializeWordBank(String pathWordBank) {
@@ -48,6 +48,7 @@ public class Main {
 
     /**
      * 初始化测试服务
+     * 
      * @param wordBank 词库对象
      * @return TestService 对象
      */
@@ -61,6 +62,7 @@ public class Main {
 
     /**
      * 创建用户模型
+     * 
      * @return UserModel 对象
      */
     private static UserModel createUser() {
@@ -78,28 +80,28 @@ public class Main {
         System.out.println("能力值范围：0.0 - 7.5");
         System.out.println("参考：1.0=小学水平, 3.0=初中水平, 5.0=高中水平, 7.0=大学水平");
         System.out.print("是否自定义？(y/n，默认y)：");
-        
+
         String choice = scanner.nextLine().trim().toLowerCase();
-        
+
         if (choice.equals("n") || choice.equals("no")) {
             IRTAlgorithm.disableCustomInitialAbility();
             System.out.println("已禁用自定义初始能力值功能，将使用默认值1.0");
             return;
         }
-        
+
         // 启用自定义功能
         IRTAlgorithm.enableCustomInitialAbility();
-        
+
         while (true) {
             System.out.print("请输入初始能力值（0.0-7.5，默认1.0）：");
             String input = scanner.nextLine().trim();
-            
+
             if (input.isEmpty()) {
                 IRTAlgorithm.setCustomInitialAbility(1.0);
                 System.out.println("已设置初始能力值为默认值：1.0");
                 break;
             }
-            
+
             try {
                 double ability = Double.parseDouble(input);
                 if (ability >= 0.0 && ability <= 7.5) {
@@ -117,8 +119,9 @@ public class Main {
 
     /**
      * 执行测试流程
+     * 
      * @param testService 测试服务
-     * @param user 用户模型
+     * @param user        用户模型
      */
     private static void runTest(TestService testService, UserModel user) {
         testService.initiateTest(user);
@@ -144,7 +147,8 @@ public class Main {
 
     /**
      * 显示问题
-     * @param question 问题对象
+     * 
+     * @param question       问题对象
      * @param questionNumber 问题编号
      */
     private static void displayQuestion(Question question, int questionNumber) {
@@ -154,6 +158,7 @@ public class Main {
 
     /**
      * 获取用户答案
+     * 
      * @return 用户输入的答案
      */
     private static int getUserAnswer() {
@@ -173,7 +178,8 @@ public class Main {
 
     /**
      * 提供答题反馈
-     * @param question 当前问题
+     * 
+     * @param question  当前问题
      * @param isCorrect 答案是否正确
      */
     private static void provideFeedback(Question question, boolean isCorrect) {
@@ -188,6 +194,7 @@ public class Main {
 
     /**
      * 显示实时统计数据
+     * 
      * @param testService 测试服务
      */
     private static void displayStatistics(TestService testService) {
@@ -197,6 +204,7 @@ public class Main {
 
     /**
      * 显示测试结果
+     * 
      * @param result 测试结果
      */
     private static void displayTestResult(TestResult result) {

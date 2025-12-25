@@ -17,24 +17,23 @@ public class IRTAlgorithm implements TestAlgorithm {
     private final Set<Word> usedWords;
 
     // 定义算法相关的常量
-    private static final int MIN_QUESTIONS = 10;          // 最少问题数
-    private static final int MAX_QUESTIONS = 100;          // 最多问题数
-    private static final double MIN_DIFFICULTY = 1.0;     // 最小难度
-    private static final double MAX_DIFFICULTY = 7.0;    // 最大难度
-    private static final double MIN_ABILITY = 0.0;        // 最小能力值
-    private static final double MAX_ABILITY = 7.5;       // 最大能力值
-    private static final double INITIAL_ABILITY = 1.0;    // 初始能力值
-    private static final double DIFFICULTY_SLOPE = 1.2;   // 难度斜率
-    private static final double LEARNING_RATE = 0.05;     // 学习率
-    private static final int OPTIONS_COUNT = 5;  // 答案选项数量
+    private static final int MIN_QUESTIONS = 10; // 最少问题数
+    private static final int MAX_QUESTIONS = 100; // 最多问题数
+    private static final double MIN_DIFFICULTY = 1.0; // 最小难度
+    private static final double MAX_DIFFICULTY = 7.0; // 最大难度
+    private static final double MIN_ABILITY = 0.0; // 最小能力值
+    private static final double MAX_ABILITY = 7.5; // 最大能力值
+    private static final double INITIAL_ABILITY = 0; // 初始能力值
+    private static final double DIFFICULTY_SLOPE = 1.2; // 难度斜率
+    private static final double LEARNING_RATE = 0.05; // 学习率
+    private static final int OPTIONS_COUNT = 5; // 答案选项数量
     private static final double WRONG_ANSWER_PENALTY_RATIO = 0.8; //
 
-
     // 成绩判断窗口相关常量
-    private static final int ANSWER_WINDOW_SIZE = 5;      // 最近答题观察数
-    private static final int MAX_WRONG_ALLOWED = 4;       // 不允许的最大错误数
+    private static final int ANSWER_WINDOW_SIZE = 5; // 最近答题观察数
+    private static final int MAX_WRONG_ALLOWED = 4; // 不允许的最大错误数
 
-//    无正确选项开关
+    // 无正确选项开关
     private static boolean noCorrectAnswerFeatureEnabled = true;
     private static final double NO_CORRECT_ANSWER_PROBABILITY = 0.1;
 
@@ -43,22 +42,24 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static double customInitialAbility = INITIAL_ABILITY;
 
     // 定义每个难度等级对应的累计词汇量
-    private static final Map<Integer, Integer> LEVEL_VOCABULARY_SIZE = new HashMap<>() {{
-//        小学3年纪
-        put(1, 200);
-//        小学4-6
-        put(2, 500);
-//        初中
-        put(3, 1200);
-//        高中
-        put(4, 2800);
-//        四级
-        put(5, 3500);
-//        六级
-        put(6, 4500);
-//        八级
-        put(7, 6000);
-    }};
+    private static final Map<Integer, Integer> LEVEL_VOCABULARY_SIZE = new HashMap<>() {
+        {
+            // 小学3年纪
+            put(1, 200);
+            // 小学4-6
+            put(2, 500);
+            // 初中
+            put(3, 1200);
+            // 高中
+            put(4, 2800);
+            // 四级
+            put(5, 3500);
+            // 六级
+            put(6, 4500);
+            // 八级
+            put(7, 6000);
+        }
+    };
 
     public static void enableNoCorrectAnswerFeature() {
         noCorrectAnswerFeatureEnabled = true;
@@ -84,6 +85,7 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     /**
      * 设置自定义初始能力值
+     * 
      * @param ability 初始能力值，范围应在MIN_ABILITY到MAX_ABILITY之间
      */
     public static void setCustomInitialAbility(double ability) {
@@ -92,6 +94,7 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     /**
      * 获取当前设置的自定义初始能力值
+     * 
      * @return 当前的自定义初始能力值
      */
     public static double getCustomInitialAbility() {
@@ -100,6 +103,7 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     /**
      * 检查自定义初始能力值功能是否启用
+     * 
      * @return 如果启用返回true，否则返回false
      */
     public static boolean isCustomInitialAbilityEnabled() {
@@ -108,6 +112,7 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     /**
      * 构造函数
+     * 
      * @param wordBank 词库对象
      */
     public IRTAlgorithm(WordBank wordBank) {
@@ -118,6 +123,7 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     /**
      * 初始化用户模型
+     * 
      * @param user 用户模型对象
      */
     public void initializeUser(UserModel user) {
@@ -136,6 +142,7 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     /**
      * 根据目标难度选择单词
+     * 
      * @param targetDifficulty 目标难度
      * @return 选中的单词
      */
@@ -147,11 +154,13 @@ public class IRTAlgorithm implements TestAlgorithm {
             for (int i = 1; i <= 5; i++) {
                 if (roundedDifficulty - i >= MIN_DIFFICULTY) {
                     availableWords = findAvailableWordsAtDifficulty(roundedDifficulty - i);
-                    if (!availableWords.isEmpty()) break;
+                    if (!availableWords.isEmpty())
+                        break;
                 }
                 if (roundedDifficulty + i <= MAX_DIFFICULTY) {
                     availableWords = findAvailableWordsAtDifficulty(roundedDifficulty + i);
-                    if (!availableWords.isEmpty()) break;
+                    if (!availableWords.isEmpty())
+                        break;
                 }
             }
         }
@@ -178,7 +187,7 @@ public class IRTAlgorithm implements TestAlgorithm {
         if (noCorrectAnswerFeatureEnabled && random.nextDouble() < NO_CORRECT_ANSWER_PROBABILITY) {
             // 生成全是干扰项的选项列表
             options = wordBank.getRandomDistractors(word, 5);
-            correctOptionIndex = 5;  // "以上都不对"是正确答案
+            correctOptionIndex = 5; // "以上都不对"是正确答案
         } else {
             // 普通题目
             options = wordBank.getRandomOptions(word, 5);
@@ -207,18 +216,15 @@ public class IRTAlgorithm implements TestAlgorithm {
                 // 答对时
                 double newEstimate = currentEstimate + adjustment / information;
                 user.setAbilityEstimate(
-                        Math.max(MIN_ABILITY, Math.min(MAX_ABILITY, newEstimate))
-                );
+                        Math.max(MIN_ABILITY, Math.min(MAX_ABILITY, newEstimate)));
             } else {
                 // 答错时，扣分为答对加分的一定比例
                 double newEstimate = currentEstimate - (adjustment / information * WRONG_ANSWER_PENALTY_RATIO);
                 user.setAbilityEstimate(
-                        Math.max(MIN_ABILITY, Math.min(MAX_ABILITY, newEstimate))
-                );
+                        Math.max(MIN_ABILITY, Math.min(MAX_ABILITY, newEstimate)));
             }
         }
     }
-
 
     /**
      * 计算回答正确的概率
