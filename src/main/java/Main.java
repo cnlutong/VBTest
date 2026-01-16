@@ -8,12 +8,14 @@ import domain.model.TestResult;
 import domain.model.UserModel;
 
 import java.io.IOException;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        printAppVersion();
         WordBank wordBank = initializeWordBank("test_v9.6.csv");
         if (wordBank == null) {
             System.exit(1);
@@ -210,5 +212,20 @@ public class Main {
     private static void displayTestResult(TestResult result) {
         System.out.println("\n测试结束！");
         System.out.println(result);
+    }
+
+    private static void printAppVersion() {
+        String version = "DEVELOPMENT";
+        try {
+            Properties properties = new Properties();
+            properties.load(Main.class.getClassLoader().getResourceAsStream("version.properties"));
+            String loadVersion = properties.getProperty("version");
+            if (loadVersion != null) {
+                version = loadVersion;
+            }
+        } catch (IOException | NullPointerException e) {
+            // Ignore, use default
+        }
+        System.out.println("Application Version: " + version);
     }
 }

@@ -2,8 +2,18 @@ plugins {
     id 'java'
 }
 
+def getGitHash = { ->
+    try {
+        def process = 'git rev-parse --short HEAD'.execute()
+        process.waitFor()
+        return process.text.trim()
+    } catch (Exception e) {
+        return "unknown"
+    }
+}
+
 group = 'org.example'
-version = '1.0-SNAPSHOT'
+version = "1.0-${getGitHash()}"
 
 repositories {
     mavenCentral()
@@ -21,7 +31,17 @@ test {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'Main'
+                'Main-Class': 'Main',
+                'Implementation-Title': 'VBTest',
+                'Implementation-Version': project.version
         )
+    }
+}
+
+import org.apache.tools.ant.filters.ReplaceTokens
+
+processResources {
+    filesMatching('**/*.properties') {
+        filter(ReplaceTokens, tokens: [version: project.version.toString()])
     }
 }
