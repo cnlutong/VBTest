@@ -41,6 +41,9 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static boolean customInitialAbilityEnabled = true;
     private static double customInitialAbility = INITIAL_ABILITY;
 
+    // 最终成绩正确率惩罚开关（默认关闭）
+    private static boolean accuracyPenaltyEnabled = false;
+
     // 定义每个难度等级对应的累计词汇量
     private static final Map<Integer, Integer> LEVEL_VOCABULARY_SIZE = new HashMap<>() {
         {
@@ -108,6 +111,27 @@ public class IRTAlgorithm implements TestAlgorithm {
      */
     public static boolean isCustomInitialAbilityEnabled() {
         return customInitialAbilityEnabled;
+    }
+
+    /**
+     * 启用最终成绩正确率惩罚
+     */
+    public static void enableAccuracyPenalty() {
+        accuracyPenaltyEnabled = true;
+    }
+
+    /**
+     * 禁用最终成绩正确率惩罚
+     */
+    public static void disableAccuracyPenalty() {
+        accuracyPenaltyEnabled = false;
+    }
+
+    /**
+     * 检查是否启用了最终成绩正确率惩罚
+     */
+    public static boolean isAccuracyPenaltyEnabled() {
+        return accuracyPenaltyEnabled;
     }
 
     /**
@@ -271,17 +295,20 @@ public class IRTAlgorithm implements TestAlgorithm {
         double accuracy = totalQuestions > 0 ? (correctAnswers * 100.0) / totalQuestions : 0.0;
 
         // 计算打折系数
-        double discountFactor = 1.0 - ((100.0 - accuracy) * DISCOUNT_RATE / 100.0);
+        double discountFactor = 1.0;
 
-        // 设置最小打折系数
-        discountFactor = Math.max(discountFactor, MIN_DISCOUNT_FACTOR);
+        if (accuracyPenaltyEnabled) {
+            discountFactor = 1.0 - ((100.0 - accuracy) * DISCOUNT_RATE / 100.0);
+            // 设置最小打折系数
+            discountFactor = Math.max(discountFactor, MIN_DISCOUNT_FACTOR);
+        }
 
         // 对能力值进行打折
         double finalAbility = user.getAbilityEstimate() * discountFactor;
 
         // 基于打折后的能力值计算词汇量
         int estimatedVocabularySize = estimateVocabularySize(finalAbility);
-        int maxVocabularySize = LEVEL_VOCABULARY_SIZE.get(6);
+        int maxVocabularySize = LEVEL_VOCABULARY_SIZE.get(7);
 
         return new TestResult(user, finalAbility, answeredQuestions.size(),
                 correctAnswers, correctVocabEstimate(estimatedVocabularySize), maxVocabularySize);
