@@ -15,15 +15,15 @@ public class TestResult {
     /**
      * 构造一个新的 TestResult 对象。
      *
-     * @param user 参与测试的用户
-     * @param finalAbilityEstimate 最终能力估计值
-     * @param totalQuestions 总题目数
-     * @param correctAnswers 正确答题数
+     * @param user                    参与测试的用户
+     * @param finalAbilityEstimate    最终能力估计值
+     * @param totalQuestions          总题目数
+     * @param correctAnswers          正确答题数
      * @param estimatedVocabularySize 估计词汇量大小
-     * @param totalVocabularySize 词库总词汇量
+     * @param totalVocabularySize     词库总词汇量
      */
     public TestResult(UserModel user, double finalAbilityEstimate, int totalQuestions, int correctAnswers,
-                      int estimatedVocabularySize, int totalVocabularySize) {
+            int estimatedVocabularySize, int totalVocabularySize) {
         this.resultMean = new ResultMean(0);
         this.user = user;
         this.finalAbilityEstimate = finalAbilityEstimate;
@@ -33,6 +33,9 @@ public class TestResult {
         this.totalVocabularySize = totalVocabularySize;
     }
 
+    public double getFinalAbilityEstimate() {
+        return finalAbilityEstimate;
+    }
 
     @Override
     public String toString() {
@@ -55,7 +58,6 @@ public class TestResult {
                 (double) correctAnswers / totalQuestions * 100,
                 estimatedVocabularySize,
                 totalVocabularySize,
-                (double) estimatedVocabularySize / totalVocabularySize * 100
-        );
+                (double) estimatedVocabularySize / totalVocabularySize * 100);
     }
 }

@@ -27,7 +27,7 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double DIFFICULTY_SLOPE = 1.2; // 难度斜率
     private static final double LEARNING_RATE = 0.05; // 学习率
     private static final int OPTIONS_COUNT = 5; // 答案选项数量
-    private static final double WRONG_ANSWER_PENALTY_RATIO = 0.4; // 不正确答案惩罚比例
+    private static final double WRONG_ANSWER_PENALTY_RATIO = 0.5; // 不正确答案惩罚比例
 
     // 成绩判断窗口相关常量
     private static final int ANSWER_WINDOW_SIZE = 5; // 最近答题观察数
@@ -223,6 +223,9 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     @Override
     public void updateUserModel(UserModel user, Question question, boolean isCorrect) {
+        // 记录答题之前的能力值快照，用于触发惩罚豁免时的回滚
+        question.setAbilityBeforeAnswer(user.getAbilityEstimate());
+
         // 记录答题结果
         user.recordAnswer(isCorrect);
 
@@ -303,8 +306,25 @@ public class IRTAlgorithm implements TestAlgorithm {
             discountFactor = Math.max(discountFactor, MIN_DISCOUNT_FACTOR);
         }
 
+        // 获取基础能力值
+        double baseAbility = user.getAbilityEstimate();
+
+        // 【补偿逻辑】如果是因为 5 题错 4 题触发的提前终止
+        if (user.getRecentWrongCount() >= MAX_WRONG_ALLOWED) {
+            // 找到观察窗口（最后 5 题）中第一个错误发生前的能力值
+            int windowStart = Math.max(0, answeredQuestions.size() - ANSWER_WINDOW_SIZE);
+            for (int i = windowStart; i < answeredQuestions.size(); i++) {
+                Question q = answeredQuestions.get(i);
+                if (!q.isAnsweredCorrectly()) {
+                    // 回滚到这道错题之前的能力值
+                    baseAbility = q.getAbilityBeforeAnswer();
+                    break;
+                }
+            }
+        }
+
         // 对能力值进行打折
-        double finalAbility = user.getAbilityEstimate() * discountFactor;
+        double finalAbility = baseAbility * discountFactor;
 
         // 基于打折后的能力值计算词汇量
         int estimatedVocabularySize = estimateVocabularySize(finalAbility);
