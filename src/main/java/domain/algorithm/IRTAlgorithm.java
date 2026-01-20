@@ -27,7 +27,7 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double DIFFICULTY_SLOPE = 1.2; // 难度斜率
     private static final double LEARNING_RATE = 0.05; // 学习率
     private static final int OPTIONS_COUNT = 5; // 答案选项数量
-    private static final double WRONG_ANSWER_PENALTY_RATIO = 0.8; //
+    private static final double WRONG_ANSWER_PENALTY_RATIO = 0.4; // 不正确答案惩罚比例
 
     // 成绩判断窗口相关常量
     private static final int ANSWER_WINDOW_SIZE = 5; // 最近答题观察数
@@ -35,14 +35,14 @@ public class IRTAlgorithm implements TestAlgorithm {
 
     // 无正确选项开关
     private static boolean noCorrectAnswerFeatureEnabled = true;
-    private static final double NO_CORRECT_ANSWER_PROBABILITY = 0.1;
+    private static final double NO_CORRECT_ANSWER_PROBABILITY = 0.1; // 无正确选项的概率
 
     // 自定义初始能力值功能开关
     private static boolean customInitialAbilityEnabled = true;
-    private static double customInitialAbility = INITIAL_ABILITY;
+    private static double customInitialAbility = INITIAL_ABILITY; // 自定义初始能力值
 
     // 最终成绩正确率惩罚开关（默认关闭）
-    private static boolean accuracyPenaltyEnabled = false;
+    private static boolean accuracyPenaltyEnabled = false; // 最终成绩正确率惩罚开关
 
     // 定义每个难度等级对应的累计词汇量
     private static final Map<Integer, Integer> LEVEL_VOCABULARY_SIZE = new HashMap<>() {
