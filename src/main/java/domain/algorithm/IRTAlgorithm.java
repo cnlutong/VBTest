@@ -27,7 +27,7 @@ public class IRTAlgorithm implements TestAlgorithm {
     private static final double DIFFICULTY_SLOPE = 1.2; // 难度斜率
     private static final double LEARNING_RATE = 0.05; // 学习率
     private static final int OPTIONS_COUNT = 5; // 答案选项数量
-    private static final double WRONG_ANSWER_PENALTY_RATIO = 0.5; // 不正确答案惩罚比例
+    private static final double WRONG_ANSWER_PENALTY_RATIO = 0.6; // 不正确答案惩罚比例
 
     // 成绩判断窗口相关常量
     private static final int ANSWER_WINDOW_SIZE = 5; // 最近答题观察数
