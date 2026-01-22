@@ -1,0 +1,55 @@
+
+    private static String buildProgressBar(int estimatedVocab) {
+        // Base scale: 0-6000+
+        // Markers: Elementary(500), Middle(2000), High(4500), University(6000)
+        
+        int maxScale = 7000;
+        double percentage = (double) estimatedVocab / maxScale * 100;
+        if (percentage > 100) percentage = 100;
+        if (percentage < 0) percentage = 0;
+
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append("<div class=\"w-full\">\n");
+        
+        // Labels
+        sb.append("    <div class=\"flex mb-2 items-center justify-between text-xs text-slate-500 font-medium\">\n");
+        sb.append("        <div style=\"width: 7.14%\"></div>\n"); // 500/7000 approx 7%
+        sb.append("        <div class=\"text-center\" style=\"width: 21.4%\">小学</div>\n"); // 1500 range
+        sb.append("        <div class=\"text-center\" style=\"width: 35.7%\">初/高中</div>\n"); // 2500 range
+        sb.append("        <div class=\"text-center flex-1\">大学+</div>\n");
+        sb.append("    </div>\n");
+
+        // The Bar Container
+        sb.append("    <div class=\"relative h-4 bg-slate-100 rounded-full overflow-hidden shadow-inner\">\n");
+        
+        // Colored Segments
+        // 0-500: Elementary (Cyan)
+        sb.append("        <div class=\"absolute top-0 bottom-0 left-0 bg-cyan-200\" style=\"width: 7.14%\"></div>\n");
+        // 500-2000: Middle (Blue)
+        sb.append("        <div class=\"absolute top-0 bottom-0 bg-blue-200\" style=\"left: 7.14%; width: 21.43%\"></div>\n");
+        // 2000-4500: High (Indigo)
+        sb.append("        <div class=\"absolute top-0 bottom-0 bg-indigo-200\" style=\"left: 28.57%; width: 35.71%\"></div>\n");
+        // 4500+: University (Purple)
+        sb.append("        <div class=\"absolute top-0 bottom-0 right-0 bg-purple-200\" style=\"left: 64.28%\"></div>\n");
+
+        // User Marker
+        sb.append("        <div class=\"absolute top-0 bottom-0 w-1 bg-slate-800 shadow-md transform -translate-x-1/2 transition-all duration-1000 ease-out\" style=\"left: ")
+          .append(String.format("%.1f", percentage))
+          .append("%;\"></div>\n");
+        
+        sb.append("    </div>\n");
+        
+        // Tick Marks labels (bottom)
+        sb.append("    <div class=\"flex mt-1 text-xs text-slate-400 justify-between\">\n");
+        sb.append("        <span>0</span>\n");
+        sb.append("        <span style=\"margin-left: -5%\">500</span>\n");
+        sb.append("        <span style=\"margin-left: -2%\">2000</span>\n");
+        sb.append("        <span>4500</span>\n");
+        sb.append("        <span>7000+</span>\n");
+        sb.append("    </div>\n");
+        
+        sb.append("</div>\n");
+
+        return sb.toString();
+    }

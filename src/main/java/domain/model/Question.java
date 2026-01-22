@@ -16,6 +16,8 @@ public class Question {
     private static final String I_DONT_KNOW_OPTION = "以上都不对"; // "以上都不对"选项
     private static final String I_DONT_KNOW_THIS_OPTION = "我不会"; // "我不会"选项
 
+    private int userAnswerIndex = -1; // 用户选择的答案索引
+
     /**
      * 构造一个新的 Question 对象。
      *
@@ -56,12 +58,20 @@ public class Question {
     }
 
     /**
+     * 获取用户选择的答案索引
+     */
+    public int getUserAnswerIndex() {
+        return userAnswerIndex;
+    }
+
+    /**
      * 检查给定的答案是否正确
      *
      * @param answerIndex 用户选择的答案索引
      * @return 如果答案正确返回 true，否则返回 false
      */
     public boolean isCorrect(int answerIndex) {
+        this.userAnswerIndex = answerIndex;
         if (answerIndex == options.size() - 1) { // 如果选择了"我不会"
             this.answeredCorrectly = false; // 直接判定为错误
             return false;

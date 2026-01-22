@@ -1,4 +1,5 @@
 
+import application.ReportGenerator;
 import application.TestManager;
 import application.TestService;
 import domain.WordBank;
@@ -124,8 +125,9 @@ public class Main {
      * 
      * @param testService 测试服务
      * @param user        用户模型
+     * @return 生成的报告文件路径
      */
-    private static void runTest(TestService testService, UserModel user) {
+    public static String runTest(TestService testService, UserModel user) {
         testService.initiateTest(user);
         int questionCount = 0;
 
@@ -144,7 +146,19 @@ public class Main {
             displayStatistics(testService);
         }
 
-        displayTestResult(testService.concludeTest());
+        TestResult result = testService.concludeTest();
+        displayTestResult(result);
+
+        // 生成报告
+        String timestamp = java.time.LocalDateTime.now()
+                .format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+        String safeUserName = user.getName().replaceAll("[^a-zA-Z0-9\\u4e00-\\u9fa5]", "_"); // Keep Chinese,
+                                                                                             // alphanumeric, replace
+                                                                                             // others
+        String reportPath = String.format("report/vocabulary_report_%s_%s.html", safeUserName, timestamp);
+        ReportGenerator.generateReport(result, reportPath);
+
+        return reportPath;
     }
 
     /**

@@ -153,6 +153,11 @@ public class IRTAlgorithm implements TestAlgorithm {
     public void initializeUser(UserModel user) {
         double initialAbility = customInitialAbilityEnabled ? customInitialAbility : INITIAL_ABILITY;
         user.setAbilityEstimate(initialAbility);
+
+        // Track initial settings
+        user.setInitialAbility(initialAbility);
+        user.setCustomInitialAbility(customInitialAbilityEnabled);
+
         user.initAnswerRecord(ANSWER_WINDOW_SIZE);
     }
 
@@ -331,7 +336,7 @@ public class IRTAlgorithm implements TestAlgorithm {
         int maxVocabularySize = LEVEL_VOCABULARY_SIZE.get(7);
 
         return new TestResult(user, finalAbility, answeredQuestions.size(),
-                correctAnswers, correctVocabEstimate(estimatedVocabularySize), maxVocabularySize);
+                correctAnswers, correctVocabEstimate(estimatedVocabularySize), maxVocabularySize, answeredQuestions);
     }
 
     private int correctVocabEstimate(int estimatedVocab) {

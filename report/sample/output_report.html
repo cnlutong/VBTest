@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭CEO 伴学 · 语法测试诊断报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f1f5f9;
+        }
+
+        .report-container {
+            width: 21cm;
+            min-height: 29.7cm;
+            margin: 2rem auto;
+            padding: 2cm 1.8cm;
+            background-color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .status-badge {
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .status-badge-correct {
+            background-color: #ecfdf5;
+            color: #059669;
+        }
+
+        .status-badge-incorrect {
+            background-color: #fef2f2;
+            color: #b91c1c;
+        }
+
+        .appendix-section {
+            page-break-before: always;
+        }
+
+        .progress-bar {
+            background-color: #e2e8f0;
+            border-radius: 9999px;
+            height: 10px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress-bar-inner {
+            background-color: #059669;
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 0.5s ease-in-out;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+            }
+
+            .report-container {
+                margin: 0;
+                padding: 1.5cm;
+                box-shadow: none;
+                width: 100%;
+                min-height: 0;
+                border: none;
+            }
+
+            header,
+            section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="report-container">
+        <!-- Page Header -->
+        <div class="flex justify-between items-center mb-8 pb-4 border-b border-slate-200">
+            <img src="logo.png" alt="家庭CEO 伴学 Logo" class="h-auto w-20">
+            <a href="https://familyceo.cn" target="_blank"
+                class="text-sm font-medium text-slate-600 hover:text-blue-600 hover:underline">familyceo.cn</a>
+        </div>
+
+        <!-- Main Title -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-slate-800">家庭CEO 伴学 · 语法测试诊断报告</h1>
+        </header>
+
+        <!-- 学生信息 -->
+        <section class="mb-8 p-6 bg-slate-50 rounded-xl border border-slate-200">
+            <h2 class="text-2xl font-semibold text-slate-700 mb-4">基本信息</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="bg-blue-100 p-3 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-blue-700">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg></div>
+                    <div class="flex items-baseline gap-2 whitespace-nowrap">
+                        <p class="text-slate-500">学生姓名:</p>
+                        <p class="font-semibold text-slate-800 text-lg">张三</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="bg-blue-100 p-3 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-blue-700">
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                            <line x1="16" x2="16" y1="2" y2="6" />
+                            <line x1="8" x2="8" y1="2" y2="6" />
+                            <line x1="3" x2="21" y1="10" y2="10" />
+                        </svg></div>
+                    <div class="flex items-baseline gap-2 whitespace-nowrap">
+                        <p class="text-slate-500">测试日期:</p>
+                        <p class="font-semibold text-slate-800 text-lg">2025年10月15日</p>
+                    </div>
+                </div>
+                <div class="col-span-1 md:col-span-3">
+                    <p class="text-sm text-slate-500 mb-2">综合得分：<strong id="score-display" class="text-slate-800">-- /
+                            --</strong>（正确率：<strong id="accuracy-display" class="text-slate-800">--%</strong>）</p>
+                    <div class="progress-bar">
+                        <div id="progress-bar-inner" class="progress-bar-inner" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 详细分析表格 -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-slate-700 mb-4">知识点掌握情况分析</h2>
+            <div class="overflow-x-auto border border-slate-200 rounded-lg">
+                <table class="w-full">
+                    <thead class="bg-slate-100">
+                        <tr>
+                            <th class="p-4 font-semibold text-slate-600 border-b text-left">语法大类</th>
+                            <th class="p-4 font-semibold text-slate-600 border-b text-left">具体知识点</th>
+                            <th class="p-4 font-semibold text-slate-600 border-b text-center">答题情况</th>
+                            <th class="p-4 font-semibold text-slate-600 border-b text-center">相关错题</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700">
+                        <!-- be 动词 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">be 动词</td>
+                            <td class="p-4 border-b border-slate-200">1. be 动词</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 词性 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">词性</td>
+                            <td class="p-4 border-b border-slate-200">2. 词性</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 名词 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="2">名词</td>
+                            <td class="p-4 border-b border-slate-200">3. 名词的数</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 名词 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">4. 名词所有格</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">21</td>
+                        </tr>
+                        <!-- 代词 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">代词</td>
+                            <td class="p-4 border-b border-slate-200">5. 代词</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">25</td>
+                        </tr>
+                        <!-- 冠词 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">冠词</td>
+                            <td class="p-4 border-b border-slate-200">6. 冠词</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">31</td>
+                        </tr>
+                        <!-- 数词 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">数词</td>
+                            <td class="p-4 border-b border-slate-200">7. 数词</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 动词 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="2">动词</td>
+                            <td class="p-4 border-b border-slate-200">8. 动词</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">38</td>
+                        </tr>
+                        <!-- 动词 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">42. 情态动词表示推测</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 形容词和副词 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">形容词和副词</td>
+                            <td class="p-4 border-b border-slate-200">9. 形容词和副词</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">42</td>
+                        </tr>
+                        <!-- 介词 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">介词</td>
+                            <td class="p-4 border-b border-slate-200">10. 介词</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">45</td>
+                        </tr>
+                        <!-- 连词 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">连词</td>
+                            <td class="p-4 border-b border-slate-200">11. 连词</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 感叹词 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">感叹词</td>
+                            <td class="p-4 border-b border-slate-200">12. 感叹词</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- there be 句型 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">there be 句型</td>
+                            <td class="p-4 border-b border-slate-200">13. there be 句型</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">50</td>
+                        </tr>
+                        <!-- 就近原则 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">就近原则</td>
+                            <td class="p-4 border-b border-slate-200">14. 就近原则</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 简单句 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">简单句</td>
+                            <td class="p-4 border-b border-slate-200">15. 简单句</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">55</td>
+                        </tr>
+                        <!-- 时态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="13">时态</td>
+                            <td class="p-4 border-b border-slate-200">16. 一般现在时</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 时态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">17. 现在进行时</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">61</td>
+                        </tr>
+                        <!-- 时态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">18. 一般将来时</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 时态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">19. 一般过去时</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 时态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">20. 现在完成时</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">68</td>
+                        </tr>
+                        <!-- 时态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">21. 过去完成时</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 时态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">22. 过去进行时</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 时态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">23. 将来进行时</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 时态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">24. 将来完成时</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 时态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">25. 现在完成进行时</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 时态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">26. 过去完成进行时</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 时态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">27. 将来完成进行时</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 时态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200">28. 时态总结</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">72</td>
+                        </tr>
+                        <!-- 句型转换 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">句型转换</td>
+                            <td class="p-4 border-b border-slate-200">29. 句型转换方法</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 被动语态 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">被动语态</td>
+                            <td class="p-4 border-b border-slate-200">30. 被动语态</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">75</td>
+                        </tr>
+                        <!-- 非谓语动词 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">非谓语动词</td>
+                            <td class="p-4 border-b border-slate-200">31. 非谓语动词</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">80</td>
+                        </tr>
+                        <!-- 引语与过去将来时 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">引语与过去将来时</td>
+                            <td class="p-4 border-b border-slate-200">32. 引语与过去将来时</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 从句 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="8">从句</td>
+                            <td class="p-4 border-b border-slate-200">33. 宾语从句</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">85</td>
+                        </tr>
+                        <!-- 从句 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200">34. 从句使用陈述语序的逻辑</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 从句 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200">35. 主语从句</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 从句 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200">36. 表语从句</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 从句 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200">37. 同位语从句</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 从句 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200">38. 定语从句</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">88</td>
+                        </tr>
+                        <!-- 从句 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200">39. 状语从句</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 从句 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200">40. 从句总结</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 句子总结 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">句子总结</td>
+                            <td class="p-4 border-b border-slate-200">41. 句子总结</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 独立主格 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">独立主格</td>
+                            <td class="p-4 border-b border-slate-200">43. 独立主格</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 主谓一致 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">主谓一致</td>
+                            <td class="p-4 border-b border-slate-200">44. 主谓一致</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">92</td>
+                        </tr>
+                        <!-- 虚拟语气 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">虚拟语气</td>
+                            <td class="p-4 border-b border-slate-200">45. 虚拟语气</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- 倒装句 -->
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">倒装句</td>
+                            <td class="p-4 border-b border-slate-200">46. 倒装句</td>
+                            <td class="p-4 border-b border-slate-200"><span class="status-badge status-badge-correct">✓
+                                    正确</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">--</td>
+                        </tr>
+                        <!-- it 的用法 -->
+                        <tr class="bg-slate-50 hover:bg-slate-100">
+                            <td class="p-4 border-b border-slate-200 font-medium" rowspan="1">it 的用法</td>
+                            <td class="p-4 border-b border-slate-200">47. it 的用法</td>
+                            <td class="p-4 border-b border-slate-200"><span
+                                    class="status-badge status-badge-incorrect">✗ 错误</span></td>
+                            <td class="p-4 border-b border-slate-200 text-center">98</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 总结与学习建议 -->
+        <section class="mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="h-8 w-8 text-slate-700" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                </svg>
+                <h2 class="text-2xl font-semibold text-slate-700">总结与学习建议</h2>
+            </div>
+            <div class="space-y-4 text-slate-600 leading-relaxed text-sm">
+                <p class="mb-5">
+                    语法是语言的骨架，掌握好语法是实现准确、流利表达的关键。这份报告旨在帮助你清晰地了解自己当前的语法知识体系。请结合报告中的具体分析，参考以下通用性学习建议，制定科学高效的语法提升计划。</p>
+
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <h3 class="font-semibold text-slate-800 text-base mb-2">1. 回归基础，构建系统化知识网络</h3>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><strong>理解而非死记：</strong> 不要孤立地记忆语法规则。尝试理解每一条规则背后的逻辑。首先要扎实掌握句子成分（主、谓、宾、定、状、补），这是分析一切复杂句子的基础。
+                        </li>
+                        <li><strong>绘制"语法地图"：</strong>
+                            使用思维导图等工具，将零散的知识点（如时态、语态、从句）串联起来，构建属于自己的语法知识体系。理清它们之间的关系，而不是让它们成为孤岛。</li>
+                    </ul>
+                </div>
+
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <h3 class="font-semibold text-slate-800 text-base mb-2">2. 在真实语境中学习，做到活学活用</h3>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><strong>告别"语法翻译"：</strong> 避免做题时单纯地将中文句子硬套语法规则。要多接触原汁原味的英语材料（如分级读物、简报），观察语法在实际交流中是如何运用的。
+                        </li>
+                        <li><strong>造句是检验真理的标准：</strong> 每学习一个新语法点，尝试用它来描述自己的生活、表达自己的观点。自己造的句子印象最深刻，也最能检验是否真正掌握。</li>
+                    </ul>
+                </div>
+
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <h3 class="font-semibold text-slate-800 text-base mb-2">3. 善用错题，将绊脚石变为垫脚石</h3>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><strong>建立高质量错题本：</strong> 错题本不应只是简单地抄题和答案。核心在于记录"为什么错"，是概念不清、规则混淆还是粗心大意？并在一旁注明对应的正确知识点。
+                        </li>
+                        <li><strong>定期回顾与复盘：</strong> 每周末或每月底，定期回顾错题本。你会发现很多错误都是重复出现的，这正是你的薄弱环节。集中攻克这些弱点，比盲目刷题更有效率。</li>
+                    </ul>
+                </div>
+
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <h3 class="font-semibold text-slate-800 text-base mb-2">4. 坚持输入与输出，培养扎实语感</h3>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><strong>"读"与"听"是内化之本：</strong> 语感并非玄学，而是大量接触语言材料后形成的一种直觉。坚持每天进行一定量的阅读和听力输入，能让你在潜移默化中熟悉语法结构。
+                        </li>
+                        <li><strong>"说"与"写"是应用之道：</strong> 勇敢地开口说、动手写。哪怕从简单的句子开始，也是将语法知识转化为实际能力的重要一步。可以尝试写英文日记、复述读过的故事。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 附录：错题解析 -->
+        <section class="mt-8 pt-8 border-t-2 border-dashed appendix-section">
+            <h2 class="text-2xl font-semibold text-slate-700 mb-6">附录：错题解析</h2>
+            <div class="space-y-6">
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">21. This is the key of the ___.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 4. 名词所有格</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> C. room&#39;s door</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> B. door of the room</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> 无生命名词的所有格通常使用 &#39;of&#39; 结构。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">25. I have ___ to tell you.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 5. 代词</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> B. anything</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> A. something</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> 此句为肯定陈述句，通常使用 something。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">31. She is ___ honest girl.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 6. 冠词</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> A. a</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> B. an</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> honest 以元音音素开头，用 an。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">38. You ___ smoke here.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 8. 动词</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> A. can</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> C. mustn&#39;t</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> 表示强烈禁止用 mustn&#39;t。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">42. This book is ___ than that one.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 9. 形容词和副词</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> A. interesting</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> B. more interesting</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> 比较级用 more interesting。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">45. The keys are ___ the table.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 10. 介词</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> B. in</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> A. on</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> 表示在表面上用 on。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">50. ___ a book on the desk.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 13. there be 句型</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> A. Have</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> C. There is</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> 表示某地有某物用 there be。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">55. ___ your name?</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 15. 简单句</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> A. How is</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> C. What is</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> 询问姓名用 What。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">61. Listen! The baby ___.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 17. 现在进行时</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> A. cry</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> B. is crying</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> Listen提示用现在进行时。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">68. I ___ here for three years.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 20. 现在完成时</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> B. lived</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> C. have lived</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> for three years 表示持续，用现在完成时。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">72. He said he ___ to Beijing.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 28. 时态总结</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> A. will go</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> B. would go</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> 主句过去时，从句用过去将来时。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">75. The window ___ by Tom.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 30. 被动语态</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> A. break</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> C. was broken</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> 主语是动作承受者，用被动语态。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">80. I enjoy ___ football.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 31. 非谓语动词</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> A. to play</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> B. playing</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> enjoy 后跟动名词。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">85. I don&#39;t know ___ he will come.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 33. 宾语从句</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> A. that</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> B. if</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> 表示是否用 if/whether。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">88. This is the man ___ helped me.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 38. 定语从句</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> B. which</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> A. who</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> 先行词指人用 who。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">92. The number of students ___ 50.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 44. 主谓一致</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> B. are</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> A. is</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> the number of 作主语用单数。</p>
+                    </div>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-lg bg-slate-50/50">
+                    <p class="font-semibold text-slate-800 text-lg">98. ___ is important to learn English.</p>
+                    <p class="text-sm text-slate-500 mt-2"><strong>知识点:</strong> 47. it 的用法</p>
+                    <div class="mt-3 text-sm space-y-2">
+                        <p><span class="font-medium text-red-600">你的答案:</span> B. This</p>
+                        <p><span class="font-medium text-green-700">正确答案:</span> A. It</p>
+                        <p class="pt-2 border-t border-slate-200 mt-2"><span
+                                class="font-medium text-slate-700">解析:</span> it 作形式主语。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 从JSON数据计算得分
+        const reportData = {
+            "results": [
+                { "category": "be 动词", "topic": "1. be 动词", "isCorrect": true },
+                { "category": "词性", "topic": "2. 词性", "isCorrect": true },
+                { "category": "名词", "topic": "3. 名词的数", "isCorrect": true },
+                { "category": "名词", "topic": "4. 名词所有格", "isCorrect": false },
+                { "category": "代词", "topic": "5. 代词", "isCorrect": false },
+                { "category": "冠词", "topic": "6. 冠词", "isCorrect": false },
+                { "category": "数词", "topic": "7. 数词", "isCorrect": true },
+                { "category": "动词", "topic": "8. 动词", "isCorrect": false },
+                { "category": "动词", "topic": "42. 情态动词表示推测", "isCorrect": true },
+                { "category": "形容词和副词", "topic": "9. 形容词和副词", "isCorrect": false },
+                { "category": "介词", "topic": "10. 介词", "isCorrect": false },
+                { "category": "连词", "topic": "11. 连词", "isCorrect": true },
+                { "category": "感叹词", "topic": "12. 感叹词", "isCorrect": true },
+                { "category": "there be 句型", "topic": "13. there be 句型", "isCorrect": false },
+                { "category": "就近原则", "topic": "14. 就近原则", "isCorrect": true },
+                { "category": "简单句", "topic": "15. 简单句", "isCorrect": false },
+                { "category": "时态", "topic": "16. 一般现在时", "isCorrect": true },
+                { "category": "时态", "topic": "17. 现在进行时", "isCorrect": false },
+                { "category": "时态", "topic": "18. 一般将来时", "isCorrect": true },
+                { "category": "时态", "topic": "19. 一般过去时", "isCorrect": true },
+                { "category": "时态", "topic": "20. 现在完成时", "isCorrect": false },
+                { "category": "时态", "topic": "21. 过去完成时", "isCorrect": true },
+                { "category": "时态", "topic": "22. 过去进行时", "isCorrect": true },
+                { "category": "时态", "topic": "23. 将来进行时", "isCorrect": true },
+                { "category": "时态", "topic": "24. 将来完成时", "isCorrect": true },
+                { "category": "时态", "topic": "25. 现在完成进行时", "isCorrect": true },
+                { "category": "时态", "topic": "26. 过去完成进行时", "isCorrect": true },
+                { "category": "时态", "topic": "27. 将来完成进行时", "isCorrect": true },
+                { "category": "时态", "topic": "28. 时态总结", "isCorrect": false },
+                { "category": "句型转换", "topic": "29. 句型转换方法", "isCorrect": true },
+                { "category": "被动语态", "topic": "30. 被动语态", "isCorrect": false },
+                { "category": "非谓语动词", "topic": "31. 非谓语动词", "isCorrect": false },
+                { "category": "引语与过去将来时", "topic": "32. 引语与过去将来时", "isCorrect": true },
+                { "category": "从句", "topic": "33. 宾语从句", "isCorrect": false },
+                { "category": "从句", "topic": "34. 从句使用陈述语序的逻辑", "isCorrect": true },
+                { "category": "从句", "topic": "35. 主语从句", "isCorrect": true },
+                { "category": "从句", "topic": "36. 表语从句", "isCorrect": true },
+                { "category": "从句", "topic": "37. 同位语从句", "isCorrect": true },
+                { "category": "从句", "topic": "38. 定语从句", "isCorrect": false },
+                { "category": "从句", "topic": "39. 状语从句", "isCorrect": true },
+                { "category": "从句", "topic": "40. 从句总结", "isCorrect": true },
+                { "category": "句子总结", "topic": "41. 句子总结", "isCorrect": true },
+                { "category": "独立主格", "topic": "43. 独立主格", "isCorrect": true },
+                { "category": "主谓一致", "topic": "44. 主谓一致", "isCorrect": false },
+                { "category": "虚拟语气", "topic": "45. 虚拟语气", "isCorrect": true },
+                { "category": "倒装句", "topic": "46. 倒装句", "isCorrect": true },
+                { "category": "it 的用法", "topic": "47. it 的用法", "isCorrect": false }
+            ]
+        };
+
+        // 计算得分
+        const totalQuestions = reportData.results.length;
+        const correctCount = reportData.results.filter(r => r.isCorrect).length;
+        const scorePercentage = Math.round((correctCount / totalQuestions) * 100);
+
+        // 更新显示
+        document.getElementById('score-display').textContent = `${correctCount} / ${totalQuestions}`;
+        document.getElementById('accuracy-display').textContent = `${scorePercentage}%`;
+        document.getElementById('progress-bar-inner').style.width = `${scorePercentage}%`;
+    </script>
+</body>
+
+</html>

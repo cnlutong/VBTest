@@ -1,5 +1,7 @@
 package domain.model;
 
+import java.util.List;
+
 /**
  * TestResult 类表示测试的最终结果。
  */
@@ -10,6 +12,7 @@ public class TestResult {
     private final int correctAnswers;
     private final int estimatedVocabularySize;
     private final int totalVocabularySize;
+    private final List<Question> answeredQuestions;
     private final ResultMean resultMean;
 
     /**
@@ -21,9 +24,10 @@ public class TestResult {
      * @param correctAnswers          正确答题数
      * @param estimatedVocabularySize 估计词汇量大小
      * @param totalVocabularySize     词库总词汇量
+     * @param answeredQuestions       已回答的问题列表
      */
     public TestResult(UserModel user, double finalAbilityEstimate, int totalQuestions, int correctAnswers,
-            int estimatedVocabularySize, int totalVocabularySize) {
+            int estimatedVocabularySize, int totalVocabularySize, List<Question> answeredQuestions) {
         this.resultMean = new ResultMean(0);
         this.user = user;
         this.finalAbilityEstimate = finalAbilityEstimate;
@@ -31,10 +35,27 @@ public class TestResult {
         this.correctAnswers = correctAnswers;
         this.estimatedVocabularySize = estimatedVocabularySize;
         this.totalVocabularySize = totalVocabularySize;
+        this.answeredQuestions = answeredQuestions;
     }
 
     public double getFinalAbilityEstimate() {
         return finalAbilityEstimate;
+    }
+
+    public List<Question> getAnsweredQuestions() {
+        return answeredQuestions;
+    }
+
+    public int getEstimatedVocabularySize() {
+        return estimatedVocabularySize;
+    }
+
+    public ResultMean getResultMean() {
+        return resultMean;
+    }
+
+    public UserModel getUser() {
+        return user;
     }
 
     @Override
