@@ -123,15 +123,15 @@ while (!service.isTestFinished()) {
 ```
 
 ### 5. 处理测试结果与报告
-测试结束后，最重要的步骤是获取 `TestResult` 并利用 `ReportGenerator` 生成可视化内容：
+测试结束后，最重要的步骤是获取 `TestResult` 并利用系统接口生成可视化内容：
 
 ```java
 // 1. 结束测试并获取汇总结果
 TestResult result = service.concludeTest();
 
-// 2. [Web 场景] 直接获取 HTML 字符串用于前端渲染或邮件推送
-// 该方法全内存计算，不涉及磁盘 IO。
-String htmlSource = ReportGenerator.buildHtml(result);
+// 2. [Web 场景] 直接获取 HTML 字符串用于前端渲染
+// 调用 Main 类提供的统一接口，该方法全内存计算，不涉及磁盘 IO。
+String htmlSource = Main.getReportHtml(result);
 
 // 3. [离线场景] 将报告持久化为物理文件
 ReportGenerator.generateReport(result, "reports/my_report.html");

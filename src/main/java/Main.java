@@ -159,6 +159,16 @@ public class Main {
     }
 
     /**
+     * 获取词汇量测试报告的 HTML 源码
+     * 
+     * @param result 测试结果对象
+     * @return HTML 源码字符串
+     */
+    public static String getReportHtml(TestResult result) {
+        return ReportGenerator.buildHtml(result);
+    }
+
+    /**
      * 显示问题
      * 
      * @param question       问题对象
