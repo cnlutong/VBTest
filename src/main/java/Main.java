@@ -79,7 +79,7 @@ public class Main {
      */
     private static void setupCustomInitialAbility() {
         System.out.println("\n--- 初始能力值设置 ---");
-        System.out.println("是否要自定义初始能力值？（默认为1.0）");
+        System.out.println("是否要自定义初始能力值？（默认为0.0）");
         System.out.println("能力值范围：0.0 - 7.5");
         System.out.println("参考：1.0=小学水平, 3.0=初中水平, 5.0=高中水平, 7.0=大学水平");
         System.out.print("是否自定义？(y/n，默认y)：");
@@ -88,7 +88,7 @@ public class Main {
 
         if (choice.equals("n") || choice.equals("no")) {
             IRTAlgorithm.disableCustomInitialAbility();
-            System.out.println("已禁用自定义初始能力值功能，将使用默认值1.0");
+            System.out.println("已禁用自定义初始能力值功能，将使用系统默认值0.0");
             return;
         }
 
@@ -96,12 +96,12 @@ public class Main {
         IRTAlgorithm.enableCustomInitialAbility();
 
         while (true) {
-            System.out.print("请输入初始能力值（0.0-7.5，默认1.0）：");
+            System.out.print("请输入初始能力值（0.0-7.5，默认0.0）：");
             String input = scanner.nextLine().trim();
 
             if (input.isEmpty()) {
-                IRTAlgorithm.setCustomInitialAbility(1.0);
-                System.out.println("已设置初始能力值为默认值：1.0");
+                IRTAlgorithm.setCustomInitialAbility(0.0);
+                System.out.println("已设置初始能力值为默认值：0.0");
                 break;
             }
 
