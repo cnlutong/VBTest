@@ -125,9 +125,8 @@ public class Main {
      * 
      * @param testService 测试服务
      * @param user        用户模型
-     * @return 生成的报告文件路径
      */
-    public static String runTest(TestService testService, UserModel user) {
+    private static void runTest(TestService testService, UserModel user) {
         testService.initiateTest(user);
         int questionCount = 0;
 
@@ -157,8 +156,6 @@ public class Main {
                                                                                              // others
         String reportPath = String.format("report/vocabulary_report_%s_%s.html", safeUserName, timestamp);
         ReportGenerator.generateReport(result, reportPath);
-
-        return reportPath;
     }
 
     /**
