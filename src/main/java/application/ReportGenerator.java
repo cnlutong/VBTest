@@ -16,16 +16,26 @@ import java.util.List;
  */
 public class ReportGenerator {
 
+        /**
+         * 生成测试结果文件。
+         * 同时也保留了向后兼容性。
+         * 
+         * @param result   测试结果对象
+         * @param filePath 报告保存的文件路径
+         */
         public static void generateReport(TestResult result, String filePath) {
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-                        writer.write(buildHtmlContent(result));
-                        System.out.println("报告已生成: " + new File(filePath).getAbsolutePath());
-                } catch (IOException e) {
-                        System.err.println("生成报告时出错: " + e.getMessage());
-                }
+                String html = buildHtml(result);
+                saveToFile(html, filePath);
         }
 
-        private static String buildHtmlContent(TestResult result) {
+        /**
+         * 生成测试结果的 HTML 源码字符串。
+         * 可以被外界直接调用，不产生文件。
+         * 
+         * @param result 测试结果对象
+         * @return HTML 源码字符串
+         */
+        public static String buildHtml(TestResult result) {
                 StringBuilder sb = new StringBuilder();
                 sb.append("<!DOCTYPE html>\n");
                 sb.append("<html lang=\"zh-CN\">\n");
@@ -39,7 +49,7 @@ public class ReportGenerator {
                 sb.append("\n");
                 sb.append("        body {\n");
                 sb.append("            font-family: 'Noto Sans SC', sans-serif;\n");
-                sb.append("            background-color: #f8fafc;\n"); // slate-50
+                sb.append("            background-color: #f8fafc;\n");
                 sb.append("        }\n");
                 sb.append("\n");
                 sb.append("        .report-container {\n");
@@ -50,7 +60,6 @@ public class ReportGenerator {
                 sb.append("            background-color: white;\n");
                 sb.append("            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);\n");
                 sb.append("            border-radius: 2px;\n");
-                sb.append("            /* Removed top border as requested */\n");
                 sb.append("            display: flex;\n");
                 sb.append("            flex-direction: column;\n");
                 sb.append("        }\n");
@@ -66,8 +75,8 @@ public class ReportGenerator {
                 sb.append("        }\n");
                 sb.append("\n");
                 sb.append("        .status-badge-correct {\n");
-                sb.append("            background-color: #ecfdf5;\n"); // emerald-50
-                sb.append("            color: #059669;\n"); // emerald-600
+                sb.append("            background-color: #ecfdf5;\n");
+                sb.append("            color: #059669;\n");
                 sb.append("        }\n");
                 sb.append("\n");
                 sb.append("        .status-badge-incorrect {\n");
@@ -97,7 +106,7 @@ public class ReportGenerator {
                 sb.append("            <p class=\"text-slate-500 mt-2 text-lg\">Vocabulary Assessment Report</p>\n");
                 sb.append("        </header>\n");
                 sb.append("\n");
-                sb.append("        <!-- 学生信息 (Green Theme) -->\n");
+                sb.append("        <!-- 学生信息 -->\n");
                 sb.append("        <section class=\"mb-8 p-6 bg-white rounded-xl shadow-sm border-t-4 border-emerald-500 border-x border-b border-slate-100\">\n");
                 sb.append("            <div class=\"flex justify-between items-center mb-6\">\n");
                 sb.append("                <h2 class=\"text-xl font-bold text-slate-800 flex items-center gap-2\">\n");
@@ -138,7 +147,6 @@ public class ReportGenerator {
                 sb.append("            </div>\n");
                 sb.append("            <div class=\"mt-8 pt-6 border-t border-slate-100 flex items-center justify-between\">\n");
                 sb.append("                 <p class=\"text-slate-600 font-medium\">当前预估词汇量</p>\n");
-                sb.append("                 <!-- Orange Highlight for Result -->\n");
                 sb.append("                 <div class=\"bg-orange-500 text-white px-6 py-2 rounded-lg shadow-md\">\n");
                 sb.append("                     <span class=\"text-2xl font-bold\">")
                                 .append(result.getEstimatedVocabularySize()).append("</span>\n");
@@ -147,7 +155,7 @@ public class ReportGenerator {
                 sb.append("            </div>\n");
                 sb.append("        </section>\n");
                 sb.append("\n");
-                sb.append("        <!-- 测试分析与建议 (Green Theme consistent with \"Especially Green\") -->\n");
+                sb.append("        <!-- 测试分析与建议 -->\n");
                 sb.append("        <section class=\"mb-8 p-6 bg-white rounded-xl shadow-sm border-t-4 border-emerald-500 border-x border-b border-slate-100\">\n");
                 sb.append("            <h2 class=\"text-xl font-bold text-slate-800 mb-6 flex items-center gap-2\">\n");
                 sb.append("                <span class=\"w-2 h-6 bg-emerald-500 rounded-full\"></span>\n");
@@ -156,10 +164,7 @@ public class ReportGenerator {
                 sb.append("\n");
                 sb.append("            <div class=\"mb-8\">\n");
                 sb.append("                <h3 class=\"text-lg font-semibold text-slate-800 mb-4\">能力评估</h3>\n");
-
-                // Add Progress Bar
                 sb.append(buildProgressBar(result.getEstimatedVocabularySize()));
-
                 sb.append("                <div class=\"bg-slate-50 p-4 rounded-lg border border-slate-200 mt-4\">\n");
                 sb.append("                    <p class=\"text-slate-700 leading-relaxed text-justify\">");
                 sb.append(result.getResultMean().getResultMean(result.getEstimatedVocabularySize()));
@@ -177,14 +182,12 @@ public class ReportGenerator {
                 sb.append("            </div>\n");
                 sb.append("        </section>\n");
                 sb.append("\n");
-                // 错题重点展示
+                sb.append("        <!-- 错题重点展示 -->\n");
                 sb.append("        <section class=\"mb-8\">\n");
                 sb.append("             <h2 class=\"text-2xl font-semibold text-slate-700 mb-4\">错题解析</h2>\n");
                 sb.append("             <div class=\"space-y-4\">\n");
-
                 List<Question> questions = result.getAnsweredQuestions();
                 boolean hasWrong = false;
-
                 for (int i = 0; i < questions.size(); i++) {
                         Question q = questions.get(i);
                         if (!q.isAnsweredCorrectly()) {
@@ -198,16 +201,13 @@ public class ReportGenerator {
                                                 .append("</span>\n");
                                 sb.append("                    </p>\n");
                                 sb.append("                    <div class=\"mt-3 text-sm space-y-2\">\n");
-
                                 int userIndex = q.getUserAnswerIndex();
                                 int correctIndex = q.getCorrectOptionIndex();
                                 List<String> options = q.getOptions();
-
                                 for (int j = 0; j < options.size(); j++) {
                                         String optionText = options.get(j);
                                         String itemClass = "p-3 rounded-md transition-colors";
                                         String prefix = (j + 1) + ". ";
-
                                         if (j == correctIndex) {
                                                 itemClass += " bg-emerald-50 text-emerald-800 font-medium border border-emerald-200";
                                                 prefix += " <span class=\"text-emerald-600 font-bold ml-1\">(Correct)</span> ";
@@ -217,30 +217,25 @@ public class ReportGenerator {
                                         } else {
                                                 itemClass += " text-slate-600 bg-slate-50";
                                         }
-
                                         sb.append("                        <div class=\"").append(itemClass)
                                                         .append("\">");
                                         sb.append(prefix).append(optionText);
                                         sb.append("</div>\n");
                                 }
-
                                 sb.append("                    </div>\n");
                                 sb.append("                </div>\n");
                         }
                 }
-
                 if (!hasWrong) {
                         sb.append("                <div class=\"p-8 text-center bg-emerald-50 rounded-xl border border-emerald-100\">\n");
                         sb.append("                    <p class=\"text-emerald-800 font-medium text-lg\">🎉 太棒了！本次测试没有错题。</p>\n");
                         sb.append("                    <p class=\"text-emerald-600 mt-1\">Excellent work!</p>\n");
                         sb.append("                </div>\n");
                 }
-
                 sb.append("             </div>\n");
                 sb.append("        </section>\n");
                 sb.append("\n");
-
-                // 详细分析表格
+                sb.append("        <!-- 详细分析表格 -->\n");
                 int totalQuestions = questions.size();
                 int wrongAnswers = (int) questions.stream().filter(q -> !q.isAnsweredCorrectly()).count();
                 int correctAnswers = totalQuestions - wrongAnswers;
@@ -256,14 +251,12 @@ public class ReportGenerator {
                                 .append("</span> 题，\n");
                 sb.append("                    正确率 <span class=\"font-medium text-emerald-600\">")
                                 .append(String.format("%.1f%%", accuracy)).append("</span>\n");
-
                 if (result.getUser().isCustomInitialAbility()) {
                         sb.append("                    <span class=\"text-slate-300 mx-2\">|</span>\n");
                         sb.append("                    <span class=\"text-slate-400\">初始能力值: ")
                                         .append(String.format("%.1f", result.getUser().getInitialAbility()))
                                         .append("</span>\n");
                 }
-
                 sb.append("                </p>\n");
                 sb.append("            </div>\n");
                 sb.append("            <div class=\"overflow-x-auto border border-slate-200 rounded-lg shadow-sm\">\n");
@@ -278,30 +271,25 @@ public class ReportGenerator {
                 sb.append("                        </tr>\n");
                 sb.append("                    </thead>\n");
                 sb.append("                    <tbody class=\"text-slate-700 bg-white\">\n");
-
                 for (int i = 0; i < questions.size(); i++) {
                         Question q = questions.get(i);
                         boolean isCorrect = q.isAnsweredCorrectly();
                         String rowClass = isCorrect ? "hover:bg-slate-50 border-b border-slate-100"
                                         : "bg-rose-50 hover:bg-rose-100 border-b border-rose-100";
-
                         sb.append("                        <tr class=\"").append(rowClass).append("\">\n");
                         sb.append("                            <td class=\"p-3\">").append(i + 1).append("</td>\n");
                         sb.append("                            <td class=\"p-3 font-medium\">")
                                         .append(q.getWord().getWord()).append("</td>\n");
                         sb.append("                            <td class=\"p-3\">").append(q.getWord().getChinese())
                                         .append("</td>\n");
-
                         String userChoice = "";
-                        int userIndex = q.getUserAnswerIndex();
-                        if (userIndex >= 0 && userIndex < q.getOptions().size()) {
-                                userChoice = q.getOptions().get(userIndex);
+                        int userChoiceIndex = q.getUserAnswerIndex();
+                        if (userChoiceIndex >= 0 && userChoiceIndex < q.getOptions().size()) {
+                                userChoice = q.getOptions().get(userChoiceIndex);
                         } else {
                                 userChoice = "未选择";
                         }
-
                         String choiceClass = isCorrect ? "text-slate-700" : "text-rose-700 font-semibold";
-
                         sb.append("                            <td class=\"p-3 ").append(choiceClass).append("\">")
                                         .append(userChoice).append("</td>\n");
                         sb.append("                            <td class=\"p-3 text-center\">\n");
@@ -313,61 +301,35 @@ public class ReportGenerator {
                         sb.append("                            </td>\n");
                         sb.append("                        </tr>\n");
                 }
-
                 sb.append("                    </tbody>\n");
                 sb.append("                </table>\n");
                 sb.append("            </div>\n");
                 sb.append("        </section>\n");
-                sb.append("\n");
-
                 sb.append("    </div>\n");
                 sb.append("</body>\n");
                 sb.append("</html>");
-
                 return sb.toString();
         }
 
         private static String buildProgressBar(int estimatedVocab) {
-                // Scala: 0 - 7000
                 int maxScale = 7000;
-                double percentage = (double) estimatedVocab / maxScale * 100;
-                if (percentage > 100)
-                        percentage = 100;
-                if (percentage < 0)
-                        percentage = 0;
-
+                double percentage = Math.max(0, Math.min(100, (double) estimatedVocab / maxScale * 100));
                 StringBuilder sb = new StringBuilder();
-
                 sb.append("<div class=\"w-full mt-4\">\n");
-
-                // Labels (Top)
                 sb.append("    <div class=\"flex mb-1 text-xs text-slate-500 font-medium relative h-4\">\n");
                 sb.append("        <div class=\"absolute text-center\" style=\"left: 3.5%; transform: translateX(-50%);\">小学</div>\n");
                 sb.append("        <div class=\"absolute text-center\" style=\"left: 17.8%; transform: translateX(-50%);\">初中</div>\n");
                 sb.append("        <div class=\"absolute text-center\" style=\"left: 46.4%; transform: translateX(-50%);\">高中</div>\n");
                 sb.append("        <div class=\"absolute text-center\" style=\"left: 82.1%; transform: translateX(-50%);\">大学+</div>\n");
                 sb.append("    </div>\n");
-
-                // Bar Container
                 sb.append("    <div class=\"relative h-3 bg-slate-100 rounded-full overflow-hidden flex\">\n");
-
-                // Segments - updated to Orange -> Green gradient feel
-                // 500 / 7000 = 7.14% (Orange)
                 sb.append("        <div class=\"h-full bg-orange-200\" style=\"width: 7.14%\"></div>\n");
-                // (2000-500)/7000 = 21.43% (Amber)
                 sb.append("        <div class=\"h-full bg-amber-200\" style=\"width: 21.43%\"></div>\n");
-                // (4500-2000)/7000 = 35.71% (Lime)
                 sb.append("        <div class=\"h-full bg-lime-200\" style=\"width: 35.71%\"></div>\n");
-                // Remainder = 35.72% (Emerald)
                 sb.append("        <div class=\"h-full bg-emerald-200\" style=\"flex: 1\"></div>\n");
-
-                // Progress Marker
                 sb.append("        <div class=\"absolute top-0 bottom-0 w-1 bg-slate-800 shadow-md transform -translate-x-1/2\" style=\"left: ")
                                 .append(String.format("%.1f", percentage)).append("%;\"></div>\n");
-
                 sb.append("    </div>\n");
-
-                // Scale Labels (Bottom)
                 sb.append("    <div class=\"flex mt-1 text-xs text-slate-400 relative h-4\">\n");
                 sb.append("        <span class=\"absolute left-0\">0</span>\n");
                 sb.append("        <span class=\"absolute\" style=\"left: 7.14%; transform: translateX(-50%);\">500</span>\n");
@@ -375,9 +337,16 @@ public class ReportGenerator {
                 sb.append("        <span class=\"absolute\" style=\"left: 64.28%; transform: translateX(-50%);\">4500</span>\n");
                 sb.append("        <span class=\"absolute right-0\">7000+</span>\n");
                 sb.append("    </div>\n");
-
                 sb.append("</div>\n");
-
                 return sb.toString();
+        }
+
+        private static void saveToFile(String content, String filePath) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+                        writer.write(content);
+                        System.out.println("报告已生成: " + new File(filePath).getAbsolutePath());
+                } catch (IOException e) {
+                        System.err.println("保存报告文件时出错: " + e.getMessage());
+                }
         }
 }
