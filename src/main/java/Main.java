@@ -17,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
         printAppVersion();
-        WordBank wordBank = initializeWordBank("test_v9.6.csv");
+        WordBank wordBank = initializeWordBank("test_v10.1.csv");
         if (wordBank == null) {
             System.exit(1);
         }
